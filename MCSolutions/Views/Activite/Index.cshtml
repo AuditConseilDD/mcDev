@@ -1,0 +1,87 @@
+﻿@model IEnumerable<MCSolutions.Models.ActiviteViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LIBELLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JOURTRAVAILLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NBHEURES)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TAUX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATEDBY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DTCREATION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MODIFIEDBY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DTMODIF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_IDCRA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_IDTYPEACTIVITE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LIBELLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JOURTRAVAILLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NBHEURES)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TAUX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREATEDBY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DTCREATION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MODIFIEDBY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DTMODIF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_IDCRA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_IDTYPEACTIVITE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ActiviteId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ActiviteId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ActiviteId })
+        </td>
+    </tr>
+}
+
+</table>

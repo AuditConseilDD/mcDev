@@ -1,0 +1,123 @@
+﻿@model IEnumerable<MCSolutions.DataAccess.CRA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LIBELLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NUMCRA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOIS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NBTOTALJOURS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_IDCONSULTANT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_IDCLIENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LIB_CLIENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_IDRESPONSABLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LIB_RESPONSABLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_IDSTATUT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SIGNECONSULTANT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DTSIGNECONSULTANT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SIGNECLIENTFINAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DTSIGNECLIENTFINAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SIGNEAGENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DTSIGNEAGENT)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LIBELLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NUMCRA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOIS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NBTOTALJOURS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_IDCONSULTANT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_IDCLIENT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LIB_CLIENT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_IDRESPONSABLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LIB_RESPONSABLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_IDSTATUT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SIGNECONSULTANT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DTSIGNECONSULTANT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SIGNECLIENTFINAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DTSIGNECLIENTFINAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SIGNEAGENT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DTSIGNEAGENT)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CRAId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CRAId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CRAId })
+        </td>
+    </tr>
+}
+
+</table>

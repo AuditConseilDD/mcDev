@@ -1,0 +1,146 @@
+﻿@model MCSolutions.DataAccess.CRA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CRA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LIBELLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LIBELLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NUMCRA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NUMCRA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOIS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOIS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NBTOTALJOURS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NBTOTALJOURS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_IDCONSULTANT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_IDCONSULTANT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_IDCLIENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_IDCLIENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LIB_CLIENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LIB_CLIENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_IDRESPONSABLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_IDRESPONSABLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LIB_RESPONSABLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LIB_RESPONSABLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_IDSTATUT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_IDSTATUT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SIGNECONSULTANT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SIGNECONSULTANT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DTSIGNECONSULTANT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DTSIGNECONSULTANT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SIGNECLIENTFINAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SIGNECLIENTFINAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DTSIGNECLIENTFINAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DTSIGNECLIENTFINAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SIGNEAGENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SIGNEAGENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DTSIGNEAGENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DTSIGNEAGENT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CRAId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

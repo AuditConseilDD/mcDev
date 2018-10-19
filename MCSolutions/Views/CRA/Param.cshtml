@@ -1,0 +1,406 @@
+﻿
+@{
+    ViewBag.Title = "_Consultant";
+}
+
+
+<div class="content-gradient"></div>
+<div class="container-fluid main-content">
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <ul class="nav nav-tabs justify-content-around" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#infos" role="tab" aria-controls="home" aria-selected="true">Infos générale <div class="status-pill-success"></div></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#client" role="tab" aria-controls="profile" aria-selected="false">Client final <div class="status-pill-warning"></div></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#agent" role="tab" aria-controls="contact" aria-selected="false">Mon agent <div class="status-pill-danger"></div></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#jointure" role="tab" aria-controls="contact" aria-selected="false">Les jointures <div class="status-pill-danger"></div></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="side-nav">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link " href="@Url.Action("Admin", "CRA")">Mon administratif<div class="status"><div class="side-nav-pill-success"></div></div></a>
+                        <a class="nav-link  active" href="@Url.Action("Param", "CRA")">Paramétrage<div class="status"><div class="side-nav-pill-warning"></div></div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="content-box">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="infos" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <h2 class="page-title">Infos Générale</h2>
+                                </div>
+                            </div>
+                            <div class="content-separator"></div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-auto">
+                                    <button class="btn btn-primary" role="button">Importer ma signature</button>
+                                </div>
+                                <div class="col-md-12" style="text-align: center;">
+                                    <img width="50%" src="~/assets/images/mon-cra.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="client" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="row justify-content-between">
+                                <div class="col-auto"><h2 class="page-title">Client Final</h2></div>
+                                <div class="col-auto"><button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary page-title">Envoyer une invitation</button></div>
+                            </div>
+                            <div class="content-separator"></div>
+                            <div class="row margin-bottom">
+                                <div class="col-md-12">
+                                    <p class="lead page-title text-center">Qui valide ma prestation en signant mon CRA ? (le client final, le donneur d’ordre, le responsable chez le client)</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-hover">
+                                        <tbody>
+                                            <tr style="text-align: center;">
+                                                <td style="width: 20%"><b>S.Caumes</b></td>
+                                                <td style="width: 20%">VEOLIA</td>
+                                                <td style="width: 30%">seb.caumes@gmail.fr</td>
+                                                <td style="width: 15%"><div class="status-pill-success"></div><span class="text-success"><b> OK</b></span></td>
+                                                <td style="width: 15%; text-align:right;"><a data-toggle="modal" data-target="#yesNoModal" class="btn btn-secondary">Désactiver</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="row margin-bottom">
+                                <div class="col-md-12">
+                                    <p class="lead page-title text-center">En attente de réponses</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-hover">
+                                        <tbody>
+                                            <tr style="text-align: center;">
+                                                <td style="width: 20%"><b>S.Caumes</b></td>
+                                                <td style="width: 20%">VEOLIA</td>
+                                                <td style="width: 30%">seb.caumes@gmail.fr</td>
+                                                <td style="width: 15%"><a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Renvoyer l'invitation</a></td>
+                                                <td style="width: 15%;"><a data-toggle="modal" data-target="#yesNoModal" class="btn btn-secondary">Désactiver</a></td>
+                                            </tr>
+                                            <tr style="text-align: center;">
+                                                <td style="width: 20%"><b>S.Caumes</b></td>
+                                                <td style="width: 20%">VEOLIA</td>
+                                                <td style="width: 30%">seb.caumes@gmail.fr</td>
+                                                <td style="width: 15%"><a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Renvoyer l'invitation</a></td>
+                                                <td style="width: 15%;"><a data-toggle="modal" data-target="#yesNoModal" class="btn btn-secondary">Désactiver</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="lead page-title text-center">Invitations désactivées ou annulées</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-hover">
+                                        <tbody>
+                                            <tr class="table-dark text-center">
+                                                <td style="width: 20%"><b>S.Caumes</b></td>
+                                                <td style="width: 20%">VEOLIA</td>
+                                                <td style="width: 30%">seb.caumes@gmail.fr</td>
+                                                <td style="width: 15%"></td>
+                                                <td style="width: 15%; text-align:right;"><a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Renvoyer l'invitation</a></td>
+                                            </tr>
+                                            <tr class="table-dark text-center">
+                                                <td style="width: 20%"><b>S.Caumes</b></td>
+                                                <td style="width: 20%">VEOLIA</td>
+                                                <td style="width: 30%">seb.caumes@gmail.fr</td>
+                                                <td style="width: 15%"></td>
+                                                <td style="width: 15%; text-align:right;"><a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Renvoyer l'invitation</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="agent" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="row justify-content-between">
+                                <div class="col-auto"><h2 class="page-title">Mon Agent</h2></div>
+                                <div class="col-auto"><button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary page-title">Envoyer une invitation</button></div>
+                            </div>
+                            <div class="content-separator"></div>
+                            <div class="row margin-bottom">
+                                <div class="col-md-12">
+                                    <p class="lead page-title text-center">
+                                        Qui peut voir mon CRA une fois validé ? (La SSII, le manager qui téléphone tous les mois, le commercial qui invite au restaurant une fois par an…)
+                                    </p>
+                                </div>
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-hover">
+                                        <tbody>
+                                            <tr style="text-align: center;">
+                                                <td style="width: 20%"><b>S.Caumes</b></td>
+                                                <td style="width: 20%">VEOLIA</td>
+                                                <td style="width: 30%">seb.caumes@gmail.fr</td>
+                                                <td style="width: 15%"><div class="status-pill-success"></div><span class="text-success"><b> OK</b></span></td>
+                                                <td style="width: 15%; text-align:right;"><a data-toggle="modal" data-target="#yesNoModal" class="btn btn-secondary">Désactiver</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="row margin-bottom">
+                                <div class="col-md-12">
+                                    <p class="lead page-title text-center">En attente de réponses</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-hover">
+                                        <tbody>
+                                            <tr style="text-align: center;">
+                                                <td style="width: 20%"><b>S.Caumes</b></td>
+                                                <td style="width: 20%">VEOLIA</td>
+                                                <td style="width: 30%">seb.caumes@gmail.fr</td>
+                                                <td style="width: 15%"><a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Renvoyer l'invitation</a></td>
+                                                <td style="width: 15%;"><a data-toggle="modal" data-target="#yesNoModal" class="btn btn-secondary">Désactiver</a></td>
+                                            </tr>
+                                            <tr style="text-align: center;">
+                                                <td style="width: 20%"><b>S.Caumes</b></td>
+                                                <td style="width: 20%">VEOLIA</td>
+                                                <td style="width: 30%">seb.caumes@gmail.fr</td>
+                                                <td style="width: 15%"><a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Renvoyer l'invitation</a></td>
+                                                <td style="width: 15%;"><a data-toggle="modal" data-target="#yesNoModal" class="btn btn-secondary">Désactiver</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="lead page-title text-center">Invitations désactivées ou annulées</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-hover">
+                                        <tbody>
+                                            <tr class="table-dark text-center">
+                                                <td style="width: 20%"><b>S.Caumes</b></td>
+                                                <td style="width: 20%">VEOLIA</td>
+                                                <td style="width: 30%">seb.caumes@gmail.fr</td>
+                                                <td style="width: 15%"></td>
+                                                <td style="width: 15%; text-align:right;"><a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Renvoyer l'invitation</a></td>
+                                            </tr>
+                                            <tr class="table-dark text-center">
+                                                <td style="width: 20%"><b>S.Caumes</b></td>
+                                                <td style="width: 20%">VEOLIA</td>
+                                                <td style="width: 30%">seb.caumes@gmail.fr</td>
+                                                <td style="width: 15%"></td>
+                                                <td style="width: 15%; text-align:right;"><a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Renvoyer l'invitation</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="jointure" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="row">
+                                <div class="col-auto"><h2 class="page-title">Jointure</h2></div>
+                            </div>
+                            <div class="content-separator"></div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="lead page-title text-center">
+                                        Vous avez plusieurs agents et/ou plusieurs clients associés à votre compte.
+                                        Paramétrons ensemble les droits: Qui peut avoir accès à vos CRA ?
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="position: relative" class="row justify-content-around align-items-center">
+                                <div class="col-md-auto">
+                                    <div class="content-box-jointure">
+                                        <table class="table table-sm table-striped table-hover">
+                                            <tbody>
+                                                <tr class="clickable-row">
+                                                    <td><div class="status-pill-success"></div></td>
+                                                    <td>S. Caume</td>
+                                                    <td>VEOLIA</td>
+                                                    <td><div class="email-column">seb.caumes@gmail.fr</div></td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td><div class="status-pill-success"></div></td>
+                                                    <td>L. Varef</td>
+                                                    <td>Easy Part.</td>
+                                                    <td class="email-column"><div class="email-column">laurenffffffft.varef@tfghfghfghest.com</div></td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td><div class="status-pill-success"></div></td>
+                                                    <td>S. Caume</td>
+                                                    <td>VEOLIA</td>
+                                                    <td class="email-column"><div class="email-column">seb.caumes@gmail.fr</div></td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td><div class="status-pill-success"></div></td>
+                                                    <td>L. Varef</td>
+                                                    <td>Easy Part.</td>
+                                                    <td class="email-column"><div class="email-column">laurent.varef@test.com</div></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="link-button"><span class="oi oi-arrow-thick-bottom"></span></div>
+                                </div>
+                                <div class="col-md-auto">
+                                    <div class="content-box-jointure">
+                                        <table class="table table-sm table-striped table-hover">
+                                            <tbody>
+                                                <tr>
+                                                    <td><div class="status-pill-success"></div></td>
+                                                    <td>S. Caume</td>
+                                                    <td>VEOLIA</td>
+                                                    <td><div class="email-column">seb.caumes@gmail.fr</div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><div class="status-pill-success"></div></td>
+                                                    <td>L. Varef</td>
+                                                    <td>Easy Part.</td>
+                                                    <td class="email-column"><div class="email-column">laurenffffffft.varef@tfghfghfghest.com</div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><div class="status-pill-success"></div></td>
+                                                    <td>S. Caume</td>
+                                                    <td>VEOLIA</td>
+                                                    <td class="email-column"><div class="email-column">seb.caumes@gmail.fr</div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><div class="status-pill-success"></div></td>
+                                                    <td>L. Varef</td>
+                                                    <td>Easy Part.</td>
+                                                    <td class="email-column"><div class="email-column">laurent.varef@test.com</div></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-separator"></div>
+                            <div class="row justify-content-between align-items-center linked-persons">
+                                <div class="col-md-10">
+                                    <b>S. De Caumes ( VEOLIA )</b> est actuellement votre Agent pour <b>L. Varef ( Easy Partner )</b>
+                                </div>
+                                <div class="col-md-2">
+                                    <a data-toggle="modal" data-target="#yesNoModal" class="btn btn-secondary">Désactiver</a>
+                                </div>
+                            </div>
+                            <div class="row justify-content-between align-items-center linked-persons">
+                                <div class="col-md-10">
+                                    <b>S. De Caumes ( VEOLIA )</b> est actuellement votre Agent pour <b>L. Varef ( Easy Partner )</b>
+                                </div>
+                                <div class="col-md-2">
+                                    <a data-toggle="modal" data-target="#yesNoModal" class="btn btn-secondary">Désactiver</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main><!-- /.container -->
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content content-dialog">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <img style="width: 100%;text-align: center;" src="/assets/images/email.png" /><br />
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-auto">
+                    <h5 class="modal-title" id="exampleModalLabel">Inviter un nouveau contact</h5>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <form class="inscription-form">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="inputPrenom">Prénom :</label>
+                            <input type="text" class="form-control form-control-lg is-valid" id="inputPrenom" aria-describedby="prenomHelp" placeholder="Prénom">
+                            <small id="prenomHelp" class="form-text text-muted"></small>
+                            <div class="valid-feedback">
+                                Prénom ok
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="inputNom">Nom :</label>
+                            <input type="text" class="form-control form-control-lg is-invalid" id="inputNom" aria-describedby="nomHelp" placeholder="Nom">
+                            <small id="nomHelp" class="form-text text-muted"></small>
+                            <div class="invalid-feedback">
+                                Nom invalide
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="inputEmail">Adresse email :</label>
+                            <input type="email" class="form-control form-control-lg" id="inputEmail" aria-describedby="emailHelp" placeholder="Adresse email">
+                            <small id="emailHelp" class="form-text text-muted">Exemple info.</small>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="inputTel">Entreprise :</label>
+                            <input type="text" class="form-control form-control-lg" id="inputTel" aria-describedby="telHelp" placeholder="Entreprise">
+                            <small id="telHelp" class="form-text text-muted"></small>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="row justify-content-around">
+                    <button data-dismiss="modal" class="col-md-auto btn-custom-primary">ANNULER</button>
+                    <button type="button" class="col-md-auto btn-custom-primary">ENVOYER L'INVITATION</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="yesNoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content content-dialog">
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-md-auto">
+                        Etes-vous sure ?
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row justify-content-around">
+                    <button data-dismiss="modal" class="col-md-auto btn-custom-primary">ANNULER</button>
+                    <button type="button" class="col-md-auto btn-custom-primary">VALIDER</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+
+
+    <script src="~/assets/scripts/main.70255159a2dbf7e3e589.js"></script>
+
+
+}

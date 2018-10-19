@@ -1,0 +1,247 @@
+﻿@model MCSolutions.Models.RegistrationView
+@{
+    ViewBag.Title = "Registration";
+}
+
+@using (Html.BeginForm("Registration", "Account", FormMethod.Post, new { id = "newUserForm", @class = "form-horizontal", role = "form" }))
+{
+    @*@using (Html.BeginForm())
+        {*@
+    @Html.AntiForgeryToken()
+
+    <div class="wizard ">
+
+
+        <div id="1" class="step active span12">
+            <div class="row justify-content-center">
+                <div class="col-md-6 infobox">
+                    <h2>Inscription</h2>
+                    <small>Etape 1/3</small>
+                    <hr />
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Username) :
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control form-control-lg is-valid", placeholder = Html.DisplayNameFor(x => x.LastName) } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FirstName)
+
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control form-control-lg is-valid", placeholder = Html.DisplayNameFor(x => x.Username) } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LastName)
+
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control form-control-lg is-valid", placeholder = Html.DisplayNameFor(x => x.LastName) } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email)
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control form-control-lg is-valid", placeholder = Html.DisplayNameFor(x => x.Email) } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        @Html.ValidationMessage("ErrorEmail", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password)
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control form-control-lg is-valid", placeholder = Html.DisplayNameFor(x => x.Password) } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ConfirmPassword)
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control form-control-lg is-valid", placeholder = Html.DisplayNameFor(x => x.ConfirmPassword) } })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="infobox-button">
+                        <a class="btn-custom-primary next" role="button">
+                            <b>ETAPE SUIVANTE</b>  <span class="oi oi-arrow-thick-right" title="Etape suivante" aria-hidden="true"></span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div id="2" class="step" style="display:none">
+
+            <div class="row justify-content-center">
+                <div class="col-md-6 infobox">
+                    <h2>Inscription</h2>
+                    <small>Etape 2/3</small>
+                    <hr />
+                    <fieldset class="form-group">
+                        Je suis : <br />
+                        <div class="row">
+                            <div class="col-sm-10" style="text-align:justify;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                    <label class="form-check-label" for="gridRadios1">
+                                        <b>Consultant / Prestataire externe.</b><br />
+                                        J’ouvre un compte GRATUIT dans le but de transférer facilement un CRA vraiment pro tous les mois.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                    <label class="form-check-label" for="gridRadios2">
+                                        <b>Client Final / Cadre de mission / Acheteur.</b><br />
+                                        J’ouvre un compte GRATUIT afin de pouvoir facilement valider et gérer les CRA de mon équipe de consultants / prestataires.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+                                    <label class="form-check-label" for="gridRadios3">
+                                        <b>Agent / SSII / manager / commercial / intermédiaire.</b><br />
+                                        J’ouvre un compte afin de rationaliser, gérer et professionnaliser la transmission et la validation des CRA de mes consultants envers mes clients.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="infobox-button">
+                        <a class="btn-custom-primary prev" role="button">
+                            <span class="oi oi-arrow-thick-left" title="Etape précédente" aria-hidden="true"></span><b>ETAPE PRECEDENTE</b>
+                        </a>
+                    </div>
+                    <div class="infobox-button">
+                        <a class="btn-custom-primary next" role="button">
+                            <b>ETAPE SUIVANTE</b><span class="oi oi-arrow-thick-right" title="Etape suivante" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div id="3" class="step" style="display:none">
+
+            <div class="row justify-content-center">
+                <div class="col-md-6 infobox">
+                    <h2>Inscription</h2>
+                    <small>Etape 3/3</small>
+                    <hr />
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Vérifiez bien le récapitulatif des informations :</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" name="defaultCheck1" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Je ne suis pas un robot
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" name="defaultCheck1" id="defaultCheck2">
+                        <label class="form-check-label" for="defaultCheck1">
+                            J’ai pris connaissance des conditions générales d’utilisation (CGU) et des conditions générales de vente (CGV)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" name="defaultCheck1" id="defaultCheck3">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Je souhaite recevoir des informations de vos partenaires commerciaux.
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" name="defaultCheck1" id="defaultCheck4">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Je souhaite recevoir des informations de Mon-CRA.com
+                        </label>
+                    </div>
+
+
+                    <div class="infobox-button">
+                        <a class="btn-custom-primary prev" role="button">
+                            <span class="oi oi-arrow-thick-left" title="Etape précédente" aria-hidden="true"></span> <b>ETAPE PRECEDENTE</b>
+                        </a>
+                    </div>
+                    <div class="infobox-button">
+                        <a class="btn-custom-primary" role="button"  href="javascript:document.getElementById('newUserForm').submit()">
+                            <b>VALIDER</b>
+                        </a>
+                        @*<div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+}
+
+
+
+@section Scripts{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('.wizard .prev').click(function () {
+                //alert("sd");
+
+                var wizard = $('.wizard');
+
+                $('.step.active', wizard).hide();
+
+                var currentStep = $('.step.active', wizard);
+                currentStep.hide();
+                currentStep.removeClass('active');
+                currentStep.removeClass('span12');
+
+                var newStep = currentStep.prev('.step', wizard);
+                newStep.addClass('active');
+                newStep.addClass('span12');
+                newStep.show();
+
+                if ($('.step:first', wizard)[0] == newStep[0]) {
+                    $(this).hide();
+                }
+
+                $('.next', wizard).show();
+
+            });
+
+            $('.wizard .next').click(function () {
+
+                var wizard = $('.wizard');
+                var _step = $('.step.active');
+                var crtID = _step.attr('id');
+                $('.step.active', wizard).hide();
+
+                var currentStep = $('.step.active', wizard);
+                currentStep.hide();
+                currentStep.removeClass('active');
+                currentStep.removeClass('span12');
+
+                var newStep = currentStep.next('#' + (++crtID), wizard);    //currentStep.next('.step', wizard);
+                newStep.addClass('active');
+                newStep.addClass('span12');
+                newStep.show();
+
+                if ($('.step:last', wizard)[0] == newStep[0]) {
+                    $(this).hide();
+                }
+
+                //newStep.attr('id', crtID);
+
+                $('.prev', wizard).show();
+            });
+        });
+
+    </script>
+}

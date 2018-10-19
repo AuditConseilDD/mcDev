@@ -1,0 +1,98 @@
+﻿@model MCSolutions.DataAccess.CRA_Activite
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CRA_Activite</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LIBELLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LIBELLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JOURTRAVAILLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JOURTRAVAILLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NBHEURES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NBHEURES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TAUX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TAUX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATEDBY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATEDBY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DTCREATION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DTCREATION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MODIFIEDBY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MODIFIEDBY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DTMODIF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DTMODIF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_IDCRA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_IDCRA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_IDTYPEACTIVITE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_IDTYPEACTIVITE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ActiviteId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

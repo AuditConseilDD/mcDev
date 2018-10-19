@@ -1,0 +1,261 @@
+﻿@using MCSolutions.CustomAuthentication
+
+@{
+    ViewBag.Title = "Index";
+}
+@*<h2>Hello User</h2>*@
+
+<div class="content-box">
+    <div class="row justify-content-center">
+        <div class="col-auto"><h2>Saisir le CRA</h2></div>
+    </div>
+    <div class="content-separator"></div>
+    <div class="row content-padding">
+        <div class="col-md-3">
+            <img width="100%" src="./assets/images/mon-cra.png" />
+            <p style="text-align: center">
+
+                @{
+                    var _nom = string.Empty;
+                    var _prenom = string.Empty;
+                    var _crtYear = DateTime.Now.ToString("MMMM") + " " + DateTime.Now.Year.ToString();
+
+                }
+
+                @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    var identity = ((CustomPrincipal)HttpContext.Current.User);
+                    _prenom = identity.FirstName;
+                    _nom = identity.LastName;
+                    @*@Html.Label(string.Format(" {0} {1}  ", identity.FirstName, identity.LastName))*@
+                }
+
+
+                @_prenom @_nom<br />
+                Compte Rendu Activité<br />
+                @_crtYear
+                @*Mars 2018*@
+
+                @*David SAADA<br />
+                    Compte Rendu Activité<br />
+                    Mars 2018*@
+            </p>
+            <hr />
+            <h5>
+                Signature @_prenom @_nom
+            </h5>
+            <button class="btn btn-primary" role="button">Signer ce CRA</button>
+            <hr />
+            <h5>Signature Sébastien DC</h5>
+            <img width="100%" src="./assets/images/mon-cra.png" />
+            <hr />
+            <h5>Signature Cédric Ansaldy</h5>
+            <img width="100%" src="./assets/images/mon-cra.png" />
+        </div>
+        <div class="col-md-9">
+            <table class="table table-striped table-hover table-cra">
+                <thead>
+                    <tr style="text-align: center">
+                        <th style="width: 30%" scope="col">Date</th>
+                        <th style="width: 20%" scope="col">Jours travaillés</th>
+                        <th style="width: 20%" scope="col">Astreinte</th>
+                        <th style="width: 20%" scope="col">Interventions Supplémentaire</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mercredi 01/03/2018</td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" /></td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td><input type="number" class="form-control form-control-xs" id="input" disabled /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" disabled /></td>
+                        <td><input type="number" class="form-control form-control-xs" id="input" disabled /></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <a href="./saisir-cra.html" class="col-md-auto btn-custom-primary">Enregistrer sans transmettre</a>
+        <button type="button" class="col-md-auto btn-custom-primary">Transmettre pour signature</button>
+    </div>
+

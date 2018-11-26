@@ -17,9 +17,38 @@ namespace MCSolutions.Controllers
     public class AccountController : Controller
     {
         // GET: Account
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        /// <summary>
+        /// 5433135     ::  _ssii
+        /// 7624534     ::  _client
+        /// 12055866    :: _consultant
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        public ActionResult Index(string pid)
         {
-            return View();
+            ViewData["pageName"] = pid;
+            //View
+            //string pageName = string.Empty;
+            //switch (pid)
+            //{
+            //    case "5433135":
+            //        pageName = "_ssii"
+            //    default:
+            //        break;
+            //}
+
+            HttpCookie authCookie = Request.Cookies["Cookie1"];
+            if (authCookie != null)
+            {
+                return RedirectToAction("Admin", "CRA");
+            }
+            else
+                return View();
         }
 
         [HttpGet]
@@ -70,7 +99,8 @@ namespace MCSolutions.Controllers
                     {
                         //return RedirectToAction("Index");
                         //return RedirectToAction("Index", "User");
-                        return RedirectToAction("Admin", "CRA");
+                        //return RedirectToAction("Admin", "CRA");
+                        return RedirectToAction("Index", "CRA");
                     }
                 }
             }

@@ -54,10 +54,10 @@ namespace MCSolutions.Models
         [Display(Name = "Mot de Passe")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Confirm Password obligatoire")]
+        [Required(ErrorMessage = "Mot de passe confirmé obligatoire")]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm Password")]
-        [Compare("Password", ErrorMessage = "Error : Confirm Password does not match with Password")]
+        [Display(Name = "Mot de passe confirmé ")]
+        [Compare("Password", ErrorMessage = "Erreur : Le mot de passe est différent de celui confirmé")]
         public string ConfirmPassword { get; set; }
 
 

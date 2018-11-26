@@ -27,7 +27,10 @@ namespace MCSolutions.DataAccess
         public DateTime? DTSIGNECLIENTFINAL { get; set; }
         public bool SIGNEAGENT { get; set; }
         public DateTime? DTSIGNEAGENT { get; set; }
+        public DateTime? AddedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
+        public string IPAddress { get; set; }
 
-        public virtual ICollection<CRA_Activite> ListeActivite { get; set; }
+        public virtual ICollection<CRA_Activite_old> ListeActivite { get; set; }
     }
 }

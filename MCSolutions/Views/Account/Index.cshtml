@@ -2,4 +2,36 @@
 @{
     ViewBag.Title = "Index";
 }
-@*<h2>Hello Sir</h2>*@
+
+@{
+    var pid = ViewData["pageName"] as string;
+
+    string pageName = string.Empty;
+    switch (pid)
+    {
+        case "5433135":
+            pageName = "_ssii";
+            break;
+        case "7624534":
+            pageName = "_client";
+            break;
+        case "12055866":
+            pageName = "_consultant";
+            break;
+        default:
+            pageName = "_ssii";
+            break;
+    }
+}
+
+@Html.Partial(@pageName)
+@*@Html.Partial("_ssii")*@
+
+
+
+
+@section Scripts{
+
+    <script src="~/assets/scripts/main.70255159a2dbf7e3e589.js"></script>
+}
+

@@ -17,7 +17,8 @@ namespace MCSolutions
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 //defaults: new { controller = "Account", action = "Registration", id = UrlParameter.Optional }
-                defaults: new { controller = "User", action = "Index", id = UrlParameter.Optional }
+                //defaults: new { controller = "User", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Account", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

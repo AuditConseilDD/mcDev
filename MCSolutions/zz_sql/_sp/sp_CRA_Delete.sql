@@ -1,0 +1,13 @@
+﻿CREATE PROCEDURE sp_CRA_Delete    
+(    
+	@FK_IDCONSULTANT   INT = NULL
+)    
+AS    
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DECLARE @COMPTE INT = 0
+
+	
+END

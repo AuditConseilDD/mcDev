@@ -1,0 +1,39 @@
+﻿CREATE PROCEDURE sp_CRA_GetListByUserId    
+(    
+	@userId	INT = NULL,
+	@craId	INT = NULL
+)    
+AS    
+BEGIN
+
+	SET NOCOUNT ON;
+
+	DECLARE @COMPTE INT = 0
+
+	SELECT 
+		[CRAId]
+		,[LIBELLE]
+		,[NUMCRA]
+		,[MOIS]
+		,[NBTOTALJOURS]
+		,[FK_IDCONSULTANT]
+		,[FK_IDCLIENT]
+		,[LIB_CLIENT]
+		,[FK_IDRESPONSABLE]
+		,[LIB_RESPONSABLE]
+		,[FK_IDSTATUT]
+		,[SIGNECONSULTANT]
+		,[DTSIGNECONSULTANT]
+		,[SIGNECLIENTFINAL]
+		,[DTSIGNECLIENTFINAL]
+		,[SIGNEAGENT]
+		,[DTSIGNEAGENT]
+		,[AddedDate]
+		,[ModifiedDate]
+		,[IPAddress]
+	FROM [dbo].[CRA]
+	WHERE
+		[FK_IDCONSULTANT] = @userId
+	AND (@craId IS NULL OR [CRAId] = @craId)
+	
+END

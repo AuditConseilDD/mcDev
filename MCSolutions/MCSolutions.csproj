@@ -87,6 +87,8 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -139,7 +141,9 @@
     <Content Include="assets\images\illus-clientfinal.png" />
     <Content Include="assets\images\illus-consultant.png" />
     <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\modify.png" />
     <Content Include="assets\images\mon-cra.png" />
+    <Content Include="assets\images\save.png" />
     <Content Include="assets\images\webpack.png" />
     <Content Include="assets\main.70255159a2dbf7e3e589.css" />
     <Content Include="assets\scripts\main.70255159a2dbf7e3e589.js" />
@@ -157,6 +161,16 @@
     <Content Include="assets\fonts\open-iconic\fonts\open-iconic.ttf" />
     <Content Include="assets\fonts\open-iconic\fonts\open-iconic.woff" />
     <Content Include="assets\main.70255159a2dbf7e3e589.css.map" />
+    <Content Include="Models\MCModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MCModel.Context.cs</LastGenOutput>
+      <DependentUpon>MCModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\MCModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MCModel.edmx</DependentUpon>
+      <LastGenOutput>MCModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -171,6 +185,10 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Scripts\datepicker\css\main.css" />
+    <Content Include="Scripts\datepicker\css\datepicker.css" />
+    <Content Include="Scripts\datepicker\js\datepicker.js" />
+    <Content Include="Scripts\datepicker\js\main.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -179,9 +197,36 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Content\jquery.dataTables.min.css" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\site\craDetail.js" />
+    <Content Include="Scripts\site\cra.js" />
+    <Content Include="Scripts\site\sorTable\css\sample.css" />
+    <Content Include="Scripts\site\sorTable\css\sorTable.css" />
+    <Content Include="Scripts\site\sorTable\img\asc.png" />
+    <Content Include="Scripts\site\sorTable\img\bg.png" />
+    <Content Include="Scripts\site\sorTable\img\desc.png" />
+    <Content Include="Scripts\site\sorTable\js\sorTable.js" />
+    <Content Include="Scripts\site\sorTable\js\sorTable.min.js" />
     <Content Include="zz_sql\ACTIVITE_create.sql" />
     <Content Include="zz_sql\CRA_create.sql" />
-    <None Include="Properties\PublishProfiles\MCSolutions20181019105107 - Web Deploy.pubxml" />
+    <Content Include="zz_sql\_sp\CRA_ActiviteDetail\CRA_ActiviteDetail_crud.sql" />
+    <Content Include="zz_sql\_sp\CRA_Activite\CRA_Activite_crud.sql" />
+    <Content Include="zz_sql\_sp\CRA_LibeleCol\CRA_LibeleCol_crud.sql" />
+    <Content Include="zz_sql\_sp\CRA_Type\CRA_Type_crud.sql" />
+    <Content Include="zz_sql\_sp\sp_CRA_Delete.sql" />
+    <Content Include="zz_sql\_sp\sp_CRA_GetLIibCol_byID.sql" />
+    <Content Include="zz_sql\_sp\sp_CRA_GetListByUserId.sql" />
+    <Content Include="zz_sql\_sp\sp_CRA_InsertUpdate.sql" />
+    <EntityDeploy Include="Models\MCModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MCModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\MCModel.edmx.diagram">
+      <DependentUpon>MCModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\mcstaging - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\mcstaging - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -226,15 +271,117 @@
     <Compile Include="CustomAuthentication\CustomPrincipal.cs" />
     <Compile Include="CustomAuthentication\CustomRole.cs" />
     <Compile Include="DataAccess\AuthenticationDB.cs" />
+    <Compile Include="DataAccess\CRA_ActiviteDetailMODEL.cs" />
+    <Compile Include="DataAccess\CRA_ActiviteMODEL.cs" />
+    <Compile Include="DataAccess\CRA_TypeMODEL.cs" />
+    <Compile Include="DataAccess\CRA_LibeleColMODEL.cs" />
     <Compile Include="DataAccess\CRA.cs" />
-    <Compile Include="DataAccess\CRA_Activite.cs" />
+    <Compile Include="DataAccess\CRA_Activite_old.cs" />
+    <Compile Include="DataAccess\db\CRA_TypeDB.cs" />
+    <Compile Include="DataAccess\db\CRA_ActiviteDetailDB.cs" />
+    <Compile Include="DataAccess\db\CRA_LibeleColDB.cs" />
+    <Compile Include="DataAccess\db\CRA_ActiviteDB.cs" />
     <Compile Include="DataAccess\Role.cs" />
     <Compile Include="DataAccess\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ActiviteViewModel.cs" />
+    <Compile Include="DataAccess\db\CraDB.cs" />
+    <Compile Include="Models\Company.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Company_Adresse.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CRA_Activite.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CRA_ActiviteDetail.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CRA_ActiviteState.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CRA_ActiviteStates.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CRA_Definition.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CRA_LibeleCol.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CRA_Type.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Email_SendListe.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Email_Type.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Email_Variables.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Invitation_Queued.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Invitation_State.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Invitation_Type.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LNK_Users_CRAActivite.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LNK_Users_CRAType.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LNK_Users_Mission.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LNK_Users_UserRole.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoginView.cs" />
+    <Compile Include="Models\MCModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MCModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MCModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mission.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users_Adresse.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users_Email.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users_Password.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users_Roles.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users_Tel.cs">
+      <DependentUpon>MCModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +415,12 @@
     <Content Include="Views\Activite\Edit.cshtml" />
     <Content Include="Views\Activite\Index.cshtml" />
     <Content Include="Views\CRA\SaisirCRA.cshtml" />
+    <Content Include="Views\Account\ssii.cshtml" />
+    <Content Include="Views\Account\client.cshtml" />
+    <Content Include="Views\Account\consultant.cshtml" />
+    <Content Include="Views\Account\_ssii.cshtml" />
+    <Content Include="Views\Account\_client.cshtml" />
+    <Content Include="Views\Account\_consultant.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -280,6 +433,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

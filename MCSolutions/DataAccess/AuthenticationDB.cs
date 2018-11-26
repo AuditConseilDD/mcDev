@@ -31,13 +31,13 @@ namespace MCSolutions.DataAccess
 
 
             modelBuilder.Entity<CRA>().HasKey<int>(l => l.CRAId).Map(m => m.ToTable("CRA"));
-            modelBuilder.Entity<CRA_Activite>().HasKey<int>(l => l.ActiviteId);
+            modelBuilder.Entity<CRA_Activite_old>().HasKey<int>(l => l.ActiviteId);
         }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         
         public DbSet<CRA> CRAs { get; set; }
-        public DbSet<CRA_Activite> CRAs_Activite { get; set; }
+        public DbSet<CRA_Activite_old> CRAs_Activite { get; set; }
     }
 }

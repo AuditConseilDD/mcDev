@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MCSolutions.DataAccess
 {
-    public class CRA_Activite
+    public class CRA_Activite_old
     {
         public int ActiviteId { get; set; }
         public string LIBELLE { get; set; }

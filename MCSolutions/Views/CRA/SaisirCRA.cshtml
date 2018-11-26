@@ -3,6 +3,312 @@
 @{
     ViewBag.Title = "SaisirCRA";
 }
+@{
+    var crtCRAid = 0;
+    crtCRAid = ViewData["currentCRA"] != null ? (int)ViewData["currentCRA"] : -1;
+    //int.TryParse(tmp, out crtCRAid);
+    int crasd = crtCRAid;
+}
+<input type="text" class="form-control" value="@crtCRAid" id="crtCRA" placeholder="crtCRA" hidden />
 
-<h2>SaisirCRA</h2>
 
+<div class="row justify-content-center">
+    <div class="col-auto"><h2>Saisir le CRA</h2></div>
+</div>
+<div class="content-separator"></div>
+<div class="row content-padding">
+    <div class="col-md-3">
+        <i class='far fa-caret-square-left'></i>
+        @Html.ActionLink("Mon Admin", "Index", "CRA", new { id = crtCRAid }, null)
+        @*<img width="100%" src="~/assets/images/mon-cra.png" />*@
+        <p style="text-align: center">
+            David SAADA<br />
+            Compte Rendu Activité<br />
+            Mars 2018
+        </p>
+        <hr />
+        <h5>Signature David Saada</h5>
+        <button class="btn btn-primary" role="button">Signer ce CRA</button>
+        <hr />
+        <h5>Signature Sébastien DC</h5>
+        <img width="100%" src="~/assets/images/mon-cra.png" />
+        <hr />
+        <h5>Signature Cédric Ansaldy</h5>
+        <img width="100%" src="~/assets/images/mon-cra.png" />
+    </div>
+    <div class="col-md-9">
+
+        <div class="row">
+
+            @*<a href="#" id="addRow"><span class="oi oi-plus"></span> &nbsp;Ajouter une activité</a>*@
+            <div class="row justify-content-between">
+                <div class="col-auto">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox('', '', '');"><span class="oi oi-plus"></span> &nbsp;Ajouter une activité</button>
+                </div>
+            </div>
+
+            <table style="width: 100%;" class="t1">
+                <tr>
+                    <td>
+                        <div id="list">
+                            <table class="table table-striped table-hover table-cra t2 t3">
+                                <thead class="thead" style="text-align:center;">
+                                </thead>
+                                <tbody class="tbody"></tbody>
+                            </table>
+                        </div>
+                    </td>
+                    <td style="width: 100%;">
+                        <div id="canvas">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+<div class="row justify-content-around">
+    <a href="./saisir-cra.html" class="col-md-auto btn-custom-primary">Enregistrer sans transmettre</a>
+    <button type="button" class="col-md-auto btn-custom-primary">Transmettre pour signature</button>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content content-dialog">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ajouter une activité</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <ul class="list-group">
+                        <li class="list-group-item"><h5 class="page-header">Date</h5></li>
+                        <li class="list-group-item">
+                            <input type="date" id="dateBegin" name="trip-start" class="form-control docs-date" min="2018-01-01" max="3018-01-01" size="8">
+                        </li>
+                    </ul>
+                    <br />
+                    <ul class="list-group">
+                        <li class="list-group-item"><h5 class="page-header">Type d'activité</h5></li>
+                        <li class="list-group-item">
+                            <select class="form-control libColList" id="option-startView" name="startView">
+                                @*<option value="0" selected="">JT Jours travaillés</option>
+                                    <option value="1"> TLT - Télé travail</option>
+                                    <option value="2"> ASTR - Astreinte </option>
+                                    <option value="3"> IS - Interventions Supplémentaire</option>*@
+                            </select>
+                        </li>
+                    </ul>
+                    <br />
+                    <ul class="list-group">
+                        <li class="list-group-item"><h5 class="page-header">Nombre d'heures</h5></li>
+                        <li class="list-group-item">
+                            <input type="number" class="form-control temps" id="temps" name="temps" min="0" step="any" aria-describedby="option-temps" placeholder="temps">
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Créer</button>
+                <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="Update();">Mettre à jour</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6" style="text-align: center"><a href="#"> mon - cra.com © 2018</a></div>
+    </div>
+</div>
+
+<style>
+    .t1, .t2 {
+        border-collapse: collapse;
+    }
+
+    .t3 td {
+        white-space: nowrap;
+    }
+
+    input {
+        font-family: monospace;
+    }
+
+    label {
+        display: block;
+    }
+
+    div {
+        margin: 0 0 1rem 0;
+    }
+
+    label {
+        display: block;
+        font: 1rem 'Fira Sans', sans-serif;
+    }
+
+    input,
+    label {
+        margin: .4rem 0;
+    }
+
+    .note {
+        font-size: .8em;
+    }
+</style>
+
+@section Scripts
+        {
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+    <script src="~/Scripts/site/craDetail.js"></script>
+    @*<script src="~/Scripts/site/sorTable/js/sorTable.js"></script>*@
+    <script src="~/Scripts/jquery-3.3.1.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://fengyuanchen.github.io/js/common.js"></script>
+
+    <link rel="stylesheet" href="~/Content/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="~/Scripts/datepicker/css/datepicker.css">
+    <link rel="stylesheet" href="~/Scripts/datepicker/css/main.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/datepicker/js/datepicker.js"></script>
+    <script src="~/Scripts/datepicker/js/main.js"></script>
+
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+
+        $(":input").inputmask();
+
+
+        $(document).ready(function () {
+
+            $(".add-row").click(function () {
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + "</td><td>" + email + "</td></tr>";
+                $("table tbody").append(markup);
+            });
+
+            $('#addRow').click(function () {
+                // get the last person and html html
+                var $person = $('.person').last();
+                var person = $person.html();
+                // find the number
+                var index = person.indexOf('firstname');
+                var number = parseInt(person.substring(index + 9, 1));
+                var next = number + 1;
+                // replace the number
+                // for firstname
+                person.replace('firstname' + number, 'firstname' + next);
+                // for lastname
+                person.replace('lastname' + number, 'lastname' + next);
+                // for gender
+                person.replace('gender' + number, 'gender' + next);
+                // insert the new person after the last one
+                $person.after($('<div class="person">' + person + '</div>'));
+                // get the new person
+                var $new = $('.person').last();
+                // hide it
+                $new.hide();
+                // reset the values
+                $new.find('input, select').val('');
+                // fade it in
+                $new.slideDown();
+            });
+
+
+
+            var iCnt = 0;
+            // CREATE A "DIV" ELEMENT AND DESIGN IT USING jQuery ".css()" CLASS.
+            var container = $(document.createElement('div')).css({
+                padding: '5px', margin: '20px', width: '170px', border: '1px dashed',
+                borderTopColor: '#999', borderBottomColor: '#999',
+                borderLeftColor: '#999', borderRightColor: '#999'
+            });
+
+            $('#btAdd').click(function () {
+                if (iCnt <= 19) {
+
+                    iCnt = iCnt + 1;
+
+                    // ADD TEXTBOX.
+                    $(container).append('<input type=text class="input" id=tb' + iCnt + ' ' + 'value="Text Element ' + iCnt + '" />');
+
+                    // SHOW SUBMIT BUTTON IF ATLEAST "1" ELEMENT HAS BEEN CREATED.
+                    if (iCnt == 1) {
+                        var divSubmit = $(document.createElement('div'));
+                        $(divSubmit).append('<input type=button class="bt"' + 'onclick="GetTextValue()"' + 'id=btSubmit value=Submit />');
+                    }
+
+                    // ADD BOTH THE DIV ELEMENTS TO THE "main" CONTAINER.
+                    $('#main').after(container, divSubmit);
+                }
+                // AFTER REACHING THE SPECIFIED LIMIT, DISABLE THE "ADD" BUTTON.
+                // (20 IS THE LIMIT WE HAVE SET)
+                else {
+                    $(container).append('<label>Reached the limit</label>');
+                    $('#btAdd').attr('class', 'bt-disable');
+                    $('#btAdd').attr('disabled', 'disabled');
+                }
+            });
+
+            // REMOVE ONE ELEMENT PER CLICK.
+            $('#btRemove').click(function () {
+                if (iCnt != 0) { $('#tb' + iCnt).remove(); iCnt = iCnt - 1; }
+
+                if (iCnt == 0) {
+                    $(container)
+                        .empty()
+                        .remove();
+
+                    $('#btSubmit').remove();
+                    $('#btAdd')
+                        .removeAttr('disabled')
+                        .attr('class', 'bt');
+                }
+            });
+
+            // REMOVE ALL THE ELEMENTS IN THE CONTAINER.
+            $('#btRemoveAll').click(function () {
+                $(container)
+                    .empty()
+                    .remove();
+
+                $('#btSubmit').remove();
+                iCnt = 0;
+
+                $('#btAdd')
+                    .removeAttr('disabled')
+                    .attr('class', 'bt');
+            });
+        });
+
+    </script>
+}

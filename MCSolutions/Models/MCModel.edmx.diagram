@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fea62ba4a94e438ca96f335f6dbe1581" Name="Diagram1">
+        <EntityTypeShape EntityType="MCModel.Company" Width="1.5" PointX="6.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Company_Adresse" Width="1.5" PointX="9" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.CRA_Activite" Width="1.5" PointX="3" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.CRA_ActiviteDetail" Width="1.5" PointX="8.25" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.CRA_ActiviteState" Width="1.5" PointX="6" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.CRA_ActiviteStates" Width="1.5" PointX="8.25" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.CRA_Definition" Width="1.5" PointX="9.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.CRA_LibeleCol" Width="1.5" PointX="6" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.CRA_Type" Width="1.5" PointX="3.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Email_SendListe" Width="1.5" PointX="6" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Email_Type" Width="1.5" PointX="0.75" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Email_Variables" Width="1.5" PointX="3" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Invitation_Queued" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Invitation_State" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Invitation_Type" Width="1.5" PointX="3" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.LNK_Users_CRAActivite" Width="1.5" PointX="11.25" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.LNK_Users_CRAType" Width="1.5" PointX="6" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.LNK_Users_Mission" Width="1.5" PointX="6" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.LNK_Users_UserRole" Width="1.5" PointX="9" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Mission" Width="1.5" PointX="3.75" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Users" Width="1.5" PointX="0.75" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Users_Adresse" Width="1.5" PointX="3" PointY="45.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Users_Email" Width="1.5" PointX="3" PointY="49.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Users_Password" Width="1.5" PointX="3" PointY="52.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Users_Roles" Width="1.5" PointX="6.75" PointY="35.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MCModel.Users_Tel" Width="1.5" PointX="3" PointY="55.125" IsExpanded="true" />
+        <AssociationConnector Association="MCModel.FK_dbo_CompanyAdresse_dbo_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_LNKUsersUserRoles_dbo_CompanyId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_CRAActivite_dbo_CRATypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_CRAActivite_dbo_UsersId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_CRAActiviteDetail_dbo_CRAActiviteId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_CRAActiviteStates_dbo_CRAActiviteId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_LNKUsersCRAActivite_dbo_CRAActiviteId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_CRAActiviteDetail_dbo_CRAlibeleColId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_CRAActiviteStates_dbo_CRAActiviteStateId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_CRADefinition_dbo_CRALibelecolId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_CRADefinition_dbo_CRATypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_LNKUsersCRAType_dbo_CRATypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_EmailSendListe_dbo_EmailTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_EmailSendListe_dbo_UsersId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_Email_Variables_dbo_EmailTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_InvitationType_dbo_EmailTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_InvitationQueued_dbo_InvitationStateId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_InvitationQueued_dbo_InvitationTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_InvitationQueued_dbo_UsersIdfrom" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_InvitationQueued_dbo_UsersIdto" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_InvitationType_dbo_UserRolesId_from_" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_InvitationType_dbo_UserRolesId_to_" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_LNKUsersCRAActivite_dbo_UsersId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_LNKUsersCRAType_dbo_UsersId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_LNK_Users_Mission_dbo_MissionId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_LNK_Users_Mission_dbo_UsersId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_LNKUsersUserRole_dbo_UsersRolesId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_LNKUsersUserRoles_dbo_UsersId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_UsersAdresse_dbo_UsersId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_UsersEmail_dbo_UsersId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_UsersPassword_dbo_UsersId" ManuallyRouted="false" />
+        <AssociationConnector Association="MCModel.FK_dbo_UsersTel_dbo_UsersId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

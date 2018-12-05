@@ -14,7 +14,7 @@ function loadTableHeader() {
             var html = '';
             html += '<tr>';
             html += '<th style="width: 30%" scope="col">Date</th>';
-            html += result.length > 0 ? '<th style="width: 30%" scope="col">Date</th>' : '';
+            //html += result.length > 0 ? '<th style="width: 30%" scope="col">Date</th>' : '';
             $.each(result, function (key, item) {
                 html += '<th scope="col">' + item.LibShort + '</th>';
             });
@@ -89,7 +89,7 @@ function Add() {
     //return false;
 
     var res = validate();
-    if (res == false) {
+    if (res === false) {
         return false;
     }
     var empObj = {
@@ -122,7 +122,10 @@ function Add() {
 
 function validate() {
     var isValid = true;
-    if ($.trim($('#dateBegin').val()) == "") {
+
+    var splitdate = '';
+
+    if ($.trim($('#dateBegin').val()) === "") {
         $('#dateBegin').css('border-color', 'Red');
         isValid = false;
     }
@@ -136,7 +139,7 @@ function validate() {
         var rawyear = Val_date.substr(6, 4);
         var checkdate = new Date(Val_date);
 
-        var eau = (rawmonth == checkdate.getMonth() + 1) && (rawday == checkdate.getDate()) && (rawyear == checkdate.getFullYear());
+        var eau = (rawmonth === checkdate.getMonth() + 1) && (rawday === checkdate.getDate()) && (rawyear === checkdate.getFullYear());
 
         //var dateformat = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
         var dateformat = /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/;
@@ -146,33 +149,33 @@ function validate() {
             var seperator2 = Val_date.split('-');
 
             if (seperator1.length > 1) {
-                var splitdate = Val_date.split('/');
+                splitdate = Val_date.split('/');
             }
             else if (seperator2.length > 1) {
-                var splitdate = Val_date.split('-');
+                splitdate = Val_date.split('-');
             }
             var dd = parseInt(splitdate[0]);
             var mm = parseInt(splitdate[1]);
             var yy = parseInt(splitdate[2]);
             var ListofDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-            if (mm == 1 || mm > 2) {
+            if (mm === 1 || mm > 2) {
                 if (dd > ListofDays[mm - 1]) {
                     //alert('Invalid date format!');
                     $('#dateBegin').css('border-color', 'Red');
                     isValid = false;
                 }
             }
-            if (mm == 2) {
+            if (mm === 2) {
                 var lyear = false;
                 if ((!(yy % 4) && yy % 100) || !(yy % 400)) {
                     lyear = true;
                 }
-                if ((lyear == false) && (dd >= 29)) {
+                if ((lyear === false) && (dd >= 29)) {
                     //alert('Invalid date format!');
                     $('#dateBegin').css('border-color', 'Red');
                     isValid = false;
                 }
-                if ((lyear == true) && (dd > 29)) {
+                if ((lyear === true) && (dd > 29)) {
                     //alert('Invalid date format!');
                     $('#dateBegin').css('border-color', 'Red');
                     isValid = false;
@@ -185,7 +188,7 @@ function validate() {
             isValid = false;
         }
 
-        if (isValid == false)
+        if (isValid === false)
             $('#dateBegin').css('border-color', 'Red');
         else
             $('#dateBegin').css('border-color', 'lightgrey');
@@ -193,7 +196,7 @@ function validate() {
 
 
 
-    if ($.trim($(".libColList").val()) == "0") {
+    if ($.trim($(".libColList").val()) === "0") {
         $('.libColList').css('border-color', 'Red');
         isValid = false;
     }
@@ -201,7 +204,7 @@ function validate() {
         $('.libColList').css('border-color', 'lightgrey');
     }
 
-    if ($.trim($('.temps').val()) == "") {
+    if ($.trim($('.temps').val()) === "") {
         $('.temps').css('border-color', 'Red');
         isValid = false;
     }
@@ -233,7 +236,7 @@ function getFormattedDate(date) {
 function clearTextBox(_cralibelecolid, _datebegin, _quantity) {
     var isNew = true;
 
-    if (_datebegin != "") {
+    if (_datebegin!== "") {
         var newDate = new Date(_datebegin);//.format('YYYY-MM-DD');
         $('#dateBegin').val(_datebegin);
         isNew = false;
@@ -241,21 +244,21 @@ function clearTextBox(_cralibelecolid, _datebegin, _quantity) {
     else
         $('#dateBegin').val("");
 
-    if (_cralibelecolid != "") {
+    if (_cralibelecolid!== "") {
         $(".libColList").val(_cralibelecolid);
         isNew = false;
     }
     else
         $(".libColList").val(0);
 
-    if (_quantity != "") {
+    if (_quantity!== "") {
         $('#temps').val(parseFloat(_quantity.replace(",", ".")).toFixed(2));
         isNew = false;
     }
     else
         $('#temps').val("");
 
-    if (isNew == false) {
+    if (isNew === false) {
         $("#btnAdd").css("display", "none");
         $("#btnUpdate").css("display", "");
         //$(this).find('h5#modal-title').text("Modifier une activité")
@@ -276,7 +279,7 @@ function clearTextBox(_cralibelecolid, _datebegin, _quantity) {
 //function for updating employee's record  
 function Update() {
     var res = validate();
-    if (res == false) {
+    if (res === false) {
         return false;
     }
     var empObj = {
@@ -414,7 +417,7 @@ function getFormattedDate(date) {
 //            var val1 = $(a).children('td').eq(col).text().toUpperCase();
 //            var val2 = $(b).children('td').eq(col).text().toUpperCase();
 //            if ($.isNumeric(val1) && $.isNumeric(val2))
-//                return sortOrder == 1 ? val1 - val2 : val2 - val1;
+//                return sortOrder === 1 ? val1 - val2 : val2 - val1;
 //            else
 //                return (val1 < val2) ? -sortOrder : (val1 > val2) ? sortOrder : 0;
 //        });
@@ -428,7 +431,7 @@ function getFormattedDate(date) {
 ////Add Data Function   
 //function Add() {
 //    var res = validate();
-//    if (res == false) {
+//    if (res === false) {
 //        return false;
 //    }
 //    var empObj = {
@@ -484,7 +487,7 @@ function getFormattedDate(date) {
 ////function for updating employee's record  
 //function Update() {
 //    var res = validate();
-//    if (res == false) {
+//    if (res === false) {
 //        return false;
 //    }
 //    var empObj = {
@@ -551,7 +554,7 @@ function getFormattedDate(date) {
 ////Valdidation using jquery  
 //function validate() {
 //    var isValid = true;
-//    if ($.trim($('#MOIS').val()) == "") {
+//    if ($.trim($('#MOIS').val()) === "") {
 //        $('#MOIS').css('border-color', 'Red');
 //        isValid = false;
 //    }
@@ -559,7 +562,7 @@ function getFormattedDate(date) {
 //        $('#MOIS').css('border-color', 'lightgrey');
 //    }
 
-//    if ($.trim($('#LIB_CLIENT').val()) == "") {
+//    if ($.trim($('#LIB_CLIENT').val()) === "") {
 //        $('#LIB_CLIENT').css('border-color', 'Red');
 //        isValid = false;
 //    }
@@ -567,7 +570,7 @@ function getFormattedDate(date) {
 //        $('#LIB_CLIENT').css('border-color', 'lightgrey');
 //    }
 
-//    if ($.trim($('#LIB_RESPONSABLE').val()) == "") {
+//    if ($.trim($('#LIB_RESPONSABLE').val()) === "") {
 //        $('#LIB_RESPONSABLE').css('border-color', 'Red');
 //        isValid = false;
 //    }

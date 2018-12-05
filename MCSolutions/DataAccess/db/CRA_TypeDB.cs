@@ -19,7 +19,7 @@ namespace MCSolutions.DataAccess.db
             using (SqlConnection con = new SqlConnection(cs))
             {
                 con.Open();
-                SqlCommand com = new SqlCommand("CRA_Type_List", con);
+                SqlCommand com = new SqlCommand("sp_CRA_Type__List", con);
                 com.CommandType = CommandType.StoredProcedure;
                 SqlDataReader rdr = com.ExecuteReader();
                 while (rdr.Read())

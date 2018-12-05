@@ -10,22 +10,15 @@
 namespace MCSolutions.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Invitation_Queued
+    public partial class sp_CRA_Type__List_Result
     {
         public int Id { get; set; }
-        public int UsersId_from_ { get; set; }
-        public Nullable<int> UsersId_to_ { get; set; }
-        public string Email_to_ { get; set; }
-        public int InvitationTypeId { get; set; }
-        public int InvitationStateId { get; set; }
-        public bool IsActive { get; set; }
+        public int NbrColTotal { get; set; }
+        public string CRAName { get; set; }
+        public string CRADescription { get; set; }
+        public Nullable<bool> IsActive { get; set; }
         public System.DateTime CreationDate { get; set; }
-    
-        public virtual Invitation_State Invitation_State { get; set; }
-        public virtual Invitation_Type Invitation_Type { get; set; }
-        public virtual Users Users { get; set; }
-        public virtual Users Users1 { get; set; }
+        public Nullable<System.DateTime> DeletionDate { get; set; }
     }
 }

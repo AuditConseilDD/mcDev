@@ -12,14 +12,9 @@ namespace MCSolutions.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Users_Password
+    public partial class UserRoles
     {
-        public int UsersId { get; set; }
-        public string Password { get; set; }
-        public bool IsActive { get; set; }
-        public System.DateTime CreationDate { get; set; }
-        public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        public virtual Users Users { get; set; }
+        public int UserId { get; set; }
+        public int RoleId { get; set; }
     }
 }

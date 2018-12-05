@@ -14,20 +14,11 @@ namespace MCSolutions.Models
     
     public partial class Mission
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Mission()
-        {
-            this.LNK_Users_Mission = new HashSet<LNK_Users_Mission>();
-        }
-    
         public int Id { get; set; }
         public string DescriptionShort { get; set; }
         public string DescriptionLong { get; set; }
         public bool IsActive { get; set; }
         public System.DateTime DateBegin { get; set; }
         public Nullable<System.DateTime> DateEnd { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LNK_Users_Mission> LNK_Users_Mission { get; set; }
     }
 }

@@ -1,15 +1,16 @@
 ﻿@model MCSolutions.Models.ActiviteViewModel
+@using MCSolutions.DataAccess;
+@using MCSolutions.CustomAuthentication;
 
 @{
     ViewBag.Title = "SaisirCRA";
 }
 @{
-    var crtCRAid = 0;
-    crtCRAid = ViewData["currentCRA"] != null ? (int)ViewData["currentCRA"] : -1;
-    //int.TryParse(tmp, out crtCRAid);
-    int crasd = crtCRAid;
+    var currentUSer = (CustomPrincipal)ViewData["currentUser"];
+
+    var crtCRA = (CRA_ActiviteMODEL)ViewData["currentCRA"];
 }
-<input type="text" class="form-control" value="@crtCRAid" id="crtCRA" placeholder="crtCRA" hidden />
+<input type="text" class="form-control" value="@crtCRA.Id" id="crtCRA" placeholder="crtCRA" hidden />
 
 
 <div class="row justify-content-center">
@@ -19,15 +20,15 @@
 <div class="row content-padding">
     <div class="col-md-3">
         <i class='far fa-caret-square-left'></i>
-        @Html.ActionLink("Mon Admin", "Index", "CRA", new { id = crtCRAid }, null)
+        @Html.ActionLink("Mon Admin", "Index", "CRA", new { id = crtCRA.Id }, null)
         @*<img width="100%" src="~/assets/images/mon-cra.png" />*@
         <p style="text-align: center">
-            David SAADA<br />
+            @currentUSer.FirstName @currentUSer.LastName <br />
             Compte Rendu Activité<br />
-            Mars 2018
+            @crtCRA.Period
         </p>
         <hr />
-        <h5>Signature David Saada</h5>
+        <h5>Signature @currentUSer.FirstName @currentUSer.LastName</h5>
         <button class="btn btn-primary" role="button">Signer ce CRA</button>
         <hr />
         <h5>Signature Sébastien DC</h5>

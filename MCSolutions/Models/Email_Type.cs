@@ -18,8 +18,6 @@ namespace MCSolutions.Models
         public Email_Type()
         {
             this.Email_SendListe = new HashSet<Email_SendListe>();
-            this.Email_Variables = new HashSet<Email_Variables>();
-            this.Invitation_Type = new HashSet<Invitation_Type>();
         }
     
         public int Id { get; set; }
@@ -31,9 +29,5 @@ namespace MCSolutions.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Email_SendListe> Email_SendListe { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Email_Variables> Email_Variables { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Invitation_Type> Invitation_Type { get; set; }
     }
 }

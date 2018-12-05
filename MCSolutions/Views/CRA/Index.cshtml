@@ -24,7 +24,7 @@
                         <div class="col-auto"><h2 class="page-title">Mon administratif</h2></div>
                         <div class="col-auto">
                             <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary page-title">Saisir un CRA</button>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Créer un CRA</button><br /><br />
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Créer un CRA</button><br /><br />
                         </div>
                     </div>
                     <div class="content-separator"></div>
@@ -82,10 +82,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="CRAId">Type d'activité</label>
+                        <label for="TypeAct">Type d'activité</label>
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <select class="form-control libColList" id="option-startView" name="startView"></select>
+                                <select class="form-control TypeActList" id="option-startView" name="startView"></select>
                             </li>
                         </ul>
 
@@ -107,21 +107,33 @@
                         </ul>
                     </div>
                     <div class="form-group">
-                        <label for="LIB_CLIENT">Client Final</label>
+                        <label for="PeriodBeginEnd">Période</label>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <label for="MOIS">Date de début de période</label>
+                                <input type="date" id="PeriodBegin" name="trip-start" class="form-control docs-date" min="2018-01-01" max="3018-01-01" size="8">
+                            </li>
+                            <li class="list-group-item">
+                                <label for="MOIS">Date de fin de période</label>
+                                <input type="date" id="PeriodEnd" name="trip-start" class="form-control docs-date" min="2018-01-01" max="3018-01-01" size="8">
+                            </li>
+                        </ul>
+
+                        @*<label for="LIB_CLIENT">Client Final</label>
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <input type="text" class="form-control" id="LIB_CLIENT" placeholder="Client Final" />
                             </li>
-                        </ul>
+                        </ul>*@
                     </div>
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <label for="LIB_RESPONSABLE">Responsable</label>
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <input type="text" class="form-control" id="LIB_RESPONSABLE" placeholder="Responsable" />
                             </li>
                         </ul>
-                    </div>
+                    </div>*@
                 </form>
             </div>
             <div class="modal-footer">

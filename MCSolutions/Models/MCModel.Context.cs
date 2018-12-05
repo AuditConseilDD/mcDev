@@ -12,6 +12,8 @@ namespace MCSolutions.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class MCEntities : DbContext
     {
@@ -26,30 +28,519 @@ namespace MCSolutions.Models
         }
     
         public virtual DbSet<Company> Company { get; set; }
-        public virtual DbSet<Company_Adresse> Company_Adresse { get; set; }
         public virtual DbSet<CRA_Activite> CRA_Activite { get; set; }
-        public virtual DbSet<CRA_ActiviteDetail> CRA_ActiviteDetail { get; set; }
         public virtual DbSet<CRA_ActiviteState> CRA_ActiviteState { get; set; }
-        public virtual DbSet<CRA_ActiviteStates> CRA_ActiviteStates { get; set; }
-        public virtual DbSet<CRA_Definition> CRA_Definition { get; set; }
         public virtual DbSet<CRA_LibeleCol> CRA_LibeleCol { get; set; }
         public virtual DbSet<CRA_Type> CRA_Type { get; set; }
         public virtual DbSet<Email_SendListe> Email_SendListe { get; set; }
         public virtual DbSet<Email_Type> Email_Type { get; set; }
-        public virtual DbSet<Email_Variables> Email_Variables { get; set; }
-        public virtual DbSet<Invitation_Queued> Invitation_Queued { get; set; }
         public virtual DbSet<Invitation_State> Invitation_State { get; set; }
-        public virtual DbSet<Invitation_Type> Invitation_Type { get; set; }
-        public virtual DbSet<LNK_Users_CRAActivite> LNK_Users_CRAActivite { get; set; }
-        public virtual DbSet<LNK_Users_CRAType> LNK_Users_CRAType { get; set; }
-        public virtual DbSet<LNK_Users_Mission> LNK_Users_Mission { get; set; }
-        public virtual DbSet<LNK_Users_UserRole> LNK_Users_UserRole { get; set; }
         public virtual DbSet<Mission> Mission { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Users_Adresse> Users_Adresse { get; set; }
-        public virtual DbSet<Users_Email> Users_Email { get; set; }
-        public virtual DbSet<Users_Password> Users_Password { get; set; }
         public virtual DbSet<Users_Roles> Users_Roles { get; set; }
-        public virtual DbSet<Users_Tel> Users_Tel { get; set; }
+        public virtual DbSet<UserRoles> UserRoles { get; set; }
+    
+        public virtual ObjectResult<sp_CRA_Activite__ById_Result> sp_CRA_Activite__ById(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CRA_Activite__ById_Result>("sp_CRA_Activite__ById", idParameter);
+        }
+    
+        public virtual ObjectResult<sp_CRA_Activite__InsertUpdate_Result> sp_CRA_Activite__InsertUpdate(Nullable<int> id, Nullable<int> usersId, Nullable<int> cRATypeId, string period, string createdBy, Nullable<System.DateTime> creationDate, Nullable<System.DateTime> modificaitonDate, string modificaitonBy, Nullable<System.DateTime> periodBegin, Nullable<System.DateTime> periodEnd, string action)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var usersIdParameter = usersId.HasValue ?
+                new ObjectParameter("UsersId", usersId) :
+                new ObjectParameter("UsersId", typeof(int));
+    
+            var cRATypeIdParameter = cRATypeId.HasValue ?
+                new ObjectParameter("CRATypeId", cRATypeId) :
+                new ObjectParameter("CRATypeId", typeof(int));
+    
+            var periodParameter = period != null ?
+                new ObjectParameter("Period", period) :
+                new ObjectParameter("Period", typeof(string));
+    
+            var createdByParameter = createdBy != null ?
+                new ObjectParameter("CreatedBy", createdBy) :
+                new ObjectParameter("CreatedBy", typeof(string));
+    
+            var creationDateParameter = creationDate.HasValue ?
+                new ObjectParameter("CreationDate", creationDate) :
+                new ObjectParameter("CreationDate", typeof(System.DateTime));
+    
+            var modificaitonDateParameter = modificaitonDate.HasValue ?
+                new ObjectParameter("ModificaitonDate", modificaitonDate) :
+                new ObjectParameter("ModificaitonDate", typeof(System.DateTime));
+    
+            var modificaitonByParameter = modificaitonBy != null ?
+                new ObjectParameter("ModificaitonBy", modificaitonBy) :
+                new ObjectParameter("ModificaitonBy", typeof(string));
+    
+            var periodBeginParameter = periodBegin.HasValue ?
+                new ObjectParameter("PeriodBegin", periodBegin) :
+                new ObjectParameter("PeriodBegin", typeof(System.DateTime));
+    
+            var periodEndParameter = periodEnd.HasValue ?
+                new ObjectParameter("PeriodEnd", periodEnd) :
+                new ObjectParameter("PeriodEnd", typeof(System.DateTime));
+    
+            var actionParameter = action != null ?
+                new ObjectParameter("Action", action) :
+                new ObjectParameter("Action", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CRA_Activite__InsertUpdate_Result>("sp_CRA_Activite__InsertUpdate", idParameter, usersIdParameter, cRATypeIdParameter, periodParameter, createdByParameter, creationDateParameter, modificaitonDateParameter, modificaitonByParameter, periodBeginParameter, periodEndParameter, actionParameter);
+        }
+    
+        public virtual ObjectResult<sp_CRA_Activite__List_Result> sp_CRA_Activite__List(Nullable<int> usersId)
+        {
+            var usersIdParameter = usersId.HasValue ?
+                new ObjectParameter("UsersId", usersId) :
+                new ObjectParameter("UsersId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CRA_Activite__List_Result>("sp_CRA_Activite__List", usersIdParameter);
+        }
+    
+        public virtual int sp_CRA_ActiviteDetail__InsertUpdate(Nullable<int> cRAActiviteId, Nullable<System.DateTime> dateBegin, Nullable<System.DateTime> dateEnd, Nullable<int> cRAlibeleColId, Nullable<decimal> quantity, string creationBY, string modificationBY, string action)
+        {
+            var cRAActiviteIdParameter = cRAActiviteId.HasValue ?
+                new ObjectParameter("CRAActiviteId", cRAActiviteId) :
+                new ObjectParameter("CRAActiviteId", typeof(int));
+    
+            var dateBeginParameter = dateBegin.HasValue ?
+                new ObjectParameter("DateBegin", dateBegin) :
+                new ObjectParameter("DateBegin", typeof(System.DateTime));
+    
+            var dateEndParameter = dateEnd.HasValue ?
+                new ObjectParameter("DateEnd", dateEnd) :
+                new ObjectParameter("DateEnd", typeof(System.DateTime));
+    
+            var cRAlibeleColIdParameter = cRAlibeleColId.HasValue ?
+                new ObjectParameter("CRAlibeleColId", cRAlibeleColId) :
+                new ObjectParameter("CRAlibeleColId", typeof(int));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("Quantity", quantity) :
+                new ObjectParameter("Quantity", typeof(decimal));
+    
+            var creationBYParameter = creationBY != null ?
+                new ObjectParameter("CreationBY", creationBY) :
+                new ObjectParameter("CreationBY", typeof(string));
+    
+            var modificationBYParameter = modificationBY != null ?
+                new ObjectParameter("ModificationBY", modificationBY) :
+                new ObjectParameter("ModificationBY", typeof(string));
+    
+            var actionParameter = action != null ?
+                new ObjectParameter("Action", action) :
+                new ObjectParameter("Action", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CRA_ActiviteDetail__InsertUpdate", cRAActiviteIdParameter, dateBeginParameter, dateEndParameter, cRAlibeleColIdParameter, quantityParameter, creationBYParameter, modificationBYParameter, actionParameter);
+        }
+    
+        public virtual ObjectResult<sp_CRA_ActiviteDetail_sel_Result> sp_CRA_ActiviteDetail_sel(Nullable<int> craId)
+        {
+            var craIdParameter = craId.HasValue ?
+                new ObjectParameter("craId", craId) :
+                new ObjectParameter("craId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CRA_ActiviteDetail_sel_Result>("sp_CRA_ActiviteDetail_sel", craIdParameter);
+        }
+    
+        public virtual int sp_CRA_ActiviteDetail_sel_NEW(Nullable<int> craId)
+        {
+            var craIdParameter = craId.HasValue ?
+                new ObjectParameter("craId", craId) :
+                new ObjectParameter("craId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CRA_ActiviteDetail_sel_NEW", craIdParameter);
+        }
+    
+        public virtual int sp_CRA_Delete(Nullable<int> fK_IDCONSULTANT)
+        {
+            var fK_IDCONSULTANTParameter = fK_IDCONSULTANT.HasValue ?
+                new ObjectParameter("FK_IDCONSULTANT", fK_IDCONSULTANT) :
+                new ObjectParameter("FK_IDCONSULTANT", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CRA_Delete", fK_IDCONSULTANTParameter);
+        }
+    
+        public virtual ObjectResult<sp_CRA_GetLIibCol_byID_Result> sp_CRA_GetLIibCol_byID(Nullable<int> cratypeid)
+        {
+            var cratypeidParameter = cratypeid.HasValue ?
+                new ObjectParameter("cratypeid", cratypeid) :
+                new ObjectParameter("cratypeid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CRA_GetLIibCol_byID_Result>("sp_CRA_GetLIibCol_byID", cratypeidParameter);
+        }
+    
+        public virtual ObjectResult<sp_CRA_GetListByUserId_Result> sp_CRA_GetListByUserId(Nullable<int> userId, Nullable<int> craId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            var craIdParameter = craId.HasValue ?
+                new ObjectParameter("craId", craId) :
+                new ObjectParameter("craId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CRA_GetListByUserId_Result>("sp_CRA_GetListByUserId", userIdParameter, craIdParameter);
+        }
+    
+        public virtual int sp_CRA_InsertUpdate(Nullable<int> cRAID, string lIBELLE, string nUMCRA, string mOIS, Nullable<int> nBTOTALJOURS, Nullable<int> fK_IDCONSULTANT, Nullable<int> fK_IDCLIENT, string lIB_CLIENT, Nullable<int> fK_IDRESPONSABLE, string lIB_RESPONSABLE, Nullable<int> fK_IDSTATUT, Nullable<bool> sIGNECONSULTANT, Nullable<System.DateTime> dTSIGNECONSULTANT, Nullable<bool> sIGNECLIENTFINAL, Nullable<System.DateTime> dTSIGNECLIENTFINAL, Nullable<bool> sIGNEAGENT, Nullable<System.DateTime> dTSIGNEAGENT, Nullable<System.DateTime> aDDEDDATE, Nullable<System.DateTime> mODIFIEDDATE, string iPADDRESS, string aCTION)
+        {
+            var cRAIDParameter = cRAID.HasValue ?
+                new ObjectParameter("CRAID", cRAID) :
+                new ObjectParameter("CRAID", typeof(int));
+    
+            var lIBELLEParameter = lIBELLE != null ?
+                new ObjectParameter("LIBELLE", lIBELLE) :
+                new ObjectParameter("LIBELLE", typeof(string));
+    
+            var nUMCRAParameter = nUMCRA != null ?
+                new ObjectParameter("NUMCRA", nUMCRA) :
+                new ObjectParameter("NUMCRA", typeof(string));
+    
+            var mOISParameter = mOIS != null ?
+                new ObjectParameter("MOIS", mOIS) :
+                new ObjectParameter("MOIS", typeof(string));
+    
+            var nBTOTALJOURSParameter = nBTOTALJOURS.HasValue ?
+                new ObjectParameter("NBTOTALJOURS", nBTOTALJOURS) :
+                new ObjectParameter("NBTOTALJOURS", typeof(int));
+    
+            var fK_IDCONSULTANTParameter = fK_IDCONSULTANT.HasValue ?
+                new ObjectParameter("FK_IDCONSULTANT", fK_IDCONSULTANT) :
+                new ObjectParameter("FK_IDCONSULTANT", typeof(int));
+    
+            var fK_IDCLIENTParameter = fK_IDCLIENT.HasValue ?
+                new ObjectParameter("FK_IDCLIENT", fK_IDCLIENT) :
+                new ObjectParameter("FK_IDCLIENT", typeof(int));
+    
+            var lIB_CLIENTParameter = lIB_CLIENT != null ?
+                new ObjectParameter("LIB_CLIENT", lIB_CLIENT) :
+                new ObjectParameter("LIB_CLIENT", typeof(string));
+    
+            var fK_IDRESPONSABLEParameter = fK_IDRESPONSABLE.HasValue ?
+                new ObjectParameter("FK_IDRESPONSABLE", fK_IDRESPONSABLE) :
+                new ObjectParameter("FK_IDRESPONSABLE", typeof(int));
+    
+            var lIB_RESPONSABLEParameter = lIB_RESPONSABLE != null ?
+                new ObjectParameter("LIB_RESPONSABLE", lIB_RESPONSABLE) :
+                new ObjectParameter("LIB_RESPONSABLE", typeof(string));
+    
+            var fK_IDSTATUTParameter = fK_IDSTATUT.HasValue ?
+                new ObjectParameter("FK_IDSTATUT", fK_IDSTATUT) :
+                new ObjectParameter("FK_IDSTATUT", typeof(int));
+    
+            var sIGNECONSULTANTParameter = sIGNECONSULTANT.HasValue ?
+                new ObjectParameter("SIGNECONSULTANT", sIGNECONSULTANT) :
+                new ObjectParameter("SIGNECONSULTANT", typeof(bool));
+    
+            var dTSIGNECONSULTANTParameter = dTSIGNECONSULTANT.HasValue ?
+                new ObjectParameter("DTSIGNECONSULTANT", dTSIGNECONSULTANT) :
+                new ObjectParameter("DTSIGNECONSULTANT", typeof(System.DateTime));
+    
+            var sIGNECLIENTFINALParameter = sIGNECLIENTFINAL.HasValue ?
+                new ObjectParameter("SIGNECLIENTFINAL", sIGNECLIENTFINAL) :
+                new ObjectParameter("SIGNECLIENTFINAL", typeof(bool));
+    
+            var dTSIGNECLIENTFINALParameter = dTSIGNECLIENTFINAL.HasValue ?
+                new ObjectParameter("DTSIGNECLIENTFINAL", dTSIGNECLIENTFINAL) :
+                new ObjectParameter("DTSIGNECLIENTFINAL", typeof(System.DateTime));
+    
+            var sIGNEAGENTParameter = sIGNEAGENT.HasValue ?
+                new ObjectParameter("SIGNEAGENT", sIGNEAGENT) :
+                new ObjectParameter("SIGNEAGENT", typeof(bool));
+    
+            var dTSIGNEAGENTParameter = dTSIGNEAGENT.HasValue ?
+                new ObjectParameter("DTSIGNEAGENT", dTSIGNEAGENT) :
+                new ObjectParameter("DTSIGNEAGENT", typeof(System.DateTime));
+    
+            var aDDEDDATEParameter = aDDEDDATE.HasValue ?
+                new ObjectParameter("ADDEDDATE", aDDEDDATE) :
+                new ObjectParameter("ADDEDDATE", typeof(System.DateTime));
+    
+            var mODIFIEDDATEParameter = mODIFIEDDATE.HasValue ?
+                new ObjectParameter("MODIFIEDDATE", mODIFIEDDATE) :
+                new ObjectParameter("MODIFIEDDATE", typeof(System.DateTime));
+    
+            var iPADDRESSParameter = iPADDRESS != null ?
+                new ObjectParameter("IPADDRESS", iPADDRESS) :
+                new ObjectParameter("IPADDRESS", typeof(string));
+    
+            var aCTIONParameter = aCTION != null ?
+                new ObjectParameter("ACTION", aCTION) :
+                new ObjectParameter("ACTION", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CRA_InsertUpdate", cRAIDParameter, lIBELLEParameter, nUMCRAParameter, mOISParameter, nBTOTALJOURSParameter, fK_IDCONSULTANTParameter, fK_IDCLIENTParameter, lIB_CLIENTParameter, fK_IDRESPONSABLEParameter, lIB_RESPONSABLEParameter, fK_IDSTATUTParameter, sIGNECONSULTANTParameter, dTSIGNECONSULTANTParameter, sIGNECLIENTFINALParameter, dTSIGNECLIENTFINALParameter, sIGNEAGENTParameter, dTSIGNEAGENTParameter, aDDEDDATEParameter, mODIFIEDDATEParameter, iPADDRESSParameter, aCTIONParameter);
+        }
+    
+        public virtual ObjectResult<sp_CRA_LibeleCol_List_Result> sp_CRA_LibeleCol_List()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CRA_LibeleCol_List_Result>("sp_CRA_LibeleCol_List");
+        }
+    
+        public virtual ObjectResult<sp_CRA_LibeleCol_sel_Result> sp_CRA_LibeleCol_sel(Nullable<int> craId)
+        {
+            var craIdParameter = craId.HasValue ?
+                new ObjectParameter("craId", craId) :
+                new ObjectParameter("craId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CRA_LibeleCol_sel_Result>("sp_CRA_LibeleCol_sel", craIdParameter);
+        }
+    
+        public virtual ObjectResult<sp_CRA_Type__List_Result> sp_CRA_Type__List(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CRA_Type__List_Result>("sp_CRA_Type__List", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_Users_Email_InsertUpdate_Result> sp_Users_Email_InsertUpdate(Nullable<int> usersId, string email, Nullable<bool> isActive, Nullable<int> accountType, Nullable<System.DateTime> creationDate, Nullable<System.DateTime> deletionDate, string action)
+        {
+            var usersIdParameter = usersId.HasValue ?
+                new ObjectParameter("UsersId", usersId) :
+                new ObjectParameter("UsersId", typeof(int));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("IsActive", isActive) :
+                new ObjectParameter("IsActive", typeof(bool));
+    
+            var accountTypeParameter = accountType.HasValue ?
+                new ObjectParameter("AccountType", accountType) :
+                new ObjectParameter("AccountType", typeof(int));
+    
+            var creationDateParameter = creationDate.HasValue ?
+                new ObjectParameter("CreationDate", creationDate) :
+                new ObjectParameter("CreationDate", typeof(System.DateTime));
+    
+            var deletionDateParameter = deletionDate.HasValue ?
+                new ObjectParameter("DeletionDate", deletionDate) :
+                new ObjectParameter("DeletionDate", typeof(System.DateTime));
+    
+            var actionParameter = action != null ?
+                new ObjectParameter("Action", action) :
+                new ObjectParameter("Action", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Users_Email_InsertUpdate_Result>("sp_Users_Email_InsertUpdate", usersIdParameter, emailParameter, isActiveParameter, accountTypeParameter, creationDateParameter, deletionDateParameter, actionParameter);
+        }
+    
+        public virtual ObjectResult<sp_Users_InsertUpdate_Result> sp_Users_InsertUpdate(Nullable<int> id, Nullable<bool> isActive, Nullable<bool> cGU_CGV, Nullable<bool> robot, Nullable<bool> partnersInfos, Nullable<bool> monCRAInfos, Nullable<System.Guid> activationCode, string firstName, string lastName, string email, string password, string roleName, string action)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("IsActive", isActive) :
+                new ObjectParameter("IsActive", typeof(bool));
+    
+            var cGU_CGVParameter = cGU_CGV.HasValue ?
+                new ObjectParameter("CGU_CGV", cGU_CGV) :
+                new ObjectParameter("CGU_CGV", typeof(bool));
+    
+            var robotParameter = robot.HasValue ?
+                new ObjectParameter("Robot", robot) :
+                new ObjectParameter("Robot", typeof(bool));
+    
+            var partnersInfosParameter = partnersInfos.HasValue ?
+                new ObjectParameter("PartnersInfos", partnersInfos) :
+                new ObjectParameter("PartnersInfos", typeof(bool));
+    
+            var monCRAInfosParameter = monCRAInfos.HasValue ?
+                new ObjectParameter("MonCRAInfos", monCRAInfos) :
+                new ObjectParameter("MonCRAInfos", typeof(bool));
+    
+            var activationCodeParameter = activationCode.HasValue ?
+                new ObjectParameter("ActivationCode", activationCode) :
+                new ObjectParameter("ActivationCode", typeof(System.Guid));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var roleNameParameter = roleName != null ?
+                new ObjectParameter("RoleName", roleName) :
+                new ObjectParameter("RoleName", typeof(string));
+    
+            var actionParameter = action != null ?
+                new ObjectParameter("Action", action) :
+                new ObjectParameter("Action", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Users_InsertUpdate_Result>("sp_Users_InsertUpdate", idParameter, isActiveParameter, cGU_CGVParameter, robotParameter, partnersInfosParameter, monCRAInfosParameter, activationCodeParameter, firstNameParameter, lastNameParameter, emailParameter, passwordParameter, roleNameParameter, actionParameter);
+        }
+    
+        public virtual ObjectResult<sp_Users_GetById_Result> sp_Users_GetById(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Users_GetById_Result>("sp_Users_GetById", iDParameter);
+        }
+    
+        public virtual ObjectResult<sp_Users_Password_InsertUpdate_Result> sp_Users_Password_InsertUpdate(Nullable<int> usersId, string password, Nullable<bool> isActive, Nullable<System.DateTime> creationDate, Nullable<System.DateTime> deletionDate, string action)
+        {
+            var usersIdParameter = usersId.HasValue ?
+                new ObjectParameter("UsersId", usersId) :
+                new ObjectParameter("UsersId", typeof(int));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("IsActive", isActive) :
+                new ObjectParameter("IsActive", typeof(bool));
+    
+            var creationDateParameter = creationDate.HasValue ?
+                new ObjectParameter("CreationDate", creationDate) :
+                new ObjectParameter("CreationDate", typeof(System.DateTime));
+    
+            var deletionDateParameter = deletionDate.HasValue ?
+                new ObjectParameter("DeletionDate", deletionDate) :
+                new ObjectParameter("DeletionDate", typeof(System.DateTime));
+    
+            var actionParameter = action != null ?
+                new ObjectParameter("Action", action) :
+                new ObjectParameter("Action", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Users_Password_InsertUpdate_Result>("sp_Users_Password_InsertUpdate", usersIdParameter, passwordParameter, isActiveParameter, creationDateParameter, deletionDateParameter, actionParameter);
+        }
+    
+        public virtual ObjectResult<sp_Users_GetById_Result> sp_Users_GetByEmail(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Users_GetById_Result>("sp_Users_GetByEmail", emailParameter);
+        }
+    
+        public virtual ObjectResult<sp_Users_Validate_Result> sp_Users_Validate(string email, string password)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Users_Validate_Result>("sp_Users_Validate", emailParameter, passwordParameter);
+        }
+    
+        public virtual int sp_LNK_Users_UserRole__InsertUpdate(Nullable<int> usersId, Nullable<int> usersRolesId, Nullable<bool> isActive, Nullable<System.DateTime> creationDate, Nullable<int> companyId, Nullable<System.DateTime> deletionDate, string action)
+        {
+            var usersIdParameter = usersId.HasValue ?
+                new ObjectParameter("UsersId", usersId) :
+                new ObjectParameter("UsersId", typeof(int));
+    
+            var usersRolesIdParameter = usersRolesId.HasValue ?
+                new ObjectParameter("UsersRolesId", usersRolesId) :
+                new ObjectParameter("UsersRolesId", typeof(int));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("IsActive", isActive) :
+                new ObjectParameter("IsActive", typeof(bool));
+    
+            var creationDateParameter = creationDate.HasValue ?
+                new ObjectParameter("CreationDate", creationDate) :
+                new ObjectParameter("CreationDate", typeof(System.DateTime));
+    
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("CompanyId", companyId) :
+                new ObjectParameter("CompanyId", typeof(int));
+    
+            var deletionDateParameter = deletionDate.HasValue ?
+                new ObjectParameter("DeletionDate", deletionDate) :
+                new ObjectParameter("DeletionDate", typeof(System.DateTime));
+    
+            var actionParameter = action != null ?
+                new ObjectParameter("Action", action) :
+                new ObjectParameter("Action", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_LNK_Users_UserRole__InsertUpdate", usersIdParameter, usersRolesIdParameter, isActiveParameter, creationDateParameter, companyIdParameter, deletionDateParameter, actionParameter);
+        }
+
+        public virtual bool ValidateUser(string email, string password)
+        {
+            bool isOK = false;
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+
+            ObjectResult<sp_Users_Validate_Result> objList = ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Users_Validate_Result>("sp_Users_Validate", emailParameter, passwordParameter);
+            foreach (var item in objList)
+            {
+                isOK = true;
+                break;
+            }
+            return isOK;
+        }
+
+        public virtual sp_Users_GetById_Result GetUser(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+
+            ObjectResult<sp_Users_GetById_Result> objList = ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Users_GetById_Result>("sp_Users_GetByEmail", emailParameter);
+            sp_Users_GetById_Result resu = new sp_Users_GetById_Result();
+            foreach (var item in objList)
+            {
+                resu = item;
+                break;
+            }
+            return resu;
+        }
+
+        public virtual bool ValidateEmail(string email)
+        {
+            bool alreadyExisted = false;
+
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+
+            ObjectResult<sp_Users_GetById_Result> objList = ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Users_GetById_Result>("sp_Users_GetByEmail", emailParameter);
+            sp_Users_GetById_Result resu = new sp_Users_GetById_Result();
+            foreach (var item in objList)
+            {
+                alreadyExisted = true;
+                break;
+            }
+            return alreadyExisted;
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MCSolutions.DataAccess;
+using MCSolutions.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,22 +18,18 @@ namespace MCSolutions.CustomAuthentication
         /// <param name="username"></param>
         /// <param name="Mot de Passe"></param>
         /// <returns></returns>
-        public override bool ValidateUser(string username, string Password)
+        public override bool ValidateUser(string email, string Password)
         {
-            if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(Password))
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(Password))
             {
                 return false;
             }
 
-            using (AuthenticationDB dbContext = new AuthenticationDB())
+            using (MCEntities dbContext = new MCEntities())
             {
-                var user = (from us in dbContext.Users
-                            where string.Compare(username, us.Username, StringComparison.OrdinalIgnoreCase) == 0
-                            && string.Compare(Password, us.Password, StringComparison.OrdinalIgnoreCase) == 0
-                            && us.IsActive == true
-                            select us).FirstOrDefault();
+                var obj = dbContext.ValidateUser(email, Password);
 
-                return (user != null) ? true : false;
+                return obj;
             }
         }
 
@@ -59,19 +56,33 @@ namespace MCSolutions.CustomAuthentication
         /// <param name="username"></param>
         /// <param name="userIsOnline"></param>
         /// <returns></returns>
-        public override MembershipUser GetUser(string username, bool userIsOnline)
+        public override MembershipUser GetUser(string email, bool userIsOnline)
         {
-            using (AuthenticationDB dbContext = new AuthenticationDB())
+            using (MCEntities dbContext = new MCEntities())
             {
-                var user = (from us in dbContext.Users
-                            where string.Compare(username, us.Username, StringComparison.OrdinalIgnoreCase) == 0
-                            select us).FirstOrDefault();
-
-                if(user == null)
+                var user = dbContext.GetUser(email);
+                if (user == null)
                 {
                     return null;
                 }
-                var selectedUser = new CustomMembershipUser(user);
+
+                UsersMODEL u = new UsersMODEL()
+                {
+                    Id = user.Id,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+
+                    IsActive = user.IsActive,
+                    CGU_CGV = user.CGU_CGV,
+                    Robot = user.Robot,
+                    PartnersInfos = user.PartnersInfos,
+                    MonCRAInfos = user.MonCRAInfos,
+                    ActivationCode = user.ActivationCode,
+                    Email = user.Email,
+                    RoleName = user.RoleLib
+                };
+
+                var selectedUser = new CustomMembershipUser(u);
 
                 return selectedUser;
             }
@@ -79,14 +90,28 @@ namespace MCSolutions.CustomAuthentication
 
         public override string GetUserNameByEmail(string email)
         {
-            using (AuthenticationDB dbContext = new DataAccess.AuthenticationDB())
+            using (MCEntities dbContext = new MCEntities())
             {
-                string username = (from u in dbContext.Users
-                                   where string.Compare(email, u.Email) == 0
-                                   select u.Username).FirstOrDefault();
+                //var obj = dbContext.sp_Users_GetByEmail(email);
+                bool resu = dbContext.ValidateEmail(email);
 
-                return !string.IsNullOrEmpty(username) ? username : string.Empty;
+                return !resu ? string.Empty : email;
+
+                //return "csd";
             }
+
+
+            //using (AuthenticationDB dbContext = new DataAccess.AuthenticationDB())
+            //{
+
+            //    //SqlParameter param1 = new SqlParameter("@EmployeeID", 6);
+            //    //dbContext.Users.SqlQuery
+            //    string username = (from u in dbContext.Users
+            //                       where string.Compare(email, u.Email) == 0
+            //                       select u.Username).FirstOrDefault();
+
+            //    return !string.IsNullOrEmpty(username) ? username : string.Empty;
+            //}
         }
 
         #region Overrides of Membership Provider

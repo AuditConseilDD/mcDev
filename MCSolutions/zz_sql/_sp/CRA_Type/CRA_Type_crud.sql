@@ -15,7 +15,7 @@ GO
 -- Description : Upsert CRUD CRA_Type
 -- ===================================================================
 
-CREATE PROCEDURE [dbo].[CRA_Type__InsertUpdate]
+CREATE PROCEDURE [dbo].[sp_CRA_Type__InsertUpdate]
   (@Id int,@NbrColTotal int,@CreationDate datetime,@CRAName nvarchar(50)=NULL,@CRADescription nvarchar(250)=NULL,@IsActive bit=NULL,@DeletionDate datetime=NULL)
 AS
 BEGIN
@@ -57,7 +57,7 @@ GO
 -- Description : Select CRUD CRA_Type
 -- ===================================================================
 
-CREATE PROCEDURE [dbo].[CRA_Type_List]
+CREATE PROCEDURE [dbo].[sp_CRA_Type__List]
   (@ID int=NULL)
 AS
 BEGIN
@@ -102,7 +102,7 @@ GO
 -- Description : Delete CRUD CRA_Type
 -- ===================================================================
 
-CREATE PROCEDURE [dbo].[CRA_Type_del]
+CREATE PROCEDURE [dbo].[sp_CRA_Type_del]
   (@ID int, @RowVersion int)
 AS
 BEGIN

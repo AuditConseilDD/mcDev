@@ -10,16 +10,16 @@
 namespace MCSolutions.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Users_Tel
+    public partial class sp_CRA_LibeleCol_sel_Result
     {
-        public int UsersId { get; set; }
-        public string Tel { get; set; }
-        public bool IsActive { get; set; }
-        public System.DateTime CreationDate { get; set; }
+        public int Id { get; set; }
+        public string LibShort { get; set; }
+        public string LibLong { get; set; }
+        public string Type { get; set; }
+        public Nullable<int> IsActive { get; set; }
+        public Nullable<System.DateTime> CreationDate { get; set; }
         public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        public virtual Users Users { get; set; }
+        public Nullable<int> ASCMPT { get; set; }
     }
 }

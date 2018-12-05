@@ -10,19 +10,15 @@
 namespace MCSolutions.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class LNK_Users_UserRole
+    public partial class sp_CRA_LibeleCol_List_Result
     {
-        public int UsersId { get; set; }
-        public int UsersRolesId { get; set; }
-        public bool IsActive { get; set; }
-        public Nullable<int> CompanyId { get; set; }
+        public int Id { get; set; }
+        public string LibShort { get; set; }
+        public string LibLong { get; set; }
+        public string Type { get; set; }
+        public Nullable<bool> IsActive { get; set; }
         public System.DateTime CreationDate { get; set; }
         public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        public virtual Company Company { get; set; }
-        public virtual Users_Roles Users_Roles { get; set; }
-        public virtual Users Users { get; set; }
     }
 }

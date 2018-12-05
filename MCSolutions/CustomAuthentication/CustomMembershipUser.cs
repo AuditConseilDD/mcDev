@@ -14,16 +14,18 @@ namespace MCSolutions.CustomAuthentication
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public ICollection<Role> Roles { get; set; }
+        public ICollection<Users_RolesMODEL> Roles { get; set; }
+        public string RoleName { get; set; }
 
         #endregion
 
-        public CustomMembershipUser(User user):base("CustomMembership", user.Username, user.UserId, user.Email, string.Empty, string.Empty, true, false, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now)
+        public CustomMembershipUser(UsersMODEL user):base("CustomMembership", user.Username, user.UserId, user.Email, user.RoleName, string.Empty, true, false, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now)
         {
             UserId = user.UserId;
             FirstName = user.FirstName;
             LastName = user.LastName;
             Roles = user.Roles;
+            RoleName = user.RoleName;
         }
     }
 }

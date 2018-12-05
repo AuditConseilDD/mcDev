@@ -77,7 +77,7 @@ namespace MCSolutions.Controllers
                             UserId = user.UserId,
                             FirstName = user.FirstName,
                             LastName = user.LastName,
-                            RoleName = user.Roles.Select(r => r.RoleName).ToList()
+                            RoleLib = user.RoleName/*user.Roles.Select(r => r.RoleName).ToList()*/
                         };
 
                         string userData = JsonConvert.SerializeObject(userModel);
@@ -116,10 +116,15 @@ namespace MCSolutions.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult Registration(RegistrationView registrationView, FormCollection f)
         {
             bool statusRegistration = false;
             string messageRegistration = string.Empty;
+            string styleRegistration = string.Empty;
+
+            styleRegistration = "border: 1px solid red; display: block;";
 
             if (ModelState.IsValid)
             {
@@ -129,6 +134,10 @@ namespace MCSolutions.Controllers
                 {
                     //ModelState.AddModelError("Warning Email", "Sorry: Email already Exists");
                     ModelState.AddModelError("Avertissement Email ", "Désolé: l'e-mail existe déjà");
+
+                    ViewBag.Message = "Avertissement Email, Désolé: l'e-mail existe déjà";
+                    ViewBag.Style = styleRegistration;
+                    ViewBag.Status = false;
                     return View(registrationView);
                 }
 
@@ -138,52 +147,42 @@ namespace MCSolutions.Controllers
 
                 string roleName = userTypeNanager(idtypeuser).ToUpper();
 
-                //Save User Data 
-                using (AuthenticationDB dbContext = new AuthenticationDB())
+                using (MCEntities dbContext = new MCEntities())
                 {
-                    #region []
+                    bool _cgu_cgv = !string.IsNullOrEmpty(f["defaultCheck1"]) ? true : false;
+                    bool _robot = !string.IsNullOrEmpty(f["defaultCheck2"]) ? true : false;
+                    bool _partnersinfos = !string.IsNullOrEmpty(f["defaultCheck3"]) ? true : false;
+                    bool _moncrainfos = !string.IsNullOrEmpty(f["defaultCheck4"]) ? true : false;
 
-                    var newRole = new Role();
-                    var roleTMP = dbContext.Roles.Where(x => x.RoleName == roleName).FirstOrDefault();
-                    if (roleTMP == null)
-                    {
-                        var idMaxList = dbContext.Roles.Select(x => x.RoleId);
-                        if (idMaxList != null)
-                        {
-                            int idMax = dbContext.Roles.Select(p => p.RoleId).DefaultIfEmpty(0).Max();
+                    registrationView.ActivationCode = Guid.NewGuid();
 
-                            newRole = new Role() { RoleId = (++idMax), RoleName = roleName, IsActive = true };
-                            dbContext.Roles.Add(newRole);
-                            dbContext.SaveChanges();
-                        }
-                    }
-                    else
-                    {
-                        newRole = (Role)roleTMP;
-                    }
-
-                    #endregion []
-                    var user = new User()
-                    {
-                        Username = registrationView.Username,
-                        FirstName = registrationView.FirstName,
-                        LastName = registrationView.LastName,
-                        Email = registrationView.Email,
-                        Password = registrationView.Password,
-                        ActivationCode = Guid.NewGuid(),
-                    };
-
-                    user.Roles = new List<Role>();
-                    user.Roles.Add(newRole);
-
-                    dbContext.Users.Add(user);
-                    dbContext.SaveChanges();
+                    var obj = dbContext.sp_Users_InsertUpdate(
+                        null,
+                        true,
+                        _cgu_cgv,
+                        _robot,
+                        _partnersinfos,
+                        _moncrainfos,
+                        registrationView.ActivationCode,
+                        registrationView.FirstName,
+                        registrationView.LastName,
+                        registrationView.Email,
+                        registrationView.Password,
+                        roleName_tmp,
+                        "insert");
                 }
 
                 //Verification Email
                 VerificationEmail(registrationView.Email, registrationView.ActivationCode.ToString());
-                messageRegistration = "Votre compte a été créé avec succès. ^_^";
+                messageRegistration = "Votre compte a été créé avec succès. Vérifiez votre mail et confirmez votre compte. Car votre doit confirmé avant de pouvoir vous connecter.";
+                styleRegistration = "border: 1px solid green; display: block;";
                 statusRegistration = true;
+
+                ViewBag.Message = messageRegistration;
+                ViewBag.Status = statusRegistration;
+                ViewBag.Style = styleRegistration;
+
+                return View("Info");
             }
             else
             {
@@ -191,8 +190,15 @@ namespace MCSolutions.Controllers
             }
             ViewBag.Message = messageRegistration;
             ViewBag.Status = statusRegistration;
+            ViewBag.Style = styleRegistration;
 
             return View(registrationView);
+        }
+        
+        [HttpGet]
+        public ActionResult Info()
+        {
+            return View();
         }
 
         private int usrPagemanager(string userType)
@@ -211,7 +217,7 @@ namespace MCSolutions.Controllers
                     break;
                 case "agent":
                 case "option3":
-                    p_idtypeuser = 3;
+                    p_idtypeuser = 6;
                     break;
             }
 

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="Id" />
@@ -14,21 +14,6 @@
           <Property Name="CompanyName" Type="nvarchar" MaxLength="250" />
           <Property Name="CompanyType" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="DeletionDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="Company_Adresse">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-            <PropertyRef Name="Adresse" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="CompanyId" Type="int" Nullable="false" />
-          <Property Name="Adresse" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="ZIPCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="StateLibele" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
           <Property Name="DeletionDate" Type="datetime" />
         </EntityType>
@@ -47,23 +32,6 @@
           <Property Name="PeriodBegin" Type="datetime" />
           <Property Name="PeriodEnd" Type="datetime" />
         </EntityType>
-        <EntityType Name="CRA_ActiviteDetail">
-          <Key>
-            <PropertyRef Name="CRAActiviteId" />
-            <PropertyRef Name="DateBegin" />
-            <PropertyRef Name="DateEnd" />
-            <PropertyRef Name="CRAlibeleColId" />
-          </Key>
-          <Property Name="CRAActiviteId" Type="int" Nullable="false" />
-          <Property Name="DateBegin" Type="datetime" Nullable="false" />
-          <Property Name="DateEnd" Type="datetime" Nullable="false" />
-          <Property Name="CRAlibeleColId" Type="int" Nullable="false" />
-          <Property Name="Quantity" Type="numeric" Precision="10" Scale="4" />
-          <Property Name="CreationDate" Type="datetime" />
-          <Property Name="CreationBY" Type="nvarchar" MaxLength="250" />
-          <Property Name="modificationDate" Type="datetime" />
-          <Property Name="ModificationBY" Type="nvarchar" MaxLength="250" />
-        </EntityType>
         <EntityType Name="CRA_ActiviteState">
           <Key>
             <PropertyRef Name="Id" />
@@ -71,31 +39,6 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="StateName" Type="nvarchar" MaxLength="50" />
           <Property Name="StateDescription" Type="nvarchar" MaxLength="250" />
-          <Property Name="IsActive" Type="bit" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="DeletionDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="CRA_ActiviteStates">
-          <Key>
-            <PropertyRef Name="CRAActiviteId" />
-            <PropertyRef Name="CRAActiviteStateId" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="CRAActiviteId" Type="int" Nullable="false" />
-          <Property Name="CRAActiviteStateId" Type="int" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="CreationBy" Type="nvarchar" MaxLength="250" />
-          <Property Name="DeletionDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="CRA_Definition">
-          <Key>
-            <PropertyRef Name="CRATypeId" />
-            <PropertyRef Name="Rank" />
-          </Key>
-          <Property Name="CRATypeId" Type="int" Nullable="false" />
-          <Property Name="Rank" Type="int" Nullable="false" />
-          <Property Name="CRALibeleColId" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
           <Property Name="DeletionDate" Type="datetime" />
@@ -150,31 +93,6 @@
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
           <Property Name="DeletionDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="Email_Variables">
-          <Key>
-            <PropertyRef Name="EmailTypeId" />
-            <PropertyRef Name="Variable" />
-          </Key>
-          <Property Name="EmailTypeId" Type="int" Nullable="false" />
-          <Property Name="Variable" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Value" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="DeletionDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="Invitation_Queued">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UsersId_from_" Type="int" Nullable="false" />
-          <Property Name="UsersId_to_" Type="int" />
-          <Property Name="Email_to_" Type="nvarchar" MaxLength="250" />
-          <Property Name="InvitationTypeId" Type="int" Nullable="false" />
-          <Property Name="InvitationStateId" Type="int" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-        </EntityType>
         <EntityType Name="Invitation_State">
           <Key>
             <PropertyRef Name="Id" />
@@ -183,67 +101,6 @@
           <Property Name="StateName" Type="nvarchar" MaxLength="50" />
           <Property Name="StateDescription" Type="nvarchar" MaxLength="250" />
           <Property Name="IsActive" Type="bit" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="DeletionDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="Invitation_Type">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="InvitationType" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserRolesId_from_" Type="int" Nullable="false" />
-          <Property Name="UserRolesId_to_" Type="int" Nullable="false" />
-          <Property Name="EmailTypeId" Type="int" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="DeletionDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="LNK_Users_CRAActivite">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="CRAActiviteId" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="UsersId" Type="int" Nullable="false" />
-          <Property Name="CRAActiviteId" Type="int" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="ReadWrite" Type="int" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="DeletionDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="LNK_Users_CRAType">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="CRATypeId" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="UsersId" Type="int" Nullable="false" />
-          <Property Name="CRATypeId" Type="int" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="DeletionDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="LNK_Users_Mission">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="MissionId" />
-          </Key>
-          <Property Name="UsersId" Type="int" Nullable="false" />
-          <Property Name="MissionId" Type="int" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="ModificationDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="LNK_Users_UserRole">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="UsersRolesId" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="UsersId" Type="int" Nullable="false" />
-          <Property Name="UsersRolesId" Type="int" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CompanyId" Type="int" />
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
           <Property Name="DeletionDate" Type="datetime" />
         </EntityType>
@@ -258,66 +115,15 @@
           <Property Name="DateBegin" Type="datetime" Nullable="false" />
           <Property Name="DateEnd" Type="datetime" />
         </EntityType>
-        <EntityType Name="Users">
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'mcdev002.dbo.UserRoles' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="UserRoles">
           <Key>
             <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Id" Type="int" />
-          <Property Name="FirstName" Type="nvarchar(max)" />
-          <Property Name="LastName" Type="nvarchar(max)" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CGU_CGV" Type="bit" Nullable="false" />
-          <Property Name="Robot" Type="bit" Nullable="false" />
-          <Property Name="PartnersInfos" Type="bit" Nullable="false" />
-          <Property Name="MonCRAInfos" Type="bit" Nullable="false" />
-          <Property Name="ActivationCode" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Username" Type="nvarchar(max)" />
-          <Property Name="Email" Type="nvarchar(max)" />
-          <Property Name="Password" Type="nvarchar(max)" />
-          <Property Name="IAmARobot" Type="bit" Nullable="false" />
-          <Property Name="WouldRecievePartnersInfos" Type="bit" Nullable="false" />
-          <Property Name="WouldRecieveMonCRAInfos" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Users_Adresse">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="Adresse" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="UsersId" Type="int" Nullable="false" />
-          <Property Name="Adresse" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="ZIPCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="StateLibele" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="DeletionDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="Users_Email">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="UsersId" Type="int" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="AccountType" Type="int" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="DeletionDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="Users_Password">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="Password" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="UsersId" Type="int" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="DeletionDate" Type="datetime" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users_Roles">
           <Key>
@@ -331,32 +137,6 @@
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
           <Property Name="DeletionDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="Users_Tel">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="Tel" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="UsersId" Type="int" Nullable="false" />
-          <Property Name="Tel" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" Nullable="false" />
-          <Property Name="DeletionDate" Type="datetime" />
-        </EntityType>
-        <Association Name="FK_dbo_CompanyAdresse_dbo_CompanyId">
-          <End Role="Company" Type="Self.Company" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Company_Adresse" Type="Self.Company_Adresse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Company_Adresse">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_CRAActivite_dbo_CRATypeId">
           <End Role="CRA_Type" Type="Self.CRA_Type" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -368,118 +148,6 @@
             </Principal>
             <Dependent Role="CRA_Activite">
               <PropertyRef Name="CRATypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRAActivite_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_Activite" Type="Self.CRA_Activite" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="CRA_Activite">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRAActiviteDetail_dbo_CRAActiviteId">
-          <End Role="CRA_Activite" Type="Self.CRA_Activite" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_ActiviteDetail" Type="Self.CRA_ActiviteDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_Activite">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CRA_ActiviteDetail">
-              <PropertyRef Name="CRAActiviteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRAActiviteDetail_dbo_CRAlibeleColId">
-          <End Role="CRA_LibeleCol" Type="Self.CRA_LibeleCol" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_ActiviteDetail" Type="Self.CRA_ActiviteDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_LibeleCol">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CRA_ActiviteDetail">
-              <PropertyRef Name="CRAlibeleColId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRAActiviteStates_dbo_CRAActiviteId">
-          <End Role="CRA_Activite" Type="Self.CRA_Activite" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_ActiviteStates" Type="Self.CRA_ActiviteStates" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_Activite">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CRA_ActiviteStates">
-              <PropertyRef Name="CRAActiviteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRAActiviteStates_dbo_CRAActiviteStateId">
-          <End Role="CRA_ActiviteState" Type="Self.CRA_ActiviteState" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_ActiviteStates" Type="Self.CRA_ActiviteStates" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_ActiviteState">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CRA_ActiviteStates">
-              <PropertyRef Name="CRAActiviteStateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRADefinition_dbo_CRALibelecolId">
-          <End Role="CRA_LibeleCol" Type="Self.CRA_LibeleCol" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_Definition" Type="Self.CRA_Definition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_LibeleCol">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CRA_Definition">
-              <PropertyRef Name="CRALibeleColId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRADefinition_dbo_CRATypeId">
-          <End Role="CRA_Type" Type="Self.CRA_Type" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_Definition" Type="Self.CRA_Definition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_Type">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CRA_Definition">
-              <PropertyRef Name="CRATypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Email_Variables_dbo_EmailTypeId">
-          <End Role="Email_Type" Type="Self.Email_Type" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Email_Variables" Type="Self.Email_Variables" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Email_Type">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Email_Variables">
-              <PropertyRef Name="EmailTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -497,443 +165,310 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_EmailSendListe_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Email_SendListe" Type="Self.Email_SendListe" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Email_SendListe">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationQueued_dbo_InvitationStateId">
-          <End Role="Invitation_State" Type="Self.Invitation_State" Multiplicity="1" />
-          <End Role="Invitation_Queued" Type="Self.Invitation_Queued" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Invitation_State">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Invitation_Queued">
-              <PropertyRef Name="InvitationStateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationQueued_dbo_InvitationTypeId">
-          <End Role="Invitation_Type" Type="Self.Invitation_Type" Multiplicity="1" />
-          <End Role="Invitation_Queued" Type="Self.Invitation_Queued" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Invitation_Type">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Invitation_Queued">
-              <PropertyRef Name="InvitationTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationQueued_dbo_UsersIdfrom">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Invitation_Queued" Type="Self.Invitation_Queued" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Invitation_Queued">
-              <PropertyRef Name="UsersId_from_" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationQueued_dbo_UsersIdto">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="Invitation_Queued" Type="Self.Invitation_Queued" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Invitation_Queued">
-              <PropertyRef Name="UsersId_to_" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationType_dbo_EmailTypeId">
-          <End Role="Email_Type" Type="Self.Email_Type" Multiplicity="1" />
-          <End Role="Invitation_Type" Type="Self.Invitation_Type" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Email_Type">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Invitation_Type">
-              <PropertyRef Name="EmailTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationType_dbo_UserRolesId_from_">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Invitation_Type" Type="Self.Invitation_Type" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Invitation_Type">
-              <PropertyRef Name="UserRolesId_from_" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationType_dbo_UserRolesId_to_">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Invitation_Type" Type="Self.Invitation_Type" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Invitation_Type">
-              <PropertyRef Name="UserRolesId_to_" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNK_Users_Mission_dbo_MissionId">
-          <End Role="Mission" Type="Self.Mission" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_Mission" Type="Self.LNK_Users_Mission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mission">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LNK_Users_Mission">
-              <PropertyRef Name="MissionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNK_Users_Mission_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_Mission" Type="Self.LNK_Users_Mission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="LNK_Users_Mission">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersCRAActivite_dbo_CRAActiviteId">
-          <End Role="CRA_Activite" Type="Self.CRA_Activite" Multiplicity="1" />
-          <End Role="LNK_Users_CRAActivite" Type="Self.LNK_Users_CRAActivite" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_Activite">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LNK_Users_CRAActivite">
-              <PropertyRef Name="CRAActiviteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersCRAActivite_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="LNK_Users_CRAActivite" Type="Self.LNK_Users_CRAActivite" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="LNK_Users_CRAActivite">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersCRAType_dbo_CRATypeId">
-          <End Role="CRA_Type" Type="Self.CRA_Type" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_CRAType" Type="Self.LNK_Users_CRAType" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_Type">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LNK_Users_CRAType">
-              <PropertyRef Name="CRATypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersCRAType_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_CRAType" Type="Self.LNK_Users_CRAType" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="LNK_Users_CRAType">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersUserRole_dbo_UsersRolesId">
-          <End Role="Users_Roles" Type="Self.Users_Roles" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_UserRole" Type="Self.LNK_Users_UserRole" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users_Roles">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LNK_Users_UserRole">
-              <PropertyRef Name="UsersRolesId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersUserRoles_dbo_CompanyId">
-          <End Role="Company" Type="Self.Company" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_UserRole" Type="Self.LNK_Users_UserRole" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LNK_Users_UserRole">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersUserRoles_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_UserRole" Type="Self.LNK_Users_UserRole" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="LNK_Users_UserRole">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_UsersAdresse_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Users_Adresse" Type="Self.Users_Adresse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Users_Adresse">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_UsersEmail_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Users_Email" Type="Self.Users_Email" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Users_Email">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_UsersPassword_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Users_Password" Type="Self.Users_Password" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Users_Password">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_UsersTel_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Users_Tel" Type="Self.Users_Tel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Users_Tel">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <Function Name="sp_CRA_Activite__ById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_CRA_Activite__InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="UsersId" Type="int" Mode="In" />
+          <Parameter Name="CRATypeId" Type="int" Mode="In" />
+          <Parameter Name="Period" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreationDate" Type="datetime" Mode="In" />
+          <Parameter Name="ModificaitonDate" Type="datetime" Mode="In" />
+          <Parameter Name="ModificaitonBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="PeriodBegin" Type="datetime" Mode="In" />
+          <Parameter Name="PeriodEnd" Type="datetime" Mode="In" />
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CRA_Activite__List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UsersId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_CRA_ActiviteDetail__InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CRAActiviteId" Type="int" Mode="In" />
+          <Parameter Name="DateBegin" Type="datetime" Mode="In" />
+          <Parameter Name="DateEnd" Type="datetime" Mode="In" />
+          <Parameter Name="CRAlibeleColId" Type="int" Mode="In" />
+          <Parameter Name="Quantity" Type="numeric" Mode="In" />
+          <Parameter Name="CreationBY" Type="nvarchar" Mode="In" />
+          <Parameter Name="ModificationBY" Type="nvarchar" Mode="In" />
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CRA_ActiviteDetail_sel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="craId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_CRA_ActiviteDetail_sel_NEW" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="craId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_CRA_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FK_IDCONSULTANT" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_CRA_GetLIibCol_byID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cratypeid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_CRA_GetListByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="craId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_CRA_InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CRAID" Type="int" Mode="In" />
+          <Parameter Name="LIBELLE" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NUMCRA" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="MOIS" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NBTOTALJOURS" Type="int" Mode="In" />
+          <Parameter Name="FK_IDCONSULTANT" Type="int" Mode="In" />
+          <Parameter Name="FK_IDCLIENT" Type="int" Mode="In" />
+          <Parameter Name="LIB_CLIENT" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FK_IDRESPONSABLE" Type="int" Mode="In" />
+          <Parameter Name="LIB_RESPONSABLE" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FK_IDSTATUT" Type="int" Mode="In" />
+          <Parameter Name="SIGNECONSULTANT" Type="bit" Mode="In" />
+          <Parameter Name="DTSIGNECONSULTANT" Type="datetime" Mode="In" />
+          <Parameter Name="SIGNECLIENTFINAL" Type="bit" Mode="In" />
+          <Parameter Name="DTSIGNECLIENTFINAL" Type="datetime" Mode="In" />
+          <Parameter Name="SIGNEAGENT" Type="bit" Mode="In" />
+          <Parameter Name="DTSIGNEAGENT" Type="datetime" Mode="In" />
+          <Parameter Name="ADDEDDATE" Type="datetime" Mode="In" />
+          <Parameter Name="MODIFIEDDATE" Type="datetime" Mode="In" />
+          <Parameter Name="IPADDRESS" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ACTION" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CRA_LibeleCol_List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_CRA_LibeleCol_sel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="craId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_CRA_Type__List" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_LNK_Users_UserRole__InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UsersId" Type="int" Mode="In" />
+          <Parameter Name="UsersRolesId" Type="int" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="CreationDate" Type="datetime" Mode="In" />
+          <Parameter Name="CompanyId" Type="int" Mode="In" />
+          <Parameter Name="DeletionDate" Type="datetime" Mode="In" />
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Users_Email_InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UsersId" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="AccountType" Type="int" Mode="In" />
+          <Parameter Name="CreationDate" Type="datetime" Mode="In" />
+          <Parameter Name="DeletionDate" Type="datetime" Mode="In" />
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Users_GetByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Users_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Users_InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="CGU_CGV" Type="bit" Mode="In" />
+          <Parameter Name="Robot" Type="bit" Mode="In" />
+          <Parameter Name="PartnersInfos" Type="bit" Mode="In" />
+          <Parameter Name="MonCRAInfos" Type="bit" Mode="In" />
+          <Parameter Name="ActivationCode" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoleName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Users_Password_InsertUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UsersId" Type="int" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="CreationDate" Type="datetime" Mode="In" />
+          <Parameter Name="DeletionDate" Type="datetime" Mode="In" />
+          <Parameter Name="Action" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Users_Validate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="MCModelStoreContainer">
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Company_Adresse" EntityType="Self.Company_Adresse" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CRA_Activite" EntityType="Self.CRA_Activite" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CRA_ActiviteDetail" EntityType="Self.CRA_ActiviteDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CRA_ActiviteState" EntityType="Self.CRA_ActiviteState" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CRA_ActiviteStates" EntityType="Self.CRA_ActiviteStates" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CRA_Definition" EntityType="Self.CRA_Definition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CRA_LibeleCol" EntityType="Self.CRA_LibeleCol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CRA_Type" EntityType="Self.CRA_Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Email_SendListe" EntityType="Self.Email_SendListe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Email_Type" EntityType="Self.Email_Type" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Email_Variables" EntityType="Self.Email_Variables" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Invitation_Queued" EntityType="Self.Invitation_Queued" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Invitation_State" EntityType="Self.Invitation_State" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Invitation_Type" EntityType="Self.Invitation_Type" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LNK_Users_CRAActivite" EntityType="Self.LNK_Users_CRAActivite" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LNK_Users_CRAType" EntityType="Self.LNK_Users_CRAType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LNK_Users_Mission" EntityType="Self.LNK_Users_Mission" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LNK_Users_UserRole" EntityType="Self.LNK_Users_UserRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mission" EntityType="Self.Mission" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users_Adresse" EntityType="Self.Users_Adresse" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users_Email" EntityType="Self.Users_Email" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users_Password" EntityType="Self.Users_Password" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users_Roles" EntityType="Self.Users_Roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users_Tel" EntityType="Self.Users_Tel" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_dbo_CompanyAdresse_dbo_CompanyId" Association="Self.FK_dbo_CompanyAdresse_dbo_CompanyId">
-            <End Role="Company" EntitySet="Company" />
-            <End Role="Company_Adresse" EntitySet="Company_Adresse" />
-          </AssociationSet>
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserRoles].[UserId] AS [UserId], 
+    [UserRoles].[RoleId] AS [RoleId]
+    FROM [dbo].[UserRoles] AS [UserRoles]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_dbo_CRAActivite_dbo_CRATypeId" Association="Self.FK_dbo_CRAActivite_dbo_CRATypeId">
             <End Role="CRA_Type" EntitySet="CRA_Type" />
             <End Role="CRA_Activite" EntitySet="CRA_Activite" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRAActivite_dbo_UsersId" Association="Self.FK_dbo_CRAActivite_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="CRA_Activite" EntitySet="CRA_Activite" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRAActiviteDetail_dbo_CRAActiviteId" Association="Self.FK_dbo_CRAActiviteDetail_dbo_CRAActiviteId">
-            <End Role="CRA_Activite" EntitySet="CRA_Activite" />
-            <End Role="CRA_ActiviteDetail" EntitySet="CRA_ActiviteDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRAActiviteDetail_dbo_CRAlibeleColId" Association="Self.FK_dbo_CRAActiviteDetail_dbo_CRAlibeleColId">
-            <End Role="CRA_LibeleCol" EntitySet="CRA_LibeleCol" />
-            <End Role="CRA_ActiviteDetail" EntitySet="CRA_ActiviteDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRAActiviteStates_dbo_CRAActiviteId" Association="Self.FK_dbo_CRAActiviteStates_dbo_CRAActiviteId">
-            <End Role="CRA_Activite" EntitySet="CRA_Activite" />
-            <End Role="CRA_ActiviteStates" EntitySet="CRA_ActiviteStates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRAActiviteStates_dbo_CRAActiviteStateId" Association="Self.FK_dbo_CRAActiviteStates_dbo_CRAActiviteStateId">
-            <End Role="CRA_ActiviteState" EntitySet="CRA_ActiviteState" />
-            <End Role="CRA_ActiviteStates" EntitySet="CRA_ActiviteStates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRADefinition_dbo_CRALibelecolId" Association="Self.FK_dbo_CRADefinition_dbo_CRALibelecolId">
-            <End Role="CRA_LibeleCol" EntitySet="CRA_LibeleCol" />
-            <End Role="CRA_Definition" EntitySet="CRA_Definition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRADefinition_dbo_CRATypeId" Association="Self.FK_dbo_CRADefinition_dbo_CRATypeId">
-            <End Role="CRA_Type" EntitySet="CRA_Type" />
-            <End Role="CRA_Definition" EntitySet="CRA_Definition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Email_Variables_dbo_EmailTypeId" Association="Self.FK_dbo_Email_Variables_dbo_EmailTypeId">
-            <End Role="Email_Type" EntitySet="Email_Type" />
-            <End Role="Email_Variables" EntitySet="Email_Variables" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_EmailSendListe_dbo_EmailTypeId" Association="Self.FK_dbo_EmailSendListe_dbo_EmailTypeId">
             <End Role="Email_Type" EntitySet="Email_Type" />
             <End Role="Email_SendListe" EntitySet="Email_SendListe" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_EmailSendListe_dbo_UsersId" Association="Self.FK_dbo_EmailSendListe_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Email_SendListe" EntitySet="Email_SendListe" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationQueued_dbo_InvitationStateId" Association="Self.FK_dbo_InvitationQueued_dbo_InvitationStateId">
-            <End Role="Invitation_State" EntitySet="Invitation_State" />
-            <End Role="Invitation_Queued" EntitySet="Invitation_Queued" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationQueued_dbo_InvitationTypeId" Association="Self.FK_dbo_InvitationQueued_dbo_InvitationTypeId">
-            <End Role="Invitation_Type" EntitySet="Invitation_Type" />
-            <End Role="Invitation_Queued" EntitySet="Invitation_Queued" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationQueued_dbo_UsersIdfrom" Association="Self.FK_dbo_InvitationQueued_dbo_UsersIdfrom">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Invitation_Queued" EntitySet="Invitation_Queued" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationQueued_dbo_UsersIdto" Association="Self.FK_dbo_InvitationQueued_dbo_UsersIdto">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Invitation_Queued" EntitySet="Invitation_Queued" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationType_dbo_EmailTypeId" Association="Self.FK_dbo_InvitationType_dbo_EmailTypeId">
-            <End Role="Email_Type" EntitySet="Email_Type" />
-            <End Role="Invitation_Type" EntitySet="Invitation_Type" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationType_dbo_UserRolesId_from_" Association="Self.FK_dbo_InvitationType_dbo_UserRolesId_from_">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Invitation_Type" EntitySet="Invitation_Type" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationType_dbo_UserRolesId_to_" Association="Self.FK_dbo_InvitationType_dbo_UserRolesId_to_">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Invitation_Type" EntitySet="Invitation_Type" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNK_Users_Mission_dbo_MissionId" Association="Self.FK_dbo_LNK_Users_Mission_dbo_MissionId">
-            <End Role="Mission" EntitySet="Mission" />
-            <End Role="LNK_Users_Mission" EntitySet="LNK_Users_Mission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNK_Users_Mission_dbo_UsersId" Association="Self.FK_dbo_LNK_Users_Mission_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="LNK_Users_Mission" EntitySet="LNK_Users_Mission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersCRAActivite_dbo_CRAActiviteId" Association="Self.FK_dbo_LNKUsersCRAActivite_dbo_CRAActiviteId">
-            <End Role="CRA_Activite" EntitySet="CRA_Activite" />
-            <End Role="LNK_Users_CRAActivite" EntitySet="LNK_Users_CRAActivite" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersCRAActivite_dbo_UsersId" Association="Self.FK_dbo_LNKUsersCRAActivite_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="LNK_Users_CRAActivite" EntitySet="LNK_Users_CRAActivite" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersCRAType_dbo_CRATypeId" Association="Self.FK_dbo_LNKUsersCRAType_dbo_CRATypeId">
-            <End Role="CRA_Type" EntitySet="CRA_Type" />
-            <End Role="LNK_Users_CRAType" EntitySet="LNK_Users_CRAType" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersCRAType_dbo_UsersId" Association="Self.FK_dbo_LNKUsersCRAType_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="LNK_Users_CRAType" EntitySet="LNK_Users_CRAType" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersUserRole_dbo_UsersRolesId" Association="Self.FK_dbo_LNKUsersUserRole_dbo_UsersRolesId">
-            <End Role="Users_Roles" EntitySet="Users_Roles" />
-            <End Role="LNK_Users_UserRole" EntitySet="LNK_Users_UserRole" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersUserRoles_dbo_CompanyId" Association="Self.FK_dbo_LNKUsersUserRoles_dbo_CompanyId">
-            <End Role="Company" EntitySet="Company" />
-            <End Role="LNK_Users_UserRole" EntitySet="LNK_Users_UserRole" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersUserRoles_dbo_UsersId" Association="Self.FK_dbo_LNKUsersUserRoles_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="LNK_Users_UserRole" EntitySet="LNK_Users_UserRole" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_UsersAdresse_dbo_UsersId" Association="Self.FK_dbo_UsersAdresse_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Users_Adresse" EntitySet="Users_Adresse" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_UsersEmail_dbo_UsersId" Association="Self.FK_dbo_UsersEmail_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Users_Email" EntitySet="Users_Email" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_UsersPassword_dbo_UsersId" Association="Self.FK_dbo_UsersPassword_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Users_Password" EntitySet="Users_Password" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_UsersTel_dbo_UsersId" Association="Self.FK_dbo_UsersTel_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Users_Tel" EntitySet="Users_Tel" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Company" EntityType="MCModel.Company" />
+          <EntitySet Name="CRA_Activite" EntityType="MCModel.CRA_Activite" />
+          <EntitySet Name="CRA_ActiviteState" EntityType="MCModel.CRA_ActiviteState" />
+          <EntitySet Name="CRA_LibeleCol" EntityType="MCModel.CRA_LibeleCol" />
+          <EntitySet Name="CRA_Type" EntityType="MCModel.CRA_Type" />
+          <EntitySet Name="Email_SendListe" EntityType="MCModel.Email_SendListe" />
+          <EntitySet Name="Email_Type" EntityType="MCModel.Email_Type" />
+          <EntitySet Name="Invitation_State" EntityType="MCModel.Invitation_State" />
+          <EntitySet Name="Mission" EntityType="MCModel.Mission" />
+          <EntitySet Name="Users" EntityType="MCModel.Users" />
+          <EntitySet Name="Users_Roles" EntityType="MCModel.Users_Roles" />
+          <EntitySet Name="UserRoles" EntityType="MCModel.UserRoles" />
+          <AssociationSet Name="FK_dbo_CRAActivite_dbo_CRATypeId" Association="MCModel.FK_dbo_CRAActivite_dbo_CRATypeId">
+            <End Role="CRA_Type" EntitySet="CRA_Type" />
+            <End Role="CRA_Activite" EntitySet="CRA_Activite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EmailSendListe_dbo_EmailTypeId" Association="MCModel.FK_dbo_EmailSendListe_dbo_EmailTypeId">
+            <End Role="Email_Type" EntitySet="Email_Type" />
+            <End Role="Email_SendListe" EntitySet="Email_SendListe" />
+          </AssociationSet>
+          <FunctionImport Name="sp_CRA_Activite__ById" ReturnType="Collection(MCModel.sp_CRA_Activite__ById_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CRA_Activite__InsertUpdate" ReturnType="Collection(MCModel.sp_CRA_Activite__InsertUpdate_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="UsersId" Mode="In" Type="Int32" />
+            <Parameter Name="CRATypeId" Mode="In" Type="Int32" />
+            <Parameter Name="Period" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="String" />
+            <Parameter Name="CreationDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ModificaitonDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ModificaitonBy" Mode="In" Type="String" />
+            <Parameter Name="PeriodBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="PeriodEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="Action" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CRA_Activite__List" ReturnType="Collection(MCModel.sp_CRA_Activite__List_Result)">
+          <Parameter Name="UsersId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CRA_ActiviteDetail__InsertUpdate">
+            <Parameter Name="CRAActiviteId" Mode="In" Type="Int32" />
+            <Parameter Name="DateBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="CRAlibeleColId" Mode="In" Type="Int32" />
+            <Parameter Name="Quantity" Mode="In" Type="Decimal" />
+            <Parameter Name="CreationBY" Mode="In" Type="String" />
+            <Parameter Name="ModificationBY" Mode="In" Type="String" />
+            <Parameter Name="Action" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CRA_ActiviteDetail_sel" ReturnType="Collection(MCModel.sp_CRA_ActiviteDetail_sel_Result)">
+          <Parameter Name="craId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CRA_ActiviteDetail_sel_NEW">
+          <Parameter Name="craId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CRA_Delete">
+          <Parameter Name="FK_IDCONSULTANT" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CRA_GetLIibCol_byID" ReturnType="Collection(MCModel.sp_CRA_GetLIibCol_byID_Result)">
+          <Parameter Name="cratypeid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CRA_GetListByUserId" ReturnType="Collection(MCModel.sp_CRA_GetListByUserId_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="craId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CRA_InsertUpdate">
+            <Parameter Name="CRAID" Mode="In" Type="Int32" />
+            <Parameter Name="LIBELLE" Mode="In" Type="String" />
+            <Parameter Name="NUMCRA" Mode="In" Type="String" />
+            <Parameter Name="MOIS" Mode="In" Type="String" />
+            <Parameter Name="NBTOTALJOURS" Mode="In" Type="Int32" />
+            <Parameter Name="FK_IDCONSULTANT" Mode="In" Type="Int32" />
+            <Parameter Name="FK_IDCLIENT" Mode="In" Type="Int32" />
+            <Parameter Name="LIB_CLIENT" Mode="In" Type="String" />
+            <Parameter Name="FK_IDRESPONSABLE" Mode="In" Type="Int32" />
+            <Parameter Name="LIB_RESPONSABLE" Mode="In" Type="String" />
+            <Parameter Name="FK_IDSTATUT" Mode="In" Type="Int32" />
+            <Parameter Name="SIGNECONSULTANT" Mode="In" Type="Boolean" />
+            <Parameter Name="DTSIGNECONSULTANT" Mode="In" Type="DateTime" />
+            <Parameter Name="SIGNECLIENTFINAL" Mode="In" Type="Boolean" />
+            <Parameter Name="DTSIGNECLIENTFINAL" Mode="In" Type="DateTime" />
+            <Parameter Name="SIGNEAGENT" Mode="In" Type="Boolean" />
+            <Parameter Name="DTSIGNEAGENT" Mode="In" Type="DateTime" />
+            <Parameter Name="ADDEDDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="MODIFIEDDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="IPADDRESS" Mode="In" Type="String" />
+            <Parameter Name="ACTION" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CRA_LibeleCol_List" ReturnType="Collection(MCModel.sp_CRA_LibeleCol_List_Result)" />
+          <FunctionImport Name="sp_CRA_LibeleCol_sel" ReturnType="Collection(MCModel.sp_CRA_LibeleCol_sel_Result)">
+          <Parameter Name="craId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CRA_Type__List" ReturnType="Collection(MCModel.sp_CRA_Type__List_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Users_Email_InsertUpdate" ReturnType="Collection(MCModel.sp_Users_Email_InsertUpdate_Result)">
+            <Parameter Name="UsersId" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+            <Parameter Name="AccountType" Mode="In" Type="Int32" />
+            <Parameter Name="CreationDate" Mode="In" Type="DateTime" />
+            <Parameter Name="DeletionDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Action" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Users_InsertUpdate" ReturnType="Collection(MCModel.sp_Users_InsertUpdate_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+            <Parameter Name="CGU_CGV" Mode="In" Type="Boolean" />
+            <Parameter Name="Robot" Mode="In" Type="Boolean" />
+            <Parameter Name="PartnersInfos" Mode="In" Type="Boolean" />
+            <Parameter Name="MonCRAInfos" Mode="In" Type="Boolean" />
+            <Parameter Name="ActivationCode" Mode="In" Type="Guid" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="RoleName" Mode="In" Type="String" />
+            <Parameter Name="Action" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Users_GetById" ReturnType="Collection(MCModel.sp_Users_GetById_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Users_Password_InsertUpdate" ReturnType="Collection(MCModel.sp_Users_Password_InsertUpdate_Result)">
+            <Parameter Name="UsersId" Mode="In" Type="Int32" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+            <Parameter Name="CreationDate" Mode="In" Type="DateTime" />
+            <Parameter Name="DeletionDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Action" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Users_GetByEmail" ReturnType="Collection(MCModel.sp_Users_GetById_Result)">
+          <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Users_Validate" ReturnType="Collection(MCModel.sp_Users_Validate_Result)">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_LNK_Users_UserRole__InsertUpdate">
+            <Parameter Name="UsersId" Mode="In" Type="Int32" />
+            <Parameter Name="UsersRolesId" Mode="In" Type="Int32" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+            <Parameter Name="CreationDate" Mode="In" Type="DateTime" />
+            <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+            <Parameter Name="DeletionDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Action" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="Id" />
@@ -945,24 +480,6 @@
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Company_Adresse" Relationship="Self.FK_dbo_CompanyAdresse_dbo_CompanyId" FromRole="Company" ToRole="Company_Adresse" />
-          <NavigationProperty Name="LNK_Users_UserRole" Relationship="Self.FK_dbo_LNKUsersUserRoles_dbo_CompanyId" FromRole="Company" ToRole="LNK_Users_UserRole" />
-        </EntityType>
-        <EntityType Name="Company_Adresse">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-            <PropertyRef Name="Adresse" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="Adresse" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="ZIPCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StateLibele" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Company" Relationship="Self.FK_dbo_CompanyAdresse_dbo_CompanyId" FromRole="Company_Adresse" ToRole="Company" />
         </EntityType>
         <EntityType Name="CRA_Activite">
           <Key>
@@ -971,37 +488,14 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UsersId" Type="Int32" Nullable="false" />
           <Property Name="CRATypeId" Type="Int32" Nullable="false" />
-          <Property Name="Period" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Period" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="ModificaitonDate" Type="DateTime" Precision="3" />
           <Property Name="ModificaitonBy" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="PeriodBegin" Type="DateTime" Precision="3" />
           <Property Name="PeriodEnd" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CRA_Type" Relationship="Self.FK_dbo_CRAActivite_dbo_CRATypeId" FromRole="CRA_Activite" ToRole="CRA_Type" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_CRAActivite_dbo_UsersId" FromRole="CRA_Activite" ToRole="Users" />
-          <NavigationProperty Name="CRA_ActiviteDetail" Relationship="Self.FK_dbo_CRAActiviteDetail_dbo_CRAActiviteId" FromRole="CRA_Activite" ToRole="CRA_ActiviteDetail" />
-          <NavigationProperty Name="CRA_ActiviteStates" Relationship="Self.FK_dbo_CRAActiviteStates_dbo_CRAActiviteId" FromRole="CRA_Activite" ToRole="CRA_ActiviteStates" />
-          <NavigationProperty Name="LNK_Users_CRAActivite" Relationship="Self.FK_dbo_LNKUsersCRAActivite_dbo_CRAActiviteId" FromRole="CRA_Activite" ToRole="LNK_Users_CRAActivite" />
-        </EntityType>
-        <EntityType Name="CRA_ActiviteDetail">
-          <Key>
-            <PropertyRef Name="CRAActiviteId" />
-            <PropertyRef Name="DateBegin" />
-            <PropertyRef Name="DateEnd" />
-            <PropertyRef Name="CRAlibeleColId" />
-          </Key>
-          <Property Name="CRAActiviteId" Type="Int32" Nullable="false" />
-          <Property Name="DateBegin" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CRAlibeleColId" Type="Int32" Nullable="false" />
-          <Property Name="Quantity" Type="Decimal" Precision="10" Scale="4" />
-          <Property Name="CreationDate" Type="DateTime" Precision="3" />
-          <Property Name="CreationBY" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="modificationDate" Type="DateTime" Precision="3" />
-          <Property Name="ModificationBY" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CRA_Activite" Relationship="Self.FK_dbo_CRAActiviteDetail_dbo_CRAActiviteId" FromRole="CRA_ActiviteDetail" ToRole="CRA_Activite" />
-          <NavigationProperty Name="CRA_LibeleCol" Relationship="Self.FK_dbo_CRAActiviteDetail_dbo_CRAlibeleColId" FromRole="CRA_ActiviteDetail" ToRole="CRA_LibeleCol" />
+          <NavigationProperty Name="CRA_Type" Relationship="MCModel.FK_dbo_CRAActivite_dbo_CRATypeId" FromRole="CRA_Activite" ToRole="CRA_Type" />
         </EntityType>
         <EntityType Name="CRA_ActiviteState">
           <Key>
@@ -1013,36 +507,6 @@
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CRA_ActiviteStates" Relationship="Self.FK_dbo_CRAActiviteStates_dbo_CRAActiviteStateId" FromRole="CRA_ActiviteState" ToRole="CRA_ActiviteStates" />
-        </EntityType>
-        <EntityType Name="CRA_ActiviteStates">
-          <Key>
-            <PropertyRef Name="CRAActiviteId" />
-            <PropertyRef Name="CRAActiviteStateId" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="CRAActiviteId" Type="Int32" Nullable="false" />
-          <Property Name="CRAActiviteStateId" Type="Int32" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreationBy" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CRA_Activite" Relationship="Self.FK_dbo_CRAActiviteStates_dbo_CRAActiviteId" FromRole="CRA_ActiviteStates" ToRole="CRA_Activite" />
-          <NavigationProperty Name="CRA_ActiviteState" Relationship="Self.FK_dbo_CRAActiviteStates_dbo_CRAActiviteStateId" FromRole="CRA_ActiviteStates" ToRole="CRA_ActiviteState" />
-        </EntityType>
-        <EntityType Name="CRA_Definition">
-          <Key>
-            <PropertyRef Name="CRATypeId" />
-            <PropertyRef Name="Rank" />
-          </Key>
-          <Property Name="CRATypeId" Type="Int32" Nullable="false" />
-          <Property Name="Rank" Type="Int32" Nullable="false" />
-          <Property Name="CRALibeleColId" Type="Int32" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CRA_LibeleCol" Relationship="Self.FK_dbo_CRADefinition_dbo_CRALibelecolId" FromRole="CRA_Definition" ToRole="CRA_LibeleCol" />
-          <NavigationProperty Name="CRA_Type" Relationship="Self.FK_dbo_CRADefinition_dbo_CRATypeId" FromRole="CRA_Definition" ToRole="CRA_Type" />
         </EntityType>
         <EntityType Name="CRA_LibeleCol">
           <Key>
@@ -1055,8 +519,6 @@
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CRA_ActiviteDetail" Relationship="Self.FK_dbo_CRAActiviteDetail_dbo_CRAlibeleColId" FromRole="CRA_LibeleCol" ToRole="CRA_ActiviteDetail" />
-          <NavigationProperty Name="CRA_Definition" Relationship="Self.FK_dbo_CRADefinition_dbo_CRALibelecolId" FromRole="CRA_LibeleCol" ToRole="CRA_Definition" />
         </EntityType>
         <EntityType Name="CRA_Type">
           <Key>
@@ -1069,9 +531,7 @@
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CRA_Activite" Relationship="Self.FK_dbo_CRAActivite_dbo_CRATypeId" FromRole="CRA_Type" ToRole="CRA_Activite" />
-          <NavigationProperty Name="CRA_Definition" Relationship="Self.FK_dbo_CRADefinition_dbo_CRATypeId" FromRole="CRA_Type" ToRole="CRA_Definition" />
-          <NavigationProperty Name="LNK_Users_CRAType" Relationship="Self.FK_dbo_LNKUsersCRAType_dbo_CRATypeId" FromRole="CRA_Type" ToRole="LNK_Users_CRAType" />
+          <NavigationProperty Name="CRA_Activite" Relationship="MCModel.FK_dbo_CRAActivite_dbo_CRATypeId" FromRole="CRA_Type" ToRole="CRA_Activite" />
         </EntityType>
         <EntityType Name="Email_SendListe">
           <Key>
@@ -1080,59 +540,26 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UsersId" Type="Int32" Nullable="false" />
           <Property Name="EmailTypeId" Type="Int32" Nullable="false" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DateSended" Type="DateTime" Precision="3" />
           <Property Name="DateReceipted" Type="DateTime" Precision="3" />
           <Property Name="DateReaded" Type="DateTime" Precision="3" />
-          <Property Name="SubjectBuilded" Type="String" MaxLength="350" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BodyBuilded" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Email_Type" Relationship="Self.FK_dbo_EmailSendListe_dbo_EmailTypeId" FromRole="Email_SendListe" ToRole="Email_Type" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_EmailSendListe_dbo_UsersId" FromRole="Email_SendListe" ToRole="Users" />
+          <Property Name="SubjectBuilded" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="BodyBuilded" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Email_Type" Relationship="MCModel.FK_dbo_EmailSendListe_dbo_EmailTypeId" FromRole="Email_SendListe" ToRole="Email_Type" />
         </EntityType>
         <EntityType Name="Email_Type">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Subject" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Email_SendListe" Relationship="Self.FK_dbo_EmailSendListe_dbo_EmailTypeId" FromRole="Email_Type" ToRole="Email_SendListe" />
-          <NavigationProperty Name="Email_Variables" Relationship="Self.FK_dbo_Email_Variables_dbo_EmailTypeId" FromRole="Email_Type" ToRole="Email_Variables" />
-          <NavigationProperty Name="Invitation_Type" Relationship="Self.FK_dbo_InvitationType_dbo_EmailTypeId" FromRole="Email_Type" ToRole="Invitation_Type" />
-        </EntityType>
-        <EntityType Name="Email_Variables">
-          <Key>
-            <PropertyRef Name="EmailTypeId" />
-            <PropertyRef Name="Variable" />
-          </Key>
-          <Property Name="EmailTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Variable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Email_Type" Relationship="Self.FK_dbo_Email_Variables_dbo_EmailTypeId" FromRole="Email_Variables" ToRole="Email_Type" />
-        </EntityType>
-        <EntityType Name="Invitation_Queued">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UsersId_from_" Type="Int32" Nullable="false" />
-          <Property Name="UsersId_to_" Type="Int32" />
-          <Property Name="Email_to_" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="InvitationTypeId" Type="Int32" Nullable="false" />
-          <Property Name="InvitationStateId" Type="Int32" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Invitation_State" Relationship="Self.FK_dbo_InvitationQueued_dbo_InvitationStateId" FromRole="Invitation_Queued" ToRole="Invitation_State" />
-          <NavigationProperty Name="Invitation_Type" Relationship="Self.FK_dbo_InvitationQueued_dbo_InvitationTypeId" FromRole="Invitation_Queued" ToRole="Invitation_Type" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_InvitationQueued_dbo_UsersIdfrom" FromRole="Invitation_Queued" ToRole="Users" />
-          <NavigationProperty Name="Users1" Relationship="Self.FK_dbo_InvitationQueued_dbo_UsersIdto" FromRole="Invitation_Queued" ToRole="Users" />
+          <NavigationProperty Name="Email_SendListe" Relationship="MCModel.FK_dbo_EmailSendListe_dbo_EmailTypeId" FromRole="Email_Type" ToRole="Email_SendListe" />
         </EntityType>
         <EntityType Name="Invitation_State">
           <Key>
@@ -1144,100 +571,23 @@
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Invitation_Queued" Relationship="Self.FK_dbo_InvitationQueued_dbo_InvitationStateId" FromRole="Invitation_State" ToRole="Invitation_Queued" />
-        </EntityType>
-        <EntityType Name="Invitation_Type">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="InvitationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserRolesId_from_" Type="Int32" Nullable="false" />
-          <Property Name="UserRolesId_to_" Type="Int32" Nullable="false" />
-          <Property Name="EmailTypeId" Type="Int32" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Email_Type" Relationship="Self.FK_dbo_InvitationType_dbo_EmailTypeId" FromRole="Invitation_Type" ToRole="Email_Type" />
-          <NavigationProperty Name="Invitation_Queued" Relationship="Self.FK_dbo_InvitationQueued_dbo_InvitationTypeId" FromRole="Invitation_Type" ToRole="Invitation_Queued" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_InvitationType_dbo_UserRolesId_from_" FromRole="Invitation_Type" ToRole="Users" />
-          <NavigationProperty Name="Users1" Relationship="Self.FK_dbo_InvitationType_dbo_UserRolesId_to_" FromRole="Invitation_Type" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="LNK_Users_CRAActivite">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="CRAActiviteId" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="UsersId" Type="Int32" Nullable="false" />
-          <Property Name="CRAActiviteId" Type="Int32" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="ReadWrite" Type="Int32" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CRA_Activite" Relationship="Self.FK_dbo_LNKUsersCRAActivite_dbo_CRAActiviteId" FromRole="LNK_Users_CRAActivite" ToRole="CRA_Activite" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_LNKUsersCRAActivite_dbo_UsersId" FromRole="LNK_Users_CRAActivite" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="LNK_Users_CRAType">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="CRATypeId" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="UsersId" Type="Int32" Nullable="false" />
-          <Property Name="CRATypeId" Type="Int32" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CRA_Type" Relationship="Self.FK_dbo_LNKUsersCRAType_dbo_CRATypeId" FromRole="LNK_Users_CRAType" ToRole="CRA_Type" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_LNKUsersCRAType_dbo_UsersId" FromRole="LNK_Users_CRAType" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="LNK_Users_Mission">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="MissionId" />
-          </Key>
-          <Property Name="UsersId" Type="Int32" Nullable="false" />
-          <Property Name="MissionId" Type="Int32" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Mission" Relationship="Self.FK_dbo_LNK_Users_Mission_dbo_MissionId" FromRole="LNK_Users_Mission" ToRole="Mission" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_LNK_Users_Mission_dbo_UsersId" FromRole="LNK_Users_Mission" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="LNK_Users_UserRole">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="UsersRolesId" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="UsersId" Type="Int32" Nullable="false" />
-          <Property Name="UsersRolesId" Type="Int32" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CompanyId" Type="Int32" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Company" Relationship="Self.FK_dbo_LNKUsersUserRoles_dbo_CompanyId" FromRole="LNK_Users_UserRole" ToRole="Company" />
-          <NavigationProperty Name="Users_Roles" Relationship="Self.FK_dbo_LNKUsersUserRole_dbo_UsersRolesId" FromRole="LNK_Users_UserRole" ToRole="Users_Roles" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_LNKUsersUserRoles_dbo_UsersId" FromRole="LNK_Users_UserRole" ToRole="Users" />
         </EntityType>
         <EntityType Name="Mission">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DescriptionShort" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DescriptionLong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DescriptionShort" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionLong" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="DateBegin" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DateEnd" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="LNK_Users_Mission" Relationship="Self.FK_dbo_LNK_Users_Mission_dbo_MissionId" FromRole="Mission" ToRole="LNK_Users_Mission" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Id" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
@@ -1246,69 +596,7 @@
           <Property Name="PartnersInfos" Type="Boolean" Nullable="false" />
           <Property Name="MonCRAInfos" Type="Boolean" Nullable="false" />
           <Property Name="ActivationCode" Type="Guid" Nullable="false" />
-          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IAmARobot" Type="Boolean" Nullable="false" />
-          <Property Name="WouldRecievePartnersInfos" Type="Boolean" Nullable="false" />
-          <Property Name="WouldRecieveMonCRAInfos" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="CRA_Activite" Relationship="Self.FK_dbo_CRAActivite_dbo_UsersId" FromRole="Users" ToRole="CRA_Activite" />
-          <NavigationProperty Name="Email_SendListe" Relationship="Self.FK_dbo_EmailSendListe_dbo_UsersId" FromRole="Users" ToRole="Email_SendListe" />
-          <NavigationProperty Name="Invitation_Queued" Relationship="Self.FK_dbo_InvitationQueued_dbo_UsersIdfrom" FromRole="Users" ToRole="Invitation_Queued" />
-          <NavigationProperty Name="Invitation_Queued1" Relationship="Self.FK_dbo_InvitationQueued_dbo_UsersIdto" FromRole="Users" ToRole="Invitation_Queued" />
-          <NavigationProperty Name="Invitation_Type" Relationship="Self.FK_dbo_InvitationType_dbo_UserRolesId_from_" FromRole="Users" ToRole="Invitation_Type" />
-          <NavigationProperty Name="Invitation_Type1" Relationship="Self.FK_dbo_InvitationType_dbo_UserRolesId_to_" FromRole="Users" ToRole="Invitation_Type" />
-          <NavigationProperty Name="LNK_Users_CRAActivite" Relationship="Self.FK_dbo_LNKUsersCRAActivite_dbo_UsersId" FromRole="Users" ToRole="LNK_Users_CRAActivite" />
-          <NavigationProperty Name="LNK_Users_CRAType" Relationship="Self.FK_dbo_LNKUsersCRAType_dbo_UsersId" FromRole="Users" ToRole="LNK_Users_CRAType" />
-          <NavigationProperty Name="LNK_Users_Mission" Relationship="Self.FK_dbo_LNK_Users_Mission_dbo_UsersId" FromRole="Users" ToRole="LNK_Users_Mission" />
-          <NavigationProperty Name="LNK_Users_UserRole" Relationship="Self.FK_dbo_LNKUsersUserRoles_dbo_UsersId" FromRole="Users" ToRole="LNK_Users_UserRole" />
-          <NavigationProperty Name="Users_Adresse" Relationship="Self.FK_dbo_UsersAdresse_dbo_UsersId" FromRole="Users" ToRole="Users_Adresse" />
-          <NavigationProperty Name="Users_Email" Relationship="Self.FK_dbo_UsersEmail_dbo_UsersId" FromRole="Users" ToRole="Users_Email" />
-          <NavigationProperty Name="Users_Password" Relationship="Self.FK_dbo_UsersPassword_dbo_UsersId" FromRole="Users" ToRole="Users_Password" />
-          <NavigationProperty Name="Users_Tel" Relationship="Self.FK_dbo_UsersTel_dbo_UsersId" FromRole="Users" ToRole="Users_Tel" />
-        </EntityType>
-        <EntityType Name="Users_Adresse">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="Adresse" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="UsersId" Type="Int32" Nullable="false" />
-          <Property Name="Adresse" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="ZIPCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StateLibele" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_UsersAdresse_dbo_UsersId" FromRole="Users_Adresse" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Users_Email">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="UsersId" Type="Int32" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="AccountType" Type="Int32" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_UsersEmail_dbo_UsersId" FromRole="Users_Email" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Users_Password">
-          <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="Password" />
-            <PropertyRef Name="IsActive" />
-          </Key>
-          <Property Name="UsersId" Type="Int32" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_UsersPassword_dbo_UsersId" FromRole="Users_Password" ToRole="Users" />
+          <Property Name="Action" Nullable="false" Type="String" />
         </EntityType>
         <EntityType Name="Users_Roles">
           <Key>
@@ -1321,192 +609,34 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="LNK_Users_UserRole" Relationship="Self.FK_dbo_LNKUsersUserRole_dbo_UsersRolesId" FromRole="Users_Roles" ToRole="LNK_Users_UserRole" />
         </EntityType>
-        <EntityType Name="Users_Tel">
+        <EntityType Name="UserRoles">
           <Key>
-            <PropertyRef Name="UsersId" />
-            <PropertyRef Name="Tel" />
-            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="UsersId" Type="Int32" Nullable="false" />
-          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeletionDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_UsersTel_dbo_UsersId" FromRole="Users_Tel" ToRole="Users" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="FK_dbo_CompanyAdresse_dbo_CompanyId">
-          <End Role="Company" Type="Self.Company" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Company_Adresse" Type="Self.Company_Adresse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Company_Adresse">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersUserRoles_dbo_CompanyId">
-          <End Role="Company" Type="Self.Company" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_UserRole" Type="Self.LNK_Users_UserRole" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LNK_Users_UserRole">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_CRAActivite_dbo_CRATypeId">
-          <End Role="CRA_Type" Type="Self.CRA_Type" Multiplicity="1">
+          <End Type="MCModel.CRA_Type" Role="CRA_Type" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="CRA_Activite" Type="Self.CRA_Activite" Multiplicity="*" />
+          <End Type="MCModel.CRA_Activite" Role="CRA_Activite" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CRA_Type">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="CRA_Activite">
-              <PropertyRef Name="CRATypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRAActivite_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_Activite" Type="Self.CRA_Activite" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="CRA_Activite">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRAActiviteDetail_dbo_CRAActiviteId">
-          <End Role="CRA_Activite" Type="Self.CRA_Activite" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_ActiviteDetail" Type="Self.CRA_ActiviteDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_Activite">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CRA_ActiviteDetail">
-              <PropertyRef Name="CRAActiviteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRAActiviteStates_dbo_CRAActiviteId">
-          <End Role="CRA_Activite" Type="Self.CRA_Activite" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_ActiviteStates" Type="Self.CRA_ActiviteStates" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_Activite">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CRA_ActiviteStates">
-              <PropertyRef Name="CRAActiviteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersCRAActivite_dbo_CRAActiviteId">
-          <End Role="CRA_Activite" Type="Self.CRA_Activite" Multiplicity="1" />
-          <End Role="LNK_Users_CRAActivite" Type="Self.LNK_Users_CRAActivite" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_Activite">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LNK_Users_CRAActivite">
-              <PropertyRef Name="CRAActiviteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRAActiviteDetail_dbo_CRAlibeleColId">
-          <End Role="CRA_LibeleCol" Type="Self.CRA_LibeleCol" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_ActiviteDetail" Type="Self.CRA_ActiviteDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_LibeleCol">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CRA_ActiviteDetail">
-              <PropertyRef Name="CRAlibeleColId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRAActiviteStates_dbo_CRAActiviteStateId">
-          <End Role="CRA_ActiviteState" Type="Self.CRA_ActiviteState" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_ActiviteStates" Type="Self.CRA_ActiviteStates" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_ActiviteState">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CRA_ActiviteStates">
-              <PropertyRef Name="CRAActiviteStateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRADefinition_dbo_CRALibelecolId">
-          <End Role="CRA_LibeleCol" Type="Self.CRA_LibeleCol" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_Definition" Type="Self.CRA_Definition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_LibeleCol">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CRA_Definition">
-              <PropertyRef Name="CRALibeleColId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_CRADefinition_dbo_CRATypeId">
-          <End Role="CRA_Type" Type="Self.CRA_Type" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CRA_Definition" Type="Self.CRA_Definition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_Type">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CRA_Definition">
-              <PropertyRef Name="CRATypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersCRAType_dbo_CRATypeId">
-          <End Role="CRA_Type" Type="Self.CRA_Type" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_CRAType" Type="Self.LNK_Users_CRAType" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CRA_Type">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LNK_Users_CRAType">
               <PropertyRef Name="CRATypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_EmailSendListe_dbo_EmailTypeId">
-          <End Role="Email_Type" Type="Self.Email_Type" Multiplicity="1">
+          <End Type="MCModel.Email_Type" Role="Email_Type" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Email_SendListe" Type="Self.Email_SendListe" Multiplicity="*" />
+          <End Type="MCModel.Email_SendListe" Role="Email_SendListe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Email_Type">
               <PropertyRef Name="Id" />
@@ -1516,413 +646,163 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_EmailSendListe_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Email_SendListe" Type="Self.Email_SendListe" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Email_SendListe">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Email_Variables_dbo_EmailTypeId">
-          <End Role="Email_Type" Type="Self.Email_Type" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Email_Variables" Type="Self.Email_Variables" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Email_Type">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Email_Variables">
-              <PropertyRef Name="EmailTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationType_dbo_EmailTypeId">
-          <End Role="Email_Type" Type="Self.Email_Type" Multiplicity="1" />
-          <End Role="Invitation_Type" Type="Self.Invitation_Type" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Email_Type">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Invitation_Type">
-              <PropertyRef Name="EmailTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationQueued_dbo_InvitationStateId">
-          <End Role="Invitation_State" Type="Self.Invitation_State" Multiplicity="1" />
-          <End Role="Invitation_Queued" Type="Self.Invitation_Queued" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Invitation_State">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Invitation_Queued">
-              <PropertyRef Name="InvitationStateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationQueued_dbo_InvitationTypeId">
-          <End Role="Invitation_Type" Type="Self.Invitation_Type" Multiplicity="1" />
-          <End Role="Invitation_Queued" Type="Self.Invitation_Queued" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Invitation_Type">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Invitation_Queued">
-              <PropertyRef Name="InvitationTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationQueued_dbo_UsersIdfrom">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Invitation_Queued" Type="Self.Invitation_Queued" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Invitation_Queued">
-              <PropertyRef Name="UsersId_from_" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationQueued_dbo_UsersIdto">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="Invitation_Queued" Type="Self.Invitation_Queued" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Invitation_Queued">
-              <PropertyRef Name="UsersId_to_" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationType_dbo_UserRolesId_from_">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Invitation_Type" Type="Self.Invitation_Type" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Invitation_Type">
-              <PropertyRef Name="UserRolesId_from_" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_InvitationType_dbo_UserRolesId_to_">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Invitation_Type" Type="Self.Invitation_Type" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Invitation_Type">
-              <PropertyRef Name="UserRolesId_to_" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersCRAActivite_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="LNK_Users_CRAActivite" Type="Self.LNK_Users_CRAActivite" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="LNK_Users_CRAActivite">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersCRAType_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_CRAType" Type="Self.LNK_Users_CRAType" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="LNK_Users_CRAType">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNK_Users_Mission_dbo_MissionId">
-          <End Role="Mission" Type="Self.Mission" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_Mission" Type="Self.LNK_Users_Mission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mission">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LNK_Users_Mission">
-              <PropertyRef Name="MissionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNK_Users_Mission_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_Mission" Type="Self.LNK_Users_Mission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="LNK_Users_Mission">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersUserRole_dbo_UsersRolesId">
-          <End Role="Users_Roles" Type="Self.Users_Roles" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_UserRole" Type="Self.LNK_Users_UserRole" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users_Roles">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LNK_Users_UserRole">
-              <PropertyRef Name="UsersRolesId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_LNKUsersUserRoles_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="LNK_Users_UserRole" Type="Self.LNK_Users_UserRole" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="LNK_Users_UserRole">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_UsersAdresse_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Users_Adresse" Type="Self.Users_Adresse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Users_Adresse">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_UsersEmail_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Users_Email" Type="Self.Users_Email" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Users_Email">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_UsersPassword_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Users_Password" Type="Self.Users_Password" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Users_Password">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_UsersTel_dbo_UsersId">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Users_Tel" Type="Self.Users_Tel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Users_Tel">
-              <PropertyRef Name="UsersId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="MCEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Company" EntityType="Self.Company" />
-          <EntitySet Name="Company_Adresse" EntityType="Self.Company_Adresse" />
-          <EntitySet Name="CRA_Activite" EntityType="Self.CRA_Activite" />
-          <EntitySet Name="CRA_ActiviteDetail" EntityType="Self.CRA_ActiviteDetail" />
-          <EntitySet Name="CRA_ActiviteState" EntityType="Self.CRA_ActiviteState" />
-          <EntitySet Name="CRA_ActiviteStates" EntityType="Self.CRA_ActiviteStates" />
-          <EntitySet Name="CRA_Definition" EntityType="Self.CRA_Definition" />
-          <EntitySet Name="CRA_LibeleCol" EntityType="Self.CRA_LibeleCol" />
-          <EntitySet Name="CRA_Type" EntityType="Self.CRA_Type" />
-          <EntitySet Name="Email_SendListe" EntityType="Self.Email_SendListe" />
-          <EntitySet Name="Email_Type" EntityType="Self.Email_Type" />
-          <EntitySet Name="Email_Variables" EntityType="Self.Email_Variables" />
-          <EntitySet Name="Invitation_Queued" EntityType="Self.Invitation_Queued" />
-          <EntitySet Name="Invitation_State" EntityType="Self.Invitation_State" />
-          <EntitySet Name="Invitation_Type" EntityType="Self.Invitation_Type" />
-          <EntitySet Name="LNK_Users_CRAActivite" EntityType="Self.LNK_Users_CRAActivite" />
-          <EntitySet Name="LNK_Users_CRAType" EntityType="Self.LNK_Users_CRAType" />
-          <EntitySet Name="LNK_Users_Mission" EntityType="Self.LNK_Users_Mission" />
-          <EntitySet Name="LNK_Users_UserRole" EntityType="Self.LNK_Users_UserRole" />
-          <EntitySet Name="Mission" EntityType="Self.Mission" />
-          <EntitySet Name="Users" EntityType="Self.Users" />
-          <EntitySet Name="Users_Adresse" EntityType="Self.Users_Adresse" />
-          <EntitySet Name="Users_Email" EntityType="Self.Users_Email" />
-          <EntitySet Name="Users_Password" EntityType="Self.Users_Password" />
-          <EntitySet Name="Users_Roles" EntityType="Self.Users_Roles" />
-          <EntitySet Name="Users_Tel" EntityType="Self.Users_Tel" />
-          <AssociationSet Name="FK_dbo_CompanyAdresse_dbo_CompanyId" Association="Self.FK_dbo_CompanyAdresse_dbo_CompanyId">
-            <End Role="Company" EntitySet="Company" />
-            <End Role="Company_Adresse" EntitySet="Company_Adresse" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersUserRoles_dbo_CompanyId" Association="Self.FK_dbo_LNKUsersUserRoles_dbo_CompanyId">
-            <End Role="Company" EntitySet="Company" />
-            <End Role="LNK_Users_UserRole" EntitySet="LNK_Users_UserRole" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRAActivite_dbo_CRATypeId" Association="Self.FK_dbo_CRAActivite_dbo_CRATypeId">
-            <End Role="CRA_Type" EntitySet="CRA_Type" />
-            <End Role="CRA_Activite" EntitySet="CRA_Activite" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRAActivite_dbo_UsersId" Association="Self.FK_dbo_CRAActivite_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="CRA_Activite" EntitySet="CRA_Activite" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRAActiviteDetail_dbo_CRAActiviteId" Association="Self.FK_dbo_CRAActiviteDetail_dbo_CRAActiviteId">
-            <End Role="CRA_Activite" EntitySet="CRA_Activite" />
-            <End Role="CRA_ActiviteDetail" EntitySet="CRA_ActiviteDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRAActiviteStates_dbo_CRAActiviteId" Association="Self.FK_dbo_CRAActiviteStates_dbo_CRAActiviteId">
-            <End Role="CRA_Activite" EntitySet="CRA_Activite" />
-            <End Role="CRA_ActiviteStates" EntitySet="CRA_ActiviteStates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersCRAActivite_dbo_CRAActiviteId" Association="Self.FK_dbo_LNKUsersCRAActivite_dbo_CRAActiviteId">
-            <End Role="CRA_Activite" EntitySet="CRA_Activite" />
-            <End Role="LNK_Users_CRAActivite" EntitySet="LNK_Users_CRAActivite" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRAActiviteDetail_dbo_CRAlibeleColId" Association="Self.FK_dbo_CRAActiviteDetail_dbo_CRAlibeleColId">
-            <End Role="CRA_LibeleCol" EntitySet="CRA_LibeleCol" />
-            <End Role="CRA_ActiviteDetail" EntitySet="CRA_ActiviteDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRAActiviteStates_dbo_CRAActiviteStateId" Association="Self.FK_dbo_CRAActiviteStates_dbo_CRAActiviteStateId">
-            <End Role="CRA_ActiviteState" EntitySet="CRA_ActiviteState" />
-            <End Role="CRA_ActiviteStates" EntitySet="CRA_ActiviteStates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRADefinition_dbo_CRALibelecolId" Association="Self.FK_dbo_CRADefinition_dbo_CRALibelecolId">
-            <End Role="CRA_LibeleCol" EntitySet="CRA_LibeleCol" />
-            <End Role="CRA_Definition" EntitySet="CRA_Definition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_CRADefinition_dbo_CRATypeId" Association="Self.FK_dbo_CRADefinition_dbo_CRATypeId">
-            <End Role="CRA_Type" EntitySet="CRA_Type" />
-            <End Role="CRA_Definition" EntitySet="CRA_Definition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersCRAType_dbo_CRATypeId" Association="Self.FK_dbo_LNKUsersCRAType_dbo_CRATypeId">
-            <End Role="CRA_Type" EntitySet="CRA_Type" />
-            <End Role="LNK_Users_CRAType" EntitySet="LNK_Users_CRAType" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_EmailSendListe_dbo_EmailTypeId" Association="Self.FK_dbo_EmailSendListe_dbo_EmailTypeId">
-            <End Role="Email_Type" EntitySet="Email_Type" />
-            <End Role="Email_SendListe" EntitySet="Email_SendListe" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_EmailSendListe_dbo_UsersId" Association="Self.FK_dbo_EmailSendListe_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Email_SendListe" EntitySet="Email_SendListe" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Email_Variables_dbo_EmailTypeId" Association="Self.FK_dbo_Email_Variables_dbo_EmailTypeId">
-            <End Role="Email_Type" EntitySet="Email_Type" />
-            <End Role="Email_Variables" EntitySet="Email_Variables" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationType_dbo_EmailTypeId" Association="Self.FK_dbo_InvitationType_dbo_EmailTypeId">
-            <End Role="Email_Type" EntitySet="Email_Type" />
-            <End Role="Invitation_Type" EntitySet="Invitation_Type" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationQueued_dbo_InvitationStateId" Association="Self.FK_dbo_InvitationQueued_dbo_InvitationStateId">
-            <End Role="Invitation_State" EntitySet="Invitation_State" />
-            <End Role="Invitation_Queued" EntitySet="Invitation_Queued" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationQueued_dbo_InvitationTypeId" Association="Self.FK_dbo_InvitationQueued_dbo_InvitationTypeId">
-            <End Role="Invitation_Type" EntitySet="Invitation_Type" />
-            <End Role="Invitation_Queued" EntitySet="Invitation_Queued" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationQueued_dbo_UsersIdfrom" Association="Self.FK_dbo_InvitationQueued_dbo_UsersIdfrom">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Invitation_Queued" EntitySet="Invitation_Queued" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationQueued_dbo_UsersIdto" Association="Self.FK_dbo_InvitationQueued_dbo_UsersIdto">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Invitation_Queued" EntitySet="Invitation_Queued" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationType_dbo_UserRolesId_from_" Association="Self.FK_dbo_InvitationType_dbo_UserRolesId_from_">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Invitation_Type" EntitySet="Invitation_Type" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_InvitationType_dbo_UserRolesId_to_" Association="Self.FK_dbo_InvitationType_dbo_UserRolesId_to_">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Invitation_Type" EntitySet="Invitation_Type" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersCRAActivite_dbo_UsersId" Association="Self.FK_dbo_LNKUsersCRAActivite_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="LNK_Users_CRAActivite" EntitySet="LNK_Users_CRAActivite" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersCRAType_dbo_UsersId" Association="Self.FK_dbo_LNKUsersCRAType_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="LNK_Users_CRAType" EntitySet="LNK_Users_CRAType" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNK_Users_Mission_dbo_MissionId" Association="Self.FK_dbo_LNK_Users_Mission_dbo_MissionId">
-            <End Role="Mission" EntitySet="Mission" />
-            <End Role="LNK_Users_Mission" EntitySet="LNK_Users_Mission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNK_Users_Mission_dbo_UsersId" Association="Self.FK_dbo_LNK_Users_Mission_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="LNK_Users_Mission" EntitySet="LNK_Users_Mission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersUserRole_dbo_UsersRolesId" Association="Self.FK_dbo_LNKUsersUserRole_dbo_UsersRolesId">
-            <End Role="Users_Roles" EntitySet="Users_Roles" />
-            <End Role="LNK_Users_UserRole" EntitySet="LNK_Users_UserRole" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_LNKUsersUserRoles_dbo_UsersId" Association="Self.FK_dbo_LNKUsersUserRoles_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="LNK_Users_UserRole" EntitySet="LNK_Users_UserRole" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_UsersAdresse_dbo_UsersId" Association="Self.FK_dbo_UsersAdresse_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Users_Adresse" EntitySet="Users_Adresse" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_UsersEmail_dbo_UsersId" Association="Self.FK_dbo_UsersEmail_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Users_Email" EntitySet="Users_Email" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_UsersPassword_dbo_UsersId" Association="Self.FK_dbo_UsersPassword_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Users_Password" EntitySet="Users_Password" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_UsersTel_dbo_UsersId" Association="Self.FK_dbo_UsersTel_dbo_UsersId">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Users_Tel" EntitySet="Users_Tel" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        <ComplexType Name="sp_CRA_Activite__ById_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="UsersId" Nullable="false" />
+          <Property Type="Int32" Name="CRATypeId" Nullable="false" />
+          <Property Type="String" Name="Period" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="ModificaitonDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModificaitonBy" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="PeriodBegin" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="PeriodEnd" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_CRA_Activite__InsertUpdate_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="UsersId" Nullable="false" />
+          <Property Type="Int32" Name="CRATypeId" Nullable="false" />
+          <Property Type="String" Name="Period" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="ModificaitonDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModificaitonBy" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="PeriodBegin" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="PeriodEnd" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_CRA_Activite__List_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="UsersId" Nullable="false" />
+          <Property Type="Int32" Name="CRATypeId" Nullable="false" />
+          <Property Type="String" Name="Period" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="ModificaitonDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModificaitonBy" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="PeriodBegin" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="PeriodEnd" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_CRA_ActiviteDetail_sel_Result">
+          <Property Type="Int32" Name="CRAActiviteId" Nullable="false" />
+          <Property Type="DateTime" Name="DateBegin" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DateEnd" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="CRAlibeleColId" Nullable="false" />
+          <Property Type="Decimal" Name="Quantity" Nullable="true" Precision="10" Scale="4" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CreationBY" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="modificationDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ModificationBY" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_CRA_GetLIibCol_byID_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="LibShort" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="LibLong" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DeletionDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_CRA_GetListByUserId_Result">
+          <Property Type="Int32" Name="CRAId" Nullable="false" />
+          <Property Type="String" Name="LIBELLE" Nullable="true" />
+          <Property Type="String" Name="NUMCRA" Nullable="true" />
+          <Property Type="String" Name="MOIS" Nullable="true" />
+          <Property Type="Int32" Name="NBTOTALJOURS" Nullable="false" />
+          <Property Type="Int32" Name="FK_IDCONSULTANT" Nullable="true" />
+          <Property Type="Int32" Name="FK_IDCLIENT" Nullable="true" />
+          <Property Type="String" Name="LIB_CLIENT" Nullable="true" />
+          <Property Type="Int32" Name="FK_IDRESPONSABLE" Nullable="true" />
+          <Property Type="String" Name="LIB_RESPONSABLE" Nullable="true" />
+          <Property Type="Int32" Name="FK_IDSTATUT" Nullable="true" />
+          <Property Type="Boolean" Name="SIGNECONSULTANT" Nullable="true" />
+          <Property Type="DateTime" Name="DTSIGNECONSULTANT" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="SIGNECLIENTFINAL" Nullable="true" />
+          <Property Type="DateTime" Name="DTSIGNECLIENTFINAL" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="SIGNEAGENT" Nullable="true" />
+          <Property Type="DateTime" Name="DTSIGNEAGENT" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="AddedDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="IPAddress" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_CRA_LibeleCol_List_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="LibShort" Nullable="true" MaxLength="303" />
+          <Property Type="String" Name="LibLong" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DeletionDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_CRA_LibeleCol_sel_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="LibShort" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="LibLong" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IsActive" Nullable="true" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DeletionDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ASCMPT" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_CRA_Type__List_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="NbrColTotal" Nullable="false" />
+          <Property Type="String" Name="CRAName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CRADescription" Nullable="true" MaxLength="250" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DeletionDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_Users_Email_InsertUpdate_Result">
+          <Property Type="Int32" Name="UsersId" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Int32" Name="AccountType" Nullable="false" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DeletionDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_Users_InsertUpdate_Result">
+          <Property Type="Int32" Name="UsersId" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Int32" Name="AccountType" Nullable="false" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DeletionDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_Users_GetById_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" />
+          <Property Type="String" Name="LastName" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Boolean" Name="CGU_CGV" Nullable="false" />
+          <Property Type="Boolean" Name="Robot" Nullable="false" />
+          <Property Type="Boolean" Name="PartnersInfos" Nullable="false" />
+          <Property Type="Boolean" Name="MonCRAInfos" Nullable="false" />
+          <Property Type="Guid" Name="ActivationCode" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="RoleLib" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_Users_Password_InsertUpdate_Result">
+          <Property Type="Int32" Name="UsersId" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="250" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DeletionDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_Users_Validate_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="true" />
+          <Property Type="String" Name="LastName" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Boolean" Name="CGU_CGV" Nullable="false" />
+          <Property Type="Boolean" Name="Robot" Nullable="false" />
+          <Property Type="Boolean" Name="PartnersInfos" Nullable="false" />
+          <Property Type="Boolean" Name="MonCRAInfos" Nullable="false" />
+          <Property Type="Guid" Name="ActivationCode" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="250" />
+        </ComplexType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1931,33 +811,146 @@
           <EntitySetMapping Name="Company">
             <EntityTypeMapping TypeName="MCModel.Company">
               <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="OfficialID" ColumnName="OfficialID" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Company_Adresse">
-            <EntityTypeMapping TypeName="MCModel.Company_Adresse">
-              <MappingFragment StoreEntitySet="Company_Adresse">
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ZIPCode" ColumnName="ZIPCode" />
-                <ScalarProperty Name="StateLibele" ColumnName="StateLibele" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="OfficialID" ColumnName="OfficialID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CRA_Activite">
             <EntityTypeMapping TypeName="MCModel.CRA_Activite">
               <MappingFragment StoreEntitySet="CRA_Activite">
+                <ScalarProperty Name="PeriodEnd" ColumnName="PeriodEnd" />
+                <ScalarProperty Name="PeriodBegin" ColumnName="PeriodBegin" />
+                <ScalarProperty Name="ModificaitonBy" ColumnName="ModificaitonBy" />
+                <ScalarProperty Name="ModificaitonDate" ColumnName="ModificaitonDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="CRATypeId" ColumnName="CRATypeId" />
+                <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CRA_ActiviteState">
+            <EntityTypeMapping TypeName="MCModel.CRA_ActiviteState">
+              <MappingFragment StoreEntitySet="CRA_ActiviteState">
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="StateDescription" ColumnName="StateDescription" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CRA_LibeleCol">
+            <EntityTypeMapping TypeName="MCModel.CRA_LibeleCol">
+              <MappingFragment StoreEntitySet="CRA_LibeleCol">
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="LibLong" ColumnName="LibLong" />
+                <ScalarProperty Name="LibShort" ColumnName="LibShort" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CRA_Type">
+            <EntityTypeMapping TypeName="MCModel.CRA_Type">
+              <MappingFragment StoreEntitySet="CRA_Type">
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CRADescription" ColumnName="CRADescription" />
+                <ScalarProperty Name="CRAName" ColumnName="CRAName" />
+                <ScalarProperty Name="NbrColTotal" ColumnName="NbrColTotal" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Email_SendListe">
+            <EntityTypeMapping TypeName="MCModel.Email_SendListe">
+              <MappingFragment StoreEntitySet="Email_SendListe">
+                <ScalarProperty Name="BodyBuilded" ColumnName="BodyBuilded" />
+                <ScalarProperty Name="SubjectBuilded" ColumnName="SubjectBuilded" />
+                <ScalarProperty Name="DateReaded" ColumnName="DateReaded" />
+                <ScalarProperty Name="DateReceipted" ColumnName="DateReceipted" />
+                <ScalarProperty Name="DateSended" ColumnName="DateSended" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EmailTypeId" ColumnName="EmailTypeId" />
+                <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Email_Type">
+            <EntityTypeMapping TypeName="MCModel.Email_Type">
+              <MappingFragment StoreEntitySet="Email_Type">
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invitation_State">
+            <EntityTypeMapping TypeName="MCModel.Invitation_State">
+              <MappingFragment StoreEntitySet="Invitation_State">
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="StateDescription" ColumnName="StateDescription" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mission">
+            <EntityTypeMapping TypeName="MCModel.Mission">
+              <MappingFragment StoreEntitySet="Mission">
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="DateBegin" ColumnName="DateBegin" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DescriptionLong" ColumnName="DescriptionLong" />
+                <ScalarProperty Name="DescriptionShort" ColumnName="DescriptionShort" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users_Roles">
+            <EntityTypeMapping TypeName="MCModel.Users_Roles">
+              <MappingFragment StoreEntitySet="Users_Roles">
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="RoleLib" ColumnName="RoleLib" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="MCModel.UserRoles">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_CRA_Activite__ById" FunctionName="MCModel.Store.sp_CRA_Activite__ById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_CRA_Activite__ById_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UsersId" ColumnName="UsersId" />
                 <ScalarProperty Name="CRATypeId" ColumnName="CRATypeId" />
@@ -1968,12 +961,45 @@
                 <ScalarProperty Name="ModificaitonBy" ColumnName="ModificaitonBy" />
                 <ScalarProperty Name="PeriodBegin" ColumnName="PeriodBegin" />
                 <ScalarProperty Name="PeriodEnd" ColumnName="PeriodEnd" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CRA_ActiviteDetail">
-            <EntityTypeMapping TypeName="MCModel.CRA_ActiviteDetail">
-              <MappingFragment StoreEntitySet="CRA_ActiviteDetail">
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CRA_Activite__InsertUpdate" FunctionName="MCModel.Store.sp_CRA_Activite__InsertUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_CRA_Activite__InsertUpdate_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+                <ScalarProperty Name="CRATypeId" ColumnName="CRATypeId" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModificaitonDate" ColumnName="ModificaitonDate" />
+                <ScalarProperty Name="ModificaitonBy" ColumnName="ModificaitonBy" />
+                <ScalarProperty Name="PeriodBegin" ColumnName="PeriodBegin" />
+                <ScalarProperty Name="PeriodEnd" ColumnName="PeriodEnd" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CRA_Activite__List" FunctionName="MCModel.Store.sp_CRA_Activite__List">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_CRA_Activite__List_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+                <ScalarProperty Name="CRATypeId" ColumnName="CRATypeId" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModificaitonDate" ColumnName="ModificaitonDate" />
+                <ScalarProperty Name="ModificaitonBy" ColumnName="ModificaitonBy" />
+                <ScalarProperty Name="PeriodBegin" ColumnName="PeriodBegin" />
+                <ScalarProperty Name="PeriodEnd" ColumnName="PeriodEnd" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CRA_ActiviteDetail__InsertUpdate" FunctionName="MCModel.Store.sp_CRA_ActiviteDetail__InsertUpdate" />
+          <FunctionImportMapping FunctionImportName="sp_CRA_ActiviteDetail_sel" FunctionName="MCModel.Store.sp_CRA_ActiviteDetail_sel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_CRA_ActiviteDetail_sel_Result">
                 <ScalarProperty Name="CRAActiviteId" ColumnName="CRAActiviteId" />
                 <ScalarProperty Name="DateBegin" ColumnName="DateBegin" />
                 <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
@@ -1983,48 +1009,14 @@
                 <ScalarProperty Name="CreationBY" ColumnName="CreationBY" />
                 <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
                 <ScalarProperty Name="ModificationBY" ColumnName="ModificationBY" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CRA_ActiviteState">
-            <EntityTypeMapping TypeName="MCModel.CRA_ActiviteState">
-              <MappingFragment StoreEntitySet="CRA_ActiviteState">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="StateDescription" ColumnName="StateDescription" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CRA_ActiviteStates">
-            <EntityTypeMapping TypeName="MCModel.CRA_ActiviteStates">
-              <MappingFragment StoreEntitySet="CRA_ActiviteStates">
-                <ScalarProperty Name="CRAActiviteId" ColumnName="CRAActiviteId" />
-                <ScalarProperty Name="CRAActiviteStateId" ColumnName="CRAActiviteStateId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="CreationBy" ColumnName="CreationBy" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CRA_Definition">
-            <EntityTypeMapping TypeName="MCModel.CRA_Definition">
-              <MappingFragment StoreEntitySet="CRA_Definition">
-                <ScalarProperty Name="CRATypeId" ColumnName="CRATypeId" />
-                <ScalarProperty Name="Rank" ColumnName="Rank" />
-                <ScalarProperty Name="CRALibeleColId" ColumnName="CRALibeleColId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CRA_LibeleCol">
-            <EntityTypeMapping TypeName="MCModel.CRA_LibeleCol">
-              <MappingFragment StoreEntitySet="CRA_LibeleCol">
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CRA_ActiviteDetail_sel_NEW" FunctionName="MCModel.Store.sp_CRA_ActiviteDetail_sel_NEW" />
+          <FunctionImportMapping FunctionImportName="sp_CRA_Delete" FunctionName="MCModel.Store.sp_CRA_Delete" />
+          <FunctionImportMapping FunctionImportName="sp_CRA_GetLIibCol_byID" FunctionName="MCModel.Store.sp_CRA_GetLIibCol_byID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_CRA_GetLIibCol_byID_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="LibShort" ColumnName="LibShort" />
                 <ScalarProperty Name="LibLong" ColumnName="LibLong" />
@@ -2032,12 +1024,66 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CRA_Type">
-            <EntityTypeMapping TypeName="MCModel.CRA_Type">
-              <MappingFragment StoreEntitySet="CRA_Type">
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CRA_GetListByUserId" FunctionName="MCModel.Store.sp_CRA_GetListByUserId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_CRA_GetListByUserId_Result">
+                <ScalarProperty Name="CRAId" ColumnName="CRAId" />
+                <ScalarProperty Name="LIBELLE" ColumnName="LIBELLE" />
+                <ScalarProperty Name="NUMCRA" ColumnName="NUMCRA" />
+                <ScalarProperty Name="MOIS" ColumnName="MOIS" />
+                <ScalarProperty Name="NBTOTALJOURS" ColumnName="NBTOTALJOURS" />
+                <ScalarProperty Name="FK_IDCONSULTANT" ColumnName="FK_IDCONSULTANT" />
+                <ScalarProperty Name="FK_IDCLIENT" ColumnName="FK_IDCLIENT" />
+                <ScalarProperty Name="LIB_CLIENT" ColumnName="LIB_CLIENT" />
+                <ScalarProperty Name="FK_IDRESPONSABLE" ColumnName="FK_IDRESPONSABLE" />
+                <ScalarProperty Name="LIB_RESPONSABLE" ColumnName="LIB_RESPONSABLE" />
+                <ScalarProperty Name="FK_IDSTATUT" ColumnName="FK_IDSTATUT" />
+                <ScalarProperty Name="SIGNECONSULTANT" ColumnName="SIGNECONSULTANT" />
+                <ScalarProperty Name="DTSIGNECONSULTANT" ColumnName="DTSIGNECONSULTANT" />
+                <ScalarProperty Name="SIGNECLIENTFINAL" ColumnName="SIGNECLIENTFINAL" />
+                <ScalarProperty Name="DTSIGNECLIENTFINAL" ColumnName="DTSIGNECLIENTFINAL" />
+                <ScalarProperty Name="SIGNEAGENT" ColumnName="SIGNEAGENT" />
+                <ScalarProperty Name="DTSIGNEAGENT" ColumnName="DTSIGNEAGENT" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CRA_InsertUpdate" FunctionName="MCModel.Store.sp_CRA_InsertUpdate" />
+          <FunctionImportMapping FunctionImportName="sp_CRA_LibeleCol_List" FunctionName="MCModel.Store.sp_CRA_LibeleCol_List">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_CRA_LibeleCol_List_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LibShort" ColumnName="LibShort" />
+                <ScalarProperty Name="LibLong" ColumnName="LibLong" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CRA_LibeleCol_sel" FunctionName="MCModel.Store.sp_CRA_LibeleCol_sel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_CRA_LibeleCol_sel_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LibShort" ColumnName="LibShort" />
+                <ScalarProperty Name="LibLong" ColumnName="LibLong" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="ASCMPT" ColumnName="ASCMPT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_CRA_Type__List" FunctionName="MCModel.Store.sp_CRA_Type__List">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_CRA_Type__List_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="NbrColTotal" ColumnName="NbrColTotal" />
                 <ScalarProperty Name="CRAName" ColumnName="CRAName" />
@@ -2045,150 +1091,36 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Email_SendListe">
-            <EntityTypeMapping TypeName="MCModel.Email_SendListe">
-              <MappingFragment StoreEntitySet="Email_SendListe">
-                <ScalarProperty Name="Id" ColumnName="Id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Users_Email_InsertUpdate" FunctionName="MCModel.Store.sp_Users_Email_InsertUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_Users_Email_InsertUpdate_Result">
                 <ScalarProperty Name="UsersId" ColumnName="UsersId" />
-                <ScalarProperty Name="EmailTypeId" ColumnName="EmailTypeId" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="DateSended" ColumnName="DateSended" />
-                <ScalarProperty Name="DateReceipted" ColumnName="DateReceipted" />
-                <ScalarProperty Name="DateReaded" ColumnName="DateReaded" />
-                <ScalarProperty Name="SubjectBuilded" ColumnName="SubjectBuilded" />
-                <ScalarProperty Name="BodyBuilded" ColumnName="BodyBuilded" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Email_Type">
-            <EntityTypeMapping TypeName="MCModel.Email_Type">
-              <MappingFragment StoreEntitySet="Email_Type">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Email_Variables">
-            <EntityTypeMapping TypeName="MCModel.Email_Variables">
-              <MappingFragment StoreEntitySet="Email_Variables">
-                <ScalarProperty Name="EmailTypeId" ColumnName="EmailTypeId" />
-                <ScalarProperty Name="Variable" ColumnName="Variable" />
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Invitation_Queued">
-            <EntityTypeMapping TypeName="MCModel.Invitation_Queued">
-              <MappingFragment StoreEntitySet="Invitation_Queued">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UsersId_from_" ColumnName="UsersId_from_" />
-                <ScalarProperty Name="UsersId_to_" ColumnName="UsersId_to_" />
-                <ScalarProperty Name="Email_to_" ColumnName="Email_to_" />
-                <ScalarProperty Name="InvitationTypeId" ColumnName="InvitationTypeId" />
-                <ScalarProperty Name="InvitationStateId" ColumnName="InvitationStateId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Invitation_State">
-            <EntityTypeMapping TypeName="MCModel.Invitation_State">
-              <MappingFragment StoreEntitySet="Invitation_State">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="StateDescription" ColumnName="StateDescription" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Invitation_Type">
-            <EntityTypeMapping TypeName="MCModel.Invitation_Type">
-              <MappingFragment StoreEntitySet="Invitation_Type">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="InvitationType" ColumnName="InvitationType" />
-                <ScalarProperty Name="UserRolesId_from_" ColumnName="UserRolesId_from_" />
-                <ScalarProperty Name="UserRolesId_to_" ColumnName="UserRolesId_to_" />
-                <ScalarProperty Name="EmailTypeId" ColumnName="EmailTypeId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LNK_Users_CRAActivite">
-            <EntityTypeMapping TypeName="MCModel.LNK_Users_CRAActivite">
-              <MappingFragment StoreEntitySet="LNK_Users_CRAActivite">
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Users_InsertUpdate" FunctionName="MCModel.Store.sp_Users_InsertUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_Users_InsertUpdate_Result">
                 <ScalarProperty Name="UsersId" ColumnName="UsersId" />
-                <ScalarProperty Name="CRAActiviteId" ColumnName="CRAActiviteId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ReadWrite" ColumnName="ReadWrite" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LNK_Users_CRAType">
-            <EntityTypeMapping TypeName="MCModel.LNK_Users_CRAType">
-              <MappingFragment StoreEntitySet="LNK_Users_CRAType">
-                <ScalarProperty Name="UsersId" ColumnName="UsersId" />
-                <ScalarProperty Name="CRATypeId" ColumnName="CRATypeId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LNK_Users_Mission">
-            <EntityTypeMapping TypeName="MCModel.LNK_Users_Mission">
-              <MappingFragment StoreEntitySet="LNK_Users_Mission">
-                <ScalarProperty Name="UsersId" ColumnName="UsersId" />
-                <ScalarProperty Name="MissionId" ColumnName="MissionId" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LNK_Users_UserRole">
-            <EntityTypeMapping TypeName="MCModel.LNK_Users_UserRole">
-              <MappingFragment StoreEntitySet="LNK_Users_UserRole">
-                <ScalarProperty Name="UsersId" ColumnName="UsersId" />
-                <ScalarProperty Name="UsersRolesId" ColumnName="UsersRolesId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Mission">
-            <EntityTypeMapping TypeName="MCModel.Mission">
-              <MappingFragment StoreEntitySet="Mission">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DescriptionShort" ColumnName="DescriptionShort" />
-                <ScalarProperty Name="DescriptionLong" ColumnName="DescriptionLong" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="DateBegin" ColumnName="DateBegin" />
-                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="MCModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Users_GetById" FunctionName="MCModel.Store.sp_Users_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_Users_GetById_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -2198,76 +1130,58 @@
                 <ScalarProperty Name="PartnersInfos" ColumnName="PartnersInfos" />
                 <ScalarProperty Name="MonCRAInfos" ColumnName="MonCRAInfos" />
                 <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="IAmARobot" ColumnName="IAmARobot" />
-                <ScalarProperty Name="WouldRecievePartnersInfos" ColumnName="WouldRecievePartnersInfos" />
-                <ScalarProperty Name="WouldRecieveMonCRAInfos" ColumnName="WouldRecieveMonCRAInfos" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users_Adresse">
-            <EntityTypeMapping TypeName="MCModel.Users_Adresse">
-              <MappingFragment StoreEntitySet="Users_Adresse">
-                <ScalarProperty Name="UsersId" ColumnName="UsersId" />
-                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ZIPCode" ColumnName="ZIPCode" />
-                <ScalarProperty Name="StateLibele" ColumnName="StateLibele" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users_Email">
-            <EntityTypeMapping TypeName="MCModel.Users_Email">
-              <MappingFragment StoreEntitySet="Users_Email">
-                <ScalarProperty Name="UsersId" ColumnName="UsersId" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users_Password">
-            <EntityTypeMapping TypeName="MCModel.Users_Password">
-              <MappingFragment StoreEntitySet="Users_Password">
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Users_Password_InsertUpdate" FunctionName="MCModel.Store.sp_Users_Password_InsertUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_Users_Password_InsertUpdate_Result">
                 <ScalarProperty Name="UsersId" ColumnName="UsersId" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users_Roles">
-            <EntityTypeMapping TypeName="MCModel.Users_Roles">
-              <MappingFragment StoreEntitySet="Users_Roles">
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Users_GetByEmail" FunctionName="MCModel.Store.sp_Users_GetByEmail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_Users_GetById_Result">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CGU_CGV" ColumnName="CGU_CGV" />
+                <ScalarProperty Name="Robot" ColumnName="Robot" />
+                <ScalarProperty Name="PartnersInfos" ColumnName="PartnersInfos" />
+                <ScalarProperty Name="MonCRAInfos" ColumnName="MonCRAInfos" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="RoleLib" ColumnName="RoleLib" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Users_Validate" FunctionName="MCModel.Store.sp_Users_Validate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MCModel.sp_Users_Validate_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users_Tel">
-            <EntityTypeMapping TypeName="MCModel.Users_Tel">
-              <MappingFragment StoreEntitySet="Users_Tel">
-                <ScalarProperty Name="UsersId" ColumnName="UsersId" />
-                <ScalarProperty Name="Tel" ColumnName="Tel" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+                <ScalarProperty Name="CGU_CGV" ColumnName="CGU_CGV" />
+                <ScalarProperty Name="Robot" ColumnName="Robot" />
+                <ScalarProperty Name="PartnersInfos" ColumnName="PartnersInfos" />
+                <ScalarProperty Name="MonCRAInfos" ColumnName="MonCRAInfos" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_LNK_Users_UserRole__InsertUpdate" FunctionName="MCModel.Store.sp_LNK_Users_UserRole__InsertUpdate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

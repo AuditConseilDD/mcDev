@@ -74,6 +74,9 @@ namespace MCSolutions.Controllers
         {
             var truc = ((CustomPrincipal)User);
             p_cra.UsersId = truc.UserId;
+            p_cra.CreationDate = DateTime.Now;
+            p_cra.CreatedBy = truc.FirstName + "_" + truc.LastName;
+
             return Json(g_craAdb.AddCRAActivite(p_cra), JsonRequestBehavior.AllowGet);
         }
 
@@ -84,7 +87,10 @@ namespace MCSolutions.Controllers
         {
             //charger cra activité
             //charger les colonnes
-            ViewData["currentCRA"] = idCRA;
+            ViewData["currentCRA"] = idCRA.HasValue ? g_craAdb.GetCRAActiviteById(idCRA.Value)[0] : null; //idCRA;
+
+            var truc = User != null ? ((CustomPrincipal)User) : null;
+            ViewData["currentUser"] = truc;
 
             return View();
         }

@@ -14,12 +14,6 @@ namespace MCSolutions.Models
     
     public partial class Users_Roles
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users_Roles()
-        {
-            this.LNK_Users_UserRole = new HashSet<LNK_Users_UserRole>();
-        }
-    
         public int Id { get; set; }
         public string RoleName { get; set; }
         public string RoleLib { get; set; }
@@ -27,8 +21,5 @@ namespace MCSolutions.Models
         public bool IsActive { get; set; }
         public System.DateTime CreationDate { get; set; }
         public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LNK_Users_UserRole> LNK_Users_UserRole { get; set; }
     }
 }

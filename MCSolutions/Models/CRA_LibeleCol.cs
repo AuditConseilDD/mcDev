@@ -14,13 +14,6 @@ namespace MCSolutions.Models
     
     public partial class CRA_LibeleCol
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CRA_LibeleCol()
-        {
-            this.CRA_ActiviteDetail = new HashSet<CRA_ActiviteDetail>();
-            this.CRA_Definition = new HashSet<CRA_Definition>();
-        }
-    
         public int Id { get; set; }
         public string LibShort { get; set; }
         public string LibLong { get; set; }
@@ -28,10 +21,5 @@ namespace MCSolutions.Models
         public Nullable<bool> IsActive { get; set; }
         public System.DateTime CreationDate { get; set; }
         public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CRA_ActiviteDetail> CRA_ActiviteDetail { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CRA_Definition> CRA_Definition { get; set; }
     }
 }

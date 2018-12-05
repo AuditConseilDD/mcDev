@@ -15,28 +15,71 @@ GO
 -- Description : Upsert CRUD CRA_Activite
 -- ===================================================================
 
-CREATE PROCEDURE [dbo].[CRA_Activite__InsertUpdate]
-  (@Id int,@UsersId int,@CRATypeId int,@Period nvarchar(50),@CreationDate datetime,@ModificaitonDate datetime=NULL,@ModificaitonBy nvarchar(250)=NULL,@PeriodBegin datetime=NULL,@PeriodEnd datetime=NULL)
+CREATE PROCEDURE [dbo].[sp_CRA_Activite__InsertUpdate]
+  (@Id int = NULL,@UsersId int,@CRATypeId int,@Period nvarchar(50),@CreatedBy nvarchar(250)=NULL,@CreationDate datetime,@ModificaitonDate datetime=NULL,@ModificaitonBy nvarchar(250)=NULL,@PeriodBegin datetime=NULL,@PeriodEnd datetime=NULL,    
+	@Action			VARCHAR(10))
 AS
 BEGIN
-  --SET CONTEXT_INFO @MyID;
-  IF @ID IS NULL OR @ID = 0
-    BEGIN
-      INSERT INTO [dbo].[CRA_Activite]
-        ([Id],[UsersId],[CRATypeId],[Period],[CreationDate],[ModificaitonDate],[ModificaitonBy],[PeriodBegin],[PeriodEnd])
-      VALUES
-        (@Id,@UsersId,@CRATypeId,@Period,@CreationDate,@ModificaitonDate,@ModificaitonBy,@PeriodBegin,@PeriodEnd);
-      SELECT * FROM [dbo].[CRA_Activite] WHERE [ID] = SCOPE_IDENTITY();
-    END
-  ELSE
-    BEGIN
-      UPDATE [dbo].[CRA_Activite]
-        SET [Id]=@Id,[UsersId]=@UsersId,[CRATypeId]=@CRATypeId,[Period]=@Period,[CreationDate]=@CreationDate,[ModificaitonDate]=@ModificaitonDate,[ModificaitonBy]=@ModificaitonBy,[PeriodBegin]=@PeriodBegin,[PeriodEnd]=@PeriodEnd
-        WHERE ([ CRAActiviteId, CRAlibeleColId, DateBegin, DateEnd] = @ID) AND ([RowVersion] = @RowVersion);
-      SELECT * FROM [dbo].[CRA_Activite] WHERE [ID] = @ID;
-    END
+
+	DECLARE 
+	@COMPTE INT = 0
+
+	,@NOW	DATETIME
+	SET @NOW = GETDATE()
+
+	IF UPPER(@Action)='INSERT'    
+	BEGIN
+
+		PRINT '>> ' + @ACTION
+		INSERT INTO [dbo].[CRA_Activite] ([UsersId],[CRATypeId],[Period],[CreatedBy],[CreationDate],[ModificaitonDate],[ModificaitonBy],[PeriodBegin],[PeriodEnd])
+		VALUES (@UsersId,@CRATypeId,@Period,@CreatedBy,@CreationDate,@ModificaitonDate,@ModificaitonBy,@PeriodBegin,@PeriodEnd);
+
+		SELECT * FROM [dbo].[CRA_Activite] WHERE [ID] = SCOPE_IDENTITY();
+
+	END
+
+	IF UPPER(@Action)='UPDATE'
+	BEGIN
+		UPDATE [dbo].[CRA_Activite]
+		SET 
+			[CRATypeId]			=	@CRATypeId,
+			[Period]			=	@Period,
+			[ModificaitonDate]	=	@ModificaitonDate,	/*@NOW,*/
+			[ModificaitonBy]	=	@ModificaitonBy,
+			[PeriodBegin]		=	@PeriodBegin,
+			[PeriodEnd]			=	@PeriodEnd
+		WHERE 
+			Id = @Id
+		AND	[UsersId] = @UsersId;
+
+		SELECT * FROM [dbo].[CRA_Activite] WHERE [ID] = @Id;
+	END
 END
+
 GO
+
+--CREATE PROCEDURE [dbo].[CRA_Activite__InsertUpdate]
+--  (@Id int,@UsersId int,@CRATypeId int,@Period nvarchar(50),@CreationDate datetime,@ModificaitonDate datetime=NULL,@ModificaitonBy nvarchar(250)=NULL,@PeriodBegin datetime=NULL,@PeriodEnd datetime=NULL)
+--AS
+--BEGIN
+--  --SET CONTEXT_INFO @MyID;
+--  IF @ID IS NULL OR @ID = 0
+--    BEGIN
+--      INSERT INTO [dbo].[CRA_Activite]
+--        ([Id],[UsersId],[CRATypeId],[Period],[CreationDate],[ModificaitonDate],[ModificaitonBy],[PeriodBegin],[PeriodEnd])
+--      VALUES
+--        (@Id,@UsersId,@CRATypeId,@Period,@CreationDate,@ModificaitonDate,@ModificaitonBy,@PeriodBegin,@PeriodEnd);
+--      SELECT * FROM [dbo].[CRA_Activite] WHERE [ID] = SCOPE_IDENTITY();
+--    END
+--  ELSE
+--    BEGIN
+--      UPDATE [dbo].[CRA_Activite]
+--        SET [Id]=@Id,[UsersId]=@UsersId,[CRATypeId]=@CRATypeId,[Period]=@Period,[CreationDate]=@CreationDate,[ModificaitonDate]=@ModificaitonDate,[ModificaitonBy]=@ModificaitonBy,[PeriodBegin]=@PeriodBegin,[PeriodEnd]=@PeriodEnd
+--        WHERE ([ CRAActiviteId, CRAlibeleColId, DateBegin, DateEnd] = @ID) AND ([RowVersion] = @RowVersion);
+--      SELECT * FROM [dbo].[CRA_Activite] WHERE [ID] = @ID;
+--    END
+--END
+--GO
 
 
 
@@ -57,7 +100,7 @@ GO
 -- Description : Select CRUD CRA_Activite
 -- ===================================================================
 
-CREATE PROCEDURE [dbo].[CRA_Activite_List]
+CREATE PROCEDURE [dbo].[sp_CRA_Activite__List]
   (@UsersId int=NULL)
 AS
 BEGIN
@@ -92,6 +135,27 @@ GO
 
 
 
+CREATE PROCEDURE [dbo].[sp_CRA_Activite__ById]
+  (@Id int=NULL)
+AS
+BEGIN
+    SELECT [Id]
+      ,[UsersId]
+      ,[CRATypeId]
+      ,[Period]
+      ,[CreationDate]
+      ,[CreatedBy]
+      ,[ModificaitonDate]
+      ,[ModificaitonBy]
+      ,[PeriodBegin]
+      ,[PeriodEnd]
+	 FROM [dbo].[CRA_Activite] 
+	 WHERE [Id] = @Id;
+END
+GO
+
+
+
 /****** Object:  StoredProcedure [dbo].[CRA_Activite_del]    Script Date: Nov 26 2018 10:42PM  ******/
 USE [mcdev002];
 GO
@@ -109,7 +173,7 @@ GO
 -- Description : Delete CRUD CRA_Activite
 -- ===================================================================
 
-CREATE PROCEDURE [dbo].[CRA_Activite_del]
+CREATE PROCEDURE [dbo].[sp_CRA_Activite_del]
   (@MyID int, @ID int, @RowVersion int)
 AS
 BEGIN

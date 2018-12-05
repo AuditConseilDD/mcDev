@@ -14,14 +14,6 @@ namespace MCSolutions.Models
     
     public partial class CRA_Activite
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CRA_Activite()
-        {
-            this.CRA_ActiviteDetail = new HashSet<CRA_ActiviteDetail>();
-            this.CRA_ActiviteStates = new HashSet<CRA_ActiviteStates>();
-            this.LNK_Users_CRAActivite = new HashSet<LNK_Users_CRAActivite>();
-        }
-    
         public int Id { get; set; }
         public int UsersId { get; set; }
         public int CRATypeId { get; set; }
@@ -34,12 +26,5 @@ namespace MCSolutions.Models
         public Nullable<System.DateTime> PeriodEnd { get; set; }
     
         public virtual CRA_Type CRA_Type { get; set; }
-        public virtual Users Users { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CRA_ActiviteDetail> CRA_ActiviteDetail { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CRA_ActiviteStates> CRA_ActiviteStates { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LNK_Users_CRAActivite> LNK_Users_CRAActivite { get; set; }
     }
 }

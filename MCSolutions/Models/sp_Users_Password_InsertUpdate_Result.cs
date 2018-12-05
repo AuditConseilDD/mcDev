@@ -10,17 +10,13 @@
 namespace MCSolutions.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Users_Email
+    public partial class sp_Users_Password_InsertUpdate_Result
     {
         public int UsersId { get; set; }
-        public string Email { get; set; }
+        public string Password { get; set; }
         public bool IsActive { get; set; }
-        public int AccountType { get; set; }
         public System.DateTime CreationDate { get; set; }
         public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        public virtual Users Users { get; set; }
     }
 }

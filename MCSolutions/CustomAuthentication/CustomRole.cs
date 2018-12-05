@@ -37,7 +37,7 @@ namespace MCSolutions.CustomAuthentication
 
             using (AuthenticationDB dbContext = new AuthenticationDB())
             {
-                var selectedUser = (from us in dbContext.Users.Include("Roles")
+                var selectedUser = (from us in dbContext.Users.Include("Users_Roles")
                                     where string.Compare(us.Username, username, StringComparison.OrdinalIgnoreCase) == 0
                                     select us).FirstOrDefault();
 

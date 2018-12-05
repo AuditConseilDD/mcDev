@@ -10,16 +10,18 @@
 namespace MCSolutions.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class LNK_Users_Mission
+    public partial class sp_CRA_Activite__ById_Result
     {
+        public int Id { get; set; }
         public int UsersId { get; set; }
-        public int MissionId { get; set; }
+        public int CRATypeId { get; set; }
+        public string Period { get; set; }
         public System.DateTime CreationDate { get; set; }
-        public Nullable<System.DateTime> ModificationDate { get; set; }
-    
-        public virtual Mission Mission { get; set; }
-        public virtual Users Users { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> ModificaitonDate { get; set; }
+        public string ModificaitonBy { get; set; }
+        public Nullable<System.DateTime> PeriodBegin { get; set; }
+        public Nullable<System.DateTime> PeriodEnd { get; set; }
     }
 }

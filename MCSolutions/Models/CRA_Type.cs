@@ -18,8 +18,6 @@ namespace MCSolutions.Models
         public CRA_Type()
         {
             this.CRA_Activite = new HashSet<CRA_Activite>();
-            this.CRA_Definition = new HashSet<CRA_Definition>();
-            this.LNK_Users_CRAType = new HashSet<LNK_Users_CRAType>();
         }
     
         public int Id { get; set; }
@@ -32,9 +30,5 @@ namespace MCSolutions.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CRA_Activite> CRA_Activite { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CRA_Definition> CRA_Definition { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LNK_Users_CRAType> LNK_Users_CRAType { get; set; }
     }
 }

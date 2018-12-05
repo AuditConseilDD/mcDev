@@ -25,14 +25,15 @@ namespace MCSolutions.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public List<string> RoleName { get; set; }
+        public string RoleLib { get; set; }
 
     }
 
     public class RegistrationView
     {
-        [Required(ErrorMessage = "Nom d'utilisateur obligatoire")]
-        [Display(Name ="Nom d'utilisateur")]
-        public string Username { get; set; }
+        //[Required(ErrorMessage = "Nom d'utilisateur obligatoire")]
+        //[Display(Name ="Nom d'utilisateur")]
+        //public string Username { get; set; }
 
         [Required(ErrorMessage = "Prénom obligatoire")]
         [Display(Name = "Prénom")]

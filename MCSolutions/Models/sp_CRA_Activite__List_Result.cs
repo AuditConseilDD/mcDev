@@ -10,18 +10,18 @@
 namespace MCSolutions.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class CRA_ActiviteStates
+    public partial class sp_CRA_Activite__List_Result
     {
-        public int CRAActiviteId { get; set; }
-        public int CRAActiviteStateId { get; set; }
-        public bool IsActive { get; set; }
+        public int Id { get; set; }
+        public int UsersId { get; set; }
+        public int CRATypeId { get; set; }
+        public string Period { get; set; }
         public System.DateTime CreationDate { get; set; }
-        public string CreationBy { get; set; }
-        public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        public virtual CRA_Activite CRA_Activite { get; set; }
-        public virtual CRA_ActiviteState CRA_ActiviteState { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> ModificaitonDate { get; set; }
+        public string ModificaitonBy { get; set; }
+        public Nullable<System.DateTime> PeriodBegin { get; set; }
+        public Nullable<System.DateTime> PeriodEnd { get; set; }
     }
 }

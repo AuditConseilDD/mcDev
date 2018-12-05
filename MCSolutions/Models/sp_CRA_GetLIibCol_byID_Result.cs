@@ -10,19 +10,15 @@
 namespace MCSolutions.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Users_Adresse
+    public partial class sp_CRA_GetLIibCol_byID_Result
     {
-        public int UsersId { get; set; }
-        public string Adresse { get; set; }
-        public bool IsActive { get; set; }
-        public string ZIPCode { get; set; }
-        public string StateLibele { get; set; }
-        public string Description { get; set; }
+        public int Id { get; set; }
+        public string LibShort { get; set; }
+        public string LibLong { get; set; }
+        public string Type { get; set; }
+        public Nullable<bool> IsActive { get; set; }
         public System.DateTime CreationDate { get; set; }
         public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        public virtual Users Users { get; set; }
     }
 }

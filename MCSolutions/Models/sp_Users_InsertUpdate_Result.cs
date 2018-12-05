@@ -10,18 +10,14 @@
 namespace MCSolutions.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class CRA_Definition
+    public partial class sp_Users_InsertUpdate_Result
     {
-        public int CRATypeId { get; set; }
-        public int Rank { get; set; }
-        public int CRALibeleColId { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public int UsersId { get; set; }
+        public string Email { get; set; }
+        public bool IsActive { get; set; }
+        public int AccountType { get; set; }
         public System.DateTime CreationDate { get; set; }
         public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        public virtual CRA_LibeleCol CRA_LibeleCol { get; set; }
-        public virtual CRA_Type CRA_Type { get; set; }
     }
 }

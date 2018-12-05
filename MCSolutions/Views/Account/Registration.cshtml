@@ -9,9 +9,28 @@
         {*@
     @Html.AntiForgeryToken()
 
-
     <div class="container-fluid main-content">
         <main role="main" class="container">
+
+            @if (ViewBag.Message != null)
+            {
+                @*<div id="popupdiv" style="border: 1px solid red; display: block;">*@
+                <div id="popupdiv" style="@ViewBag.Style">
+                    @ViewBag.Message
+                </div>
+            }
+            @{
+                ViewBag.Message = null;
+            }
+
+
+            @*@if (ViewBag.Message != null)
+                {
+                    <div style="border:solid 1px green">
+                        @ViewBag.Message
+                    </div>
+                }*@
+
             <div class="wizard ">
 
 
@@ -23,15 +42,15 @@
                             <hr />
 
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 @Html.LabelFor(model => model.Username) :
                                 @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control form-control-lg is-valid", placeholder = Html.DisplayNameFor(x => x.LastName) } })
                                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-                            </div>
+                            </div>*@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.FirstName)
 
-                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control form-control-lg is-valid", placeholder = Html.DisplayNameFor(x => x.Username) } })
+                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control form-control-lg is-valid", placeholder = Html.DisplayNameFor(x => x.FirstName) } })
                                 @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
@@ -80,21 +99,21 @@
                                 <div class="row">
                                     <div class="col-sm-10" style="text-align:justify;">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="CSLT" checked>
                                             <label class="form-check-label" for="gridRadios1">
                                                 <b>Consultant / Prestataire externe.</b><br />
                                                 J’ouvre un compte GRATUIT dans le but de transférer facilement un CRA vraiment pro tous les mois.
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="CF">
                                             <label class="form-check-label" for="gridRadios2">
                                                 <b>Client Final / Cadre de mission / Acheteur.</b><br />
                                                 J’ouvre un compte GRATUIT afin de pouvoir facilement valider et gérer les CRA de mon équipe de consultants / prestataires.
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="SSII">
                                             <label class="form-check-label" for="gridRadios3">
                                                 <b>Agent / SSII / manager / commercial / intermédiaire.</b><br />
                                                 J’ouvre un compte afin de rationaliser, gérer et professionnaliser la transmission et la validation des CRA de mes consultants envers mes clients.
@@ -133,26 +152,26 @@
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" name="defaultCheck1" id="defaultCheck1">
+                                <input class="form-check-input" type="checkbox" value="1" name="defaultCheck1" id="defaultCheck1">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Je ne suis pas un robot
                                 </label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" name="defaultCheck1" id="defaultCheck2">
+                                <input class="form-check-input" type="checkbox" value="2" name="defaultCheck2" id="defaultCheck2">
                                 <label class="form-check-label" for="defaultCheck1">
                                     J’ai pris connaissance des conditions générales d’utilisation (CGU) et des conditions générales de vente (CGV)
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" name="defaultCheck1" id="defaultCheck3">
+                                <input class="form-check-input" type="checkbox" value="3" name="defaultCheck3" id="defaultCheck3">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Je souhaite recevoir des informations de vos partenaires commerciaux.
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" name="defaultCheck1" id="defaultCheck4">
+                                <input class="form-check-input" type="checkbox" value="4" name="defaultCheck4" id="defaultCheck4">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Je souhaite recevoir des informations de Mon-CRA.com
                                 </label>

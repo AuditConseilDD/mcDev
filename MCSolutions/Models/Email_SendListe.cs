@@ -26,6 +26,5 @@ namespace MCSolutions.Models
         public string BodyBuilded { get; set; }
     
         public virtual Email_Type Email_Type { get; set; }
-        public virtual Users Users { get; set; }
     }
 }

@@ -10,17 +10,14 @@
 namespace MCSolutions.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class LNK_Users_CRAType
+    public partial class sp_Users_Email_InsertUpdate_Result
     {
         public int UsersId { get; set; }
-        public int CRATypeId { get; set; }
+        public string Email { get; set; }
         public bool IsActive { get; set; }
+        public int AccountType { get; set; }
         public System.DateTime CreationDate { get; set; }
         public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        public virtual CRA_Type CRA_Type { get; set; }
-        public virtual Users Users { get; set; }
     }
 }

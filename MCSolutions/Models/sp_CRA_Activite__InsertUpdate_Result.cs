@@ -10,19 +10,18 @@
 namespace MCSolutions.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Company_Adresse
+    public partial class sp_CRA_Activite__InsertUpdate_Result
     {
-        public int CompanyId { get; set; }
-        public string Adresse { get; set; }
-        public bool IsActive { get; set; }
-        public string ZIPCode { get; set; }
-        public string StateLibele { get; set; }
-        public string Description { get; set; }
+        public int Id { get; set; }
+        public int UsersId { get; set; }
+        public int CRATypeId { get; set; }
+        public string Period { get; set; }
         public System.DateTime CreationDate { get; set; }
-        public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        public virtual Company Company { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> ModificaitonDate { get; set; }
+        public string ModificaitonBy { get; set; }
+        public Nullable<System.DateTime> PeriodBegin { get; set; }
+        public Nullable<System.DateTime> PeriodEnd { get; set; }
     }
 }

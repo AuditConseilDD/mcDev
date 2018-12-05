@@ -10,17 +10,20 @@
 namespace MCSolutions.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Email_Variables
+    public partial class sp_Users_GetById_Result
     {
-        public int EmailTypeId { get; set; }
-        public string Variable { get; set; }
-        public string Value { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public bool IsActive { get; set; }
-        public System.DateTime CreationDate { get; set; }
-        public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        public virtual Email_Type Email_Type { get; set; }
+        public bool CGU_CGV { get; set; }
+        public bool Robot { get; set; }
+        public bool PartnersInfos { get; set; }
+        public bool MonCRAInfos { get; set; }
+        public System.Guid ActivationCode { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string RoleLib { get; set; }
     }
 }

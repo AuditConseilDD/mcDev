@@ -14,20 +14,11 @@ namespace MCSolutions.Models
     
     public partial class Invitation_State
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Invitation_State()
-        {
-            this.Invitation_Queued = new HashSet<Invitation_Queued>();
-        }
-    
         public int Id { get; set; }
         public string StateName { get; set; }
         public string StateDescription { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public System.DateTime CreationDate { get; set; }
         public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Invitation_Queued> Invitation_Queued { get; set; }
     }
 }

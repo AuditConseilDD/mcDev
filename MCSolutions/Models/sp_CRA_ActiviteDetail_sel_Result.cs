@@ -10,9 +10,8 @@
 namespace MCSolutions.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class CRA_ActiviteDetail
+    public partial class sp_CRA_ActiviteDetail_sel_Result
     {
         public int CRAActiviteId { get; set; }
         public System.DateTime DateBegin { get; set; }
@@ -23,8 +22,5 @@ namespace MCSolutions.Models
         public string CreationBY { get; set; }
         public Nullable<System.DateTime> modificationDate { get; set; }
         public string ModificationBY { get; set; }
-    
-        public virtual CRA_Activite CRA_Activite { get; set; }
-        public virtual CRA_LibeleCol CRA_LibeleCol { get; set; }
     }
 }

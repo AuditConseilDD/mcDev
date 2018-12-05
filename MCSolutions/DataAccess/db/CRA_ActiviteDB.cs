@@ -14,15 +14,15 @@ namespace MCSolutions.DataAccess.db
         string cs = ConfigurationManager.ConnectionStrings["AuthenticationDB"].ConnectionString;
 
         ////Return list of all CRAs
-        public List<CRA_ActiviteMODEL> GetCRAActiviteListByUserId(int p_userId)
+        public List<CRA_ActiviteMODEL> GetCRAActiviteById(int p_id)
         {
             List<CRA_ActiviteMODEL> lst = new List<CRA_ActiviteMODEL>();
             using (SqlConnection con = new SqlConnection(cs))
             {
                 con.Open();
-                SqlCommand com = new SqlCommand("sp_CRA_GetListByUserId", con);
+                SqlCommand com = new SqlCommand("sp_CRA_Activite__ById", con);
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@userId", p_userId);
+                com.Parameters.AddWithValue("@Id", p_id);
                 SqlDataReader rdr = com.ExecuteReader();
                 while (rdr.Read())
                 {
@@ -32,7 +32,38 @@ namespace MCSolutions.DataAccess.db
                         UsersId = Convert.ToInt32(rdr["UsersId"] != DBNull.Value ? rdr["UsersId"].ToString() : "0"),
                         CRATypeId = Convert.ToInt32(rdr["CRATypeId"] != DBNull.Value ? rdr["CRATypeId"].ToString() : "0"),
                         Period = rdr["Period"] != DBNull.Value ? rdr["Period"].ToString() : string.Empty,
-                        CreationDate = Convert.ToDateTime(rdr["CreationDate	"] != DBNull.Value ? rdr["CreationDate"].ToString() : "0"),
+                        CreationDate = Convert.ToDateTime(rdr["CreationDate"] != DBNull.Value ? rdr["CreationDate"].ToString() : "01/01/1900"),
+                        CreatedBy = rdr["CreatedBy"] != DBNull.Value ? rdr["CreatedBy"].ToString() : string.Empty,
+                        ModificaitonDate = Convert.ToDateTime(rdr["ModificaitonDate"] != DBNull.Value ? rdr["ModificaitonDate"].ToString() : "01/01/1900"),
+                        ModificaitonBy = rdr["ModificaitonBy"] != DBNull.Value ? rdr["ModificaitonBy"].ToString() : string.Empty,
+                        PeriodBegin = Convert.ToDateTime(rdr["PeriodBegin"] != DBNull.Value ? rdr["PeriodBegin"].ToString() : "01/01/1900"),
+                        PeriodEnd = Convert.ToDateTime(rdr["PeriodEnd"] != DBNull.Value ? rdr["PeriodEnd"].ToString() : "01/01/1900")
+                    });
+                }
+                return lst;
+            }
+        }
+
+        ////Return list of all CRAs
+        public List<CRA_ActiviteMODEL> GetCRAActiviteListByUserId(int p_userId)
+        {
+            List<CRA_ActiviteMODEL> lst = new List<CRA_ActiviteMODEL>();
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                con.Open();
+                SqlCommand com = new SqlCommand("sp_CRA_Activite__List", con);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@UsersId", p_userId);
+                SqlDataReader rdr = com.ExecuteReader();
+                while (rdr.Read())
+                {
+                    lst.Add(new CRA_ActiviteMODEL
+                    {
+                        Id = Convert.ToInt32(rdr["Id"] != DBNull.Value ? rdr["Id"].ToString() : "0"),
+                        UsersId = Convert.ToInt32(rdr["UsersId"] != DBNull.Value ? rdr["UsersId"].ToString() : "0"),
+                        CRATypeId = Convert.ToInt32(rdr["CRATypeId"] != DBNull.Value ? rdr["CRATypeId"].ToString() : "0"),
+                        Period = rdr["Period"] != DBNull.Value ? rdr["Period"].ToString() : string.Empty,
+                        CreationDate = Convert.ToDateTime(rdr["CreationDate"] != DBNull.Value ? rdr["CreationDate"].ToString() : "01/01/1900"),
                         CreatedBy = rdr["CreatedBy"] != DBNull.Value ? rdr["CreatedBy"].ToString() : string.Empty,
                         ModificaitonDate = Convert.ToDateTime(rdr["ModificaitonDate"] != DBNull.Value ? rdr["ModificaitonDate"].ToString() : "01/01/1900"),
                         ModificaitonBy = rdr["ModificaitonBy"] != DBNull.Value ? rdr["ModificaitonBy"].ToString() : string.Empty,
@@ -52,7 +83,7 @@ namespace MCSolutions.DataAccess.db
             using (SqlConnection con = new SqlConnection(cs))
             {
                 con.Open();
-                SqlCommand com = new SqlCommand("sp_CRA_ActiviteDetail__InsertUpdate", con);
+                SqlCommand com = new SqlCommand("sp_CRA_Activite__InsertUpdate", con);
                 com.CommandType = CommandType.StoredProcedure;
 
                 com.Parameters.AddWithValue("@Id", p_craACT.Id);

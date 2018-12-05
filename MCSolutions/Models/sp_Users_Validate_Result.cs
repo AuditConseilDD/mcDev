@@ -10,18 +10,19 @@
 namespace MCSolutions.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class LNK_Users_CRAActivite
+    public partial class sp_Users_Validate_Result
     {
-        public int UsersId { get; set; }
-        public int CRAActiviteId { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public bool IsActive { get; set; }
-        public int ReadWrite { get; set; }
-        public System.DateTime CreationDate { get; set; }
-        public Nullable<System.DateTime> DeletionDate { get; set; }
-    
-        public virtual CRA_Activite CRA_Activite { get; set; }
-        public virtual Users Users { get; set; }
+        public bool CGU_CGV { get; set; }
+        public bool Robot { get; set; }
+        public bool PartnersInfos { get; set; }
+        public bool MonCRAInfos { get; set; }
+        public System.Guid ActivationCode { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }
